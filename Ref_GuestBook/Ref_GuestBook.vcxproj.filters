@@ -27,9 +27,18 @@
     <ClInclude Include="Ref_GuestBook.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Pen_Str.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="drawline.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ref_GuestBook.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="drawline.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
