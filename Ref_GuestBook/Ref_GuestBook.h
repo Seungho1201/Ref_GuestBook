@@ -3,6 +3,7 @@
 #include "resource.h"
 #include "Pen_Str.h"
 #include "drawline.h"
+#include "replay.h"
 
 // COMMAND 기능 상수 선언
 
