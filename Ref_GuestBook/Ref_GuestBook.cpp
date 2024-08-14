@@ -128,9 +128,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-
-    
-
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);

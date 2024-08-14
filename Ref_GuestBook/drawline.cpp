@@ -11,8 +11,6 @@ int pen_Width = 10;
 // 펜 기본색상 BLACK
 COLORREF pen_Color = RGB(0, 0, 0);
 
-
-
 void drawLine(HWND hWnd, UINT message, LPARAM lParam)
 {
     static int preX, preY;
@@ -40,12 +38,11 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
         preY = y;
 
         // 각 LBUTTON state 별 데이터 구조체에 저장
-        g_Pen_Info.penCoordinate = lParam;     
-        g_Pen_Info.penWidth = pen_Width;
-        g_Pen_Info.penColor = pen_Color;
-        g_Pen_Info.penTime = (DWORD)GetTickCount64();
-        g_Pen_Info.penTime = (DWORD)GetTickCount64();
-        g_Pen_Info.penState = message;
+        g_Pen_Info.penCoordinate = lParam;              // 마우스 x, y 좌표 (lParam) 
+        g_Pen_Info.penWidth = pen_Width;                // 펜 굵기 (기본 값 10)
+        g_Pen_Info.penColor = pen_Color;                // 펜 색상 (기본 값 RGB(0, 0, 0))
+        g_Pen_Info.penTime = (DWORD)GetTickCount64();   // 그리기 시간
+        g_Pen_Info.penState = message;                  // 상태 (ex WM_LBUTTONDOWN)
 
         // 벡터 변수에 위 구조체 데이터 PUSH
         penMemory.push_back(g_Pen_Info);
@@ -66,7 +63,6 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
             g_Pen_Info.penWidth = pen_Width;
             g_Pen_Info.penColor = pen_Color;
             g_Pen_Info.penTime = (DWORD)GetTickCount64();
-            g_Pen_Info.penTime = (DWORD)GetTickCount64();
             g_Pen_Info.penState = message;
 
             // 벡터 변수에 위 구조체 데이터 PUSH
@@ -83,7 +79,6 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
             g_Pen_Info.penWidth = pen_Width;
             g_Pen_Info.penColor = pen_Color;
             g_Pen_Info.penTime = (DWORD)GetTickCount64();
-            g_Pen_Info.penTime = (DWORD)GetTickCount64();
             g_Pen_Info.penState = message;
 
             // 벡터 변수에 위 구조체 데이터 PUSH
@@ -92,7 +87,6 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
             drawStart = false;
             break;
         }
-        drawStart = false;
         break;
     }
 
