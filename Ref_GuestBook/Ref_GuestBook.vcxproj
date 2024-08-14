@@ -131,12 +131,14 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Pen_Str.h" />
     <ClInclude Include="Ref_GuestBook.h" />
+    <ClInclude Include="replay.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="drawline.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
+    <ClCompile Include="replay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Ref_GuestBook.rc" />
