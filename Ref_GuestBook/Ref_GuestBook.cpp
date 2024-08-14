@@ -124,10 +124,90 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 extern HWND g_Hwnd;
 
+// 전역 변수 사용 위해 임시 선언
+HWND g_Hwnd;
+
+
+DWORD WINAPI replay(LPVOID points)
+{
+    HDC hdc;
+    HPEN myP, osP;
+
+    hdc = GetDC(g_Hwnd);
+    int x, y;
+
+    // 요청이 바로 처리되지 않고 메세지 큐에 저장 즉 모든 작업이 끝난 후 실행
+    InvalidateRect(g_Hwnd, NULL, TRUE);
+    // 즉시 업데이트 요청을 보내어 모든 작업이 끝나고 실행되는 InvalidateRect 함수를 즉시 호출
+    UpdateWindow(g_Hwnd);
+
+
+    for (size_t i = 0; i < (int)penMemory.size(); i++)
+    {
+
+        myP = CreatePen(PS_SOLID, penMemory[i].penWidth, penMemory[i].penColor);
+        osP = (HPEN)SelectObject(hdc, myP);
+
+        switch (penMemory[i].penState)
+        {
+        case WM_LBUTTONDOWN:
+            x = LOWORD(penMemory[i].penCoordinate);
+            y = HIWORD(penMemory[i].penCoordinate);
+
+            MoveToEx(hdc, x, y, NULL);
+            LineTo(hdc, x, y);  //점찍기
+            break;
+
+        case WM_MOUSEMOVE:
+            LineTo(hdc, LOWORD(penMemory[i].penCoordinate), HIWORD(penMemory[i].penCoordinate));
+            break;
+
+        case WM_LBUTTONUP:
+            LineTo(hdc, LOWORD(penMemory[i].penCoordinate), HIWORD(penMemory[i].penCoordinate));
+            break;
+
+        default:
+            break;
+        }
+
+        if (i + 1 < penMemory.size() && penMemory[i + 1].penState == WM_MOUSEMOVE)
+        {
+            Sleep(penMemory[i + 1].penTime - penMemory[i].penTime);
+        }
+
+        // 리소스 자원 확보 위해 삭제
+        SelectObject(hdc, osP);
+        DeleteObject(myP);  // 펜을 삭제
+    }
+
+    ReleaseDC(g_Hwnd, hdc);
+    return 0;
+}
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+
+    case WM_CREATE:
+
+        g_Hwnd = hWnd;
+
+        // 버튼 생성 임시 구현 클래스로 분할 예정
+        CreateWindow(
+            L"BUTTON",                                               // 버튼 클래스 이름
+            L"REPLAY",                                               // 버튼 텍스트
+            WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,   // 버튼 스타일
+            10,                                                      // 버튼의 x 위치
+            10,                                                      // 버튼의 y 위치
+            100,                                                     // 버튼의 폭
+            30,                                                      // 버튼의 높이
+            g_Hwnd,                                                  // 부모 윈도우 핸들
+            (HMENU)REPLAY,                                           // 버튼의 ID
+            (HINSTANCE)GetWindowLongPtr(g_Hwnd, GWLP_HINSTANCE),     // 인스턴스 핸들
+            NULL                                                     // 추가 매개변수
+        );
+
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -139,6 +219,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
+                break;
+
+            case REPLAY:
+                // 리플레이 기능은 스레드화
+                CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
                 break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
@@ -189,3 +274,4 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return (INT_PTR)FALSE;
 }
+
