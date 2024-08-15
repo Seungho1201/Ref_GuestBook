@@ -124,29 +124,18 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 HWND g_Hwnd;
 
+// 전역 변수로 인스턴스 생성
+MakeButton bt_Replay(10, 10, 100, 30, REPLAY, L"REPLAY");
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-
     case WM_CREATE:
-
         g_Hwnd = hWnd;
 
-        // 버튼 생성 임시 구현 클래스로 분할 예정
-        CreateWindow(
-            L"BUTTON",                                               // 버튼 클래스 이름
-            L"REPLAY",                                               // 버튼 텍스트
-            WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,   // 버튼 스타일
-            10,                                                      // 버튼의 x 위치
-            10,                                                      // 버튼의 y 위치
-            100,                                                     // 버튼의 폭
-            30,                                                      // 버튼의 높이
-            g_Hwnd,                                                  // 부모 윈도우 핸들
-            (HMENU)REPLAY,                                           // 버튼의 ID
-            (HINSTANCE)GetWindowLongPtr(g_Hwnd, GWLP_HINSTANCE),     // 인스턴스 핸들
-            NULL                                                     // 추가 매개변수
-        );
+        // 윈도우 창 생성시 버튼 생성 메서드 실행
+        bt_Replay.mkButton(g_Hwnd);
 
     case WM_COMMAND:
         {
