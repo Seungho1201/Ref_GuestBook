@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="button.h" />
     <ClInclude Include="drawline.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Pen_Str.h" />
@@ -136,6 +137,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="drawline.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
