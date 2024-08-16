@@ -1,5 +1,2 @@
 ﻿  Ref_GuestBook.cpp
-  button.cpp
-C:\Users\ohseu\Desktop\Ref_GuestBook\Ref_GuestBook\button.cpp(18,5): warning C4312: '형식 캐스트': 'int'에서 더 큰 'HMENU'(으)로의 변환입니다.
-  코드를 생성하고 있습니다...
-  Ref_GuestBook.vcxproj -> C:\Users\ohseu\Desktop\Ref_GuestBook\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe
+  Ref_GuestBook.vcxproj -> C:\Users\admin\Desktop\Ref_GuestBook-develop\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe

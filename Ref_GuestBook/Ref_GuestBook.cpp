@@ -126,6 +126,7 @@ HWND g_Hwnd;
 
 // 전역 변수로 인스턴스 생성
 MakeButton bt_Replay(10, 10, 100, 30, REPLAY, L"REPLAY");
+MakeButton bt_Clear(130, 10, 100, 30, ERASE, L"ERASE");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -136,6 +137,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         // 윈도우 창 생성시 버튼 생성 메서드 실행
         bt_Replay.mkButton(g_Hwnd);
+        bt_Clear.mkButton(g_Hwnd);          // 지우기 버튼
 
     case WM_COMMAND:
         {
@@ -143,9 +145,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 메뉴 선택을 구문 분석합니다:
             switch (wmId)
             {
+
+            // 지우기 기능 구현
+            case ERASE:
+                erase(g_Hwnd);
+                break;
+            
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;
+
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
@@ -173,6 +182,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     case WM_MOUSEMOVE:
     case WM_LBUTTONDOWN:
+
     case WM_LBUTTONUP:
         // 그리기 함수
         drawLine(hWnd, message, lParam);
