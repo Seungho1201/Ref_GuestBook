@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="button.h" />
     <ClInclude Include="drawline.h" />
+    <ClInclude Include="erase.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Pen_Str.h" />
     <ClInclude Include="Ref_GuestBook.h" />
@@ -139,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="button.cpp" />
     <ClCompile Include="drawline.cpp" />
+    <ClCompile Include="erase.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
   </ItemGroup>
