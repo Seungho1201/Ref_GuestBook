@@ -125,8 +125,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 HWND g_Hwnd;
 
 // 전역 변수로 인스턴스 생성
-MakeButton bt_Replay(10, 10, 100, 30, REPLAY, L"REPLAY");
-MakeButton bt_Clear(130, 10, 100, 30, ERASE, L"ERASE");
+MakeButton bt_Clear(10, 10, 100, 30, ERASE, L"ERASE");
+MakeButton bt_Replay(10, 50, 100, 30, REPLAY, L"REPLAY");
+
+MakeButton bt_SAVE(130, 10, 100, 30, SAVE, L"SAVE");
+MakeButton bt_Load(130, 50, 100, 30, LOAD, L"LOAD");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -138,6 +141,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         // 윈도우 창 생성시 버튼 생성 메서드 실행
         bt_Replay.mkButton(g_Hwnd);
         bt_Clear.mkButton(g_Hwnd);          // 지우기 버튼
+
+        bt_SAVE.mkButton(g_Hwnd);
+        bt_Load.mkButton(g_Hwnd);
 
     case WM_COMMAND:
         {
@@ -162,6 +168,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case REPLAY:
                 // 리플레이 기능은 스레드화
                 CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
+                break;
+            //
+            // save, load 기능
+            case SAVE:
+                break;
+
+            case LOAD:
                 break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);

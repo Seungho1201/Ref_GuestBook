@@ -11,3 +11,12 @@
 
 #define REPLAY 100
 #define ERASE 200			// Áö¿ì±â
+
+#define SAVE 300
+#define LOAD 400
+
+///
+/// Ææ ±½±â Á¶Àý func
+/// 
+#define W_UP 500
+#define W_DOWN 600
