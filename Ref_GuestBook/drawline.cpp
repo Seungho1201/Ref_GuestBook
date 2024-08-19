@@ -3,13 +3,10 @@
 #include "Pen_Str.h"
 
 // 전역변수 정의
-vector<PEN_INFO> penMemory;
-PEN_INFO g_Pen_Info;
-
-// 펜 기본 굵기 10
-int pen_Width = 10;
-// 펜 기본색상 BLACK
-COLORREF pen_Color = RGB(0, 0, 0);
+extern vector<PEN_INFO> penMemory;
+extern PEN_INFO g_Pen_Info;
+extern COLORREF pen_Color;
+extern int pen_Width;
 
 void drawLine(HWND hWnd, UINT message, LPARAM lParam)
 {

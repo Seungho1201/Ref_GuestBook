@@ -122,20 +122,26 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 //
 
-HWND g_Hwnd;
+/// 전역변수 정의
+/// 다른 파일에서 사용할 시 앞에 extern을 쓰고 선언한다.
+/// ex) extern vector<PEN_INFO> penMemory;
+
+vector<PEN_INFO> penMemory;             // 펜 구조체 정보 저장 벡터 변수 전역변수 정의
+PEN_INFO g_Pen_Info;                    // 펜 정보 구조체 전역변수 정의
+HWND g_Hwnd;                            // HWND 전역변수 정의
+COLORREF pen_Color = RGB(0, 0, 0);      // 펜 기본 색상 BLACK
+int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
+
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
 /// 생성자의 인자로는 x좌표, y좌표, 너비, 높이, func(해당 기능), 버튼 텍스트(이미지 삽입으로 변경 예정)
 /// 버튼 생성 메서드는 WM_CREATE 레이블에서 선언하며
 /// 해당 기능 작동은 WM_COMMAND에서 정의한다.
 /// </summary>
-/// 
 MakeButton bt_Clear(10, 10, 100, 30, ERASE, L"ERASE");
 MakeButton bt_Replay(10, 50, 100, 30, REPLAY, L"REPLAY");
-
 MakeButton bt_SAVE(130, 10, 100, 30, SAVE, L"SAVE");
 MakeButton bt_Load(130, 50, 100, 30, LOAD, L"LOAD");
-
 MakeButton bt_Widthup(275, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(350, 10, 30, 30, W_UP, L"+");
 
@@ -163,10 +169,29 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 메뉴 선택을 구문 분석합니다:
             switch (wmId)
             {
-
-            // 지우기 기능 구현
+            // 지우기 기능 
             case ERASE:
                 erase(g_Hwnd);
+                break;
+
+            // 리플레이 기능
+            case REPLAY:
+                // 리플레이 기능은 스레드화
+                CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
+                break;
+               
+            // SAVE, LOAD 기능
+            case SAVE:
+                break;
+            case LOAD:
+                break;
+
+            // 펜 굵기 관련 기능
+            case W_DOWN:
+                w_Control(g_Hwnd, W_DOWN);
+                break;
+            case W_UP:
+                w_Control(g_Hwnd, W_UP);
                 break;
             
             case IDM_ABOUT:
@@ -177,25 +202,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 DestroyWindow(hWnd);
                 break;
 
-            case REPLAY:
-                // 리플레이 기능은 스레드화
-                CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
-                break;
-            //
-            // save, load 기능
-            case SAVE:
-                break;
-
-            case LOAD:
-                break;
-
-            // 펜 굵기 관련
-            case W_DOWN:
-                w_Control(g_Hwnd, W_DOWN);
-                break;
-            case W_UP:
-                w_Control(g_Hwnd, W_UP);
-                break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }

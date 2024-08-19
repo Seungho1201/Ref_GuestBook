@@ -7,24 +7,28 @@
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Ref_GuestBook.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:w_control.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:replay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\drawline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:drawline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:replay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:erase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Ref_GuestBook.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:w_control.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -41,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:erase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\Pen_Str.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -66,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 493,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,33 +78,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "w_control.cpp",
-              "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp",
-              "RelativeDocumentMoniker": "w_control.cpp",
-              "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp",
-              "RelativeToolTip": "w_control.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-19T01:02:31.367Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Ref_GuestBook.cpp",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.cpp",
               "RelativeDocumentMoniker": "Ref_GuestBook.cpp",
               "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.cpp",
               "RelativeToolTip": "Ref_GuestBook.cpp",
-              "ViewState": "AQIAAHYAAAAAAAAAAAAYwIgAAAA0AAAA",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAF8AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-14T05:34:10.631Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "button.cpp",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.cpp",
               "RelativeDocumentMoniker": "button.cpp",
@@ -112,8 +99,7 @@
               "RelativeToolTip": "button.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-15T10:45:20.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T10:45:20.833Z"
             },
             {
               "$type": "Document",
@@ -123,40 +109,40 @@
               "RelativeDocumentMoniker": "drawline.cpp",
               "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\drawline.cpp",
               "RelativeToolTip": "drawline.cpp",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-14T05:48:29.631Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "replay.cpp",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp",
               "RelativeDocumentMoniker": "replay.cpp",
               "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp",
               "RelativeToolTip": "replay.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAANAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAgAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-14T09:32:26.282Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Ref_GuestBook.h",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.h",
               "RelativeDocumentMoniker": "Ref_GuestBook.h",
               "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.h",
               "RelativeToolTip": "Ref_GuestBook.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAALAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-14T05:49:12.831Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "button.h",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.h",
               "RelativeDocumentMoniker": "button.h",
@@ -164,12 +150,11 @@
               "RelativeToolTip": "button.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-15T10:45:11.231Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-15T10:45:11.231Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "drawline.h",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\drawline.h",
               "RelativeDocumentMoniker": "drawline.h",
@@ -177,12 +162,11 @@
               "RelativeToolTip": "drawline.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-14T05:48:38.284Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-14T05:48:38.284Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "w_control.h",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\w_control.h",
               "RelativeDocumentMoniker": "w_control.h",
@@ -190,12 +174,11 @@
               "RelativeToolTip": "w_control.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-19T01:02:41.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T01:02:41.784Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "framework.h",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\framework.h",
               "RelativeDocumentMoniker": "framework.h",
@@ -204,6 +187,31 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-14T05:49:12.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "erase.cpp",
+              "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp",
+              "RelativeDocumentMoniker": "erase.cpp",
+              "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp",
+              "RelativeToolTip": "erase.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-16T17:00:23.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "w_control.cpp",
+              "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp",
+              "RelativeDocumentMoniker": "w_control.cpp",
+              "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp",
+              "RelativeToolTip": "w_control.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-19T01:02:31.367Z"
             },
             {
               "$type": "Document",
@@ -216,18 +224,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-14T05:51:21.5Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "erase.cpp",
-              "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp",
-              "RelativeDocumentMoniker": "erase.cpp",
-              "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp",
-              "RelativeToolTip": "erase.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-16T17:00:23.666Z"
             },
             {
               "$type": "Document",
