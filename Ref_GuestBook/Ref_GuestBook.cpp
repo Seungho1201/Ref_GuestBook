@@ -123,10 +123,21 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 
 HWND g_Hwnd;
+/// <summary>
+/// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
+/// 생성자의 인자로는 x좌표, y좌표, 너비, 높이, func(해당 기능), 버튼 텍스트(이미지 삽입으로 변경 예정)
+/// 버튼 생성 메서드는 WM_CREATE 레이블에서 선언하며
+/// 해당 기능 작동은 WM_COMMAND에서 정의한다.
+/// </summary>
+/// 
+MakeButton bt_Clear(10, 10, 100, 30, ERASE, L"ERASE");
+MakeButton bt_Replay(10, 50, 100, 30, REPLAY, L"REPLAY");
 
-// 전역 변수로 인스턴스 생성
-MakeButton bt_Replay(10, 10, 100, 30, REPLAY, L"REPLAY");
-MakeButton bt_Clear(130, 10, 100, 30, ERASE, L"ERASE");
+MakeButton bt_SAVE(130, 10, 100, 30, SAVE, L"SAVE");
+MakeButton bt_Load(130, 50, 100, 30, LOAD, L"LOAD");
+
+MakeButton bt_Widthup(275, 10, 30, 30, W_DOWN, L"-");
+MakeButton bt_Widthdown(350, 10, 30, 30, W_UP, L"+");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -139,6 +150,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Replay.mkButton(g_Hwnd);
         bt_Clear.mkButton(g_Hwnd);          // 지우기 버튼
 
+        bt_SAVE.mkButton(g_Hwnd);
+        bt_Load.mkButton(g_Hwnd);
+
+        bt_Widthup.mkButton(g_Hwnd);
+        bt_Widthdown.mkButton(g_Hwnd);
+
+        /// 버튼으로 구현한 func 상수 기능은 여기서 정의한다.
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -163,19 +181,42 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 // 리플레이 기능은 스레드화
                 CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
                 break;
+            //
+            // save, load 기능
+            case SAVE:
+                break;
+
+            case LOAD:
+                break;
+
+            // 펜 굵기 관련
+            case W_DOWN:
+                w_Control(g_Hwnd, W_DOWN);
+                break;
+            case W_UP:
+                w_Control(g_Hwnd, W_UP);
+                break;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
         break;
+
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+
+            // 펜 굵기 출력
+            WCHAR szPenWidth[10];
+            wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
+            TextOut(hdc, 320, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
+
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
         break;
+
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
