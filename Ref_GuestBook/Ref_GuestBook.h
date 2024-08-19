@@ -6,6 +6,7 @@
 #include "replay.h"
 #include "button.h"
 #include "erase.h"
+#include "w_control.h"
 
 // COMMAND 기능 상수 선언
 

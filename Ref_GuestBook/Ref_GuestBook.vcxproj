@@ -136,6 +136,7 @@
     <ClInclude Include="replay.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="w_control.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="button.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="erase.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
+    <ClCompile Include="w_control.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Ref_GuestBook.rc" />
