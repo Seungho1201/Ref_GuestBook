@@ -150,6 +150,9 @@
     <ResourceCompile Include="Ref_GuestBook.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\ImgResource\ERASE.ico" />
+    <Image Include="..\ImgResource\REPLAY.ico" />
+    <Image Include="..\ImgResource\Size.ico" />
     <Image Include="Ref_GuestBook.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

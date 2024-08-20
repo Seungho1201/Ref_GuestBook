@@ -15,6 +15,12 @@
 #define IDC_MYICON				2
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1
+
+#define IDI_REPLAY_ICON                        129
+#define IDI_REPLAY_ICON                        131
+#define IDI_ERASE_ICON                        130
+
+
 #endif
 // 다음은 새 개체에 사용할 기본값입니다.
 //

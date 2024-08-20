@@ -128,22 +128,25 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 vector<PEN_INFO> penMemory;             // 펜 구조체 정보 저장 벡터 변수 전역변수 정의
 PEN_INFO g_Pen_Info;                    // 펜 정보 구조체 전역변수 정의
-HWND g_Hwnd;                            // HWND 전역변수 정의
 COLORREF pen_Color = RGB(0, 0, 0);      // 펜 기본 색상 BLACK
+HWND g_Hwnd;                            // HWND 전역변수 정의
 int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
+
 
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
 /// 생성자의 인자로는 x좌표, y좌표, 너비, 높이, func(해당 기능), 버튼 텍스트(이미지 삽입으로 변경 예정)
 /// 버튼 생성 메서드는 WM_CREATE 레이블에서 선언하며
 /// 해당 기능 작동은 WM_COMMAND에서 정의한다.
+/// 또한 기능 상수는 Ref_GuestBook 헤더파일에 정의한다.
 /// </summary>
-MakeButton bt_Clear(10, 10, 100, 30, ERASE, L"ERASE");
-MakeButton bt_Replay(10, 50, 100, 30, REPLAY, L"REPLAY");
-MakeButton bt_SAVE(130, 10, 100, 30, SAVE, L"SAVE");
-MakeButton bt_Load(130, 50, 100, 30, LOAD, L"LOAD");
-MakeButton bt_Widthup(275, 10, 30, 30, W_DOWN, L"-");
-MakeButton bt_Widthdown(350, 10, 30, 30, W_UP, L"+");
+MakeButton bt_Clear(120, 10, 100, 100, ERASE, L"ERASE");
+MakeButton bt_Replay(10, 10, 100, 100, REPLAY, L"REPLAY");
+MakeButton bt_SAVE(230, 10, 100, 45, SAVE, L"SAVE");
+MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
+MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
+MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
+
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -153,14 +156,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         g_Hwnd = hWnd;
 
         // 윈도우 창 생성시 버튼 생성 메서드 실행
-        bt_Replay.mkButton(g_Hwnd);
-        bt_Clear.mkButton(g_Hwnd);          // 지우기 버튼
+        // 인자 관련 설명은 button.cpp 파일 주석 참고
+        bt_Replay.mkButton(IDI_REPLAY_ICON);
+        bt_Clear.mkButton(IDI_ERASE_ICON);                        // 지우기 버튼
 
-        bt_SAVE.mkButton(g_Hwnd);
-        bt_Load.mkButton(g_Hwnd);
+        bt_SAVE.mkButton();
+        bt_Load.mkButton();
 
-        bt_Widthup.mkButton(g_Hwnd);
-        bt_Widthdown.mkButton(g_Hwnd);
+        bt_Widthup.mkButton();
+        bt_Widthdown.mkButton();
+
+        
 
         /// 버튼으로 구현한 func 상수 기능은 여기서 정의한다.
     case WM_COMMAND:
@@ -216,7 +222,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 펜 굵기 출력
             WCHAR szPenWidth[10];
             wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
-            TextOut(hdc, 320, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
+            TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
 
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);

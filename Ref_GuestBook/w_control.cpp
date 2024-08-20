@@ -4,7 +4,7 @@
 #include "Ref_GuestBook.h"
 
 // 변경시 갱신되는 영역 지정
-RECT textRect = { 310, 15, 340, 45 };
+RECT textRect = { 310 + 100, 15, 340 + 100, 45 };
 extern int pen_Width;
 
 // 펜 굵기 변경 함수 (HWND, 실행 값)
