@@ -152,6 +152,8 @@
   <ItemGroup>
     <Image Include="..\..\icon\Erase.ico" />
     <Image Include="..\..\icon\Pen.ico" />
+    <Image Include="..\ImgResource\REPLAY.ico" />
+    <Image Include="..\ImgResource\Size.ico" />
     <Image Include="Ref_GuestBook.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

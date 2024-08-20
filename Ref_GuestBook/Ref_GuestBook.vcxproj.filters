@@ -84,5 +84,11 @@
     <Image Include="..\..\icon\Pen.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="..\ImgResource\REPLAY.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\ImgResource\Size.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

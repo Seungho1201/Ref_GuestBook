@@ -157,7 +157,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         // 윈도우 창 생성시 버튼 생성 메서드 실행
         // 인자 관련 설명은 button.cpp 파일 주석 참고
-        bt_Replay.mkButton(IDI_REPLAY_ICON);
+        bt_Replay.mkButton(IDI_REPLAY2_ICON);
         bt_Clear.mkButton();                        // 지우기 버튼
 
         bt_SAVE.mkButton();
