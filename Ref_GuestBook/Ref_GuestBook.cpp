@@ -140,12 +140,12 @@ int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
 /// 해당 기능 작동은 WM_COMMAND에서 정의한다.
 /// 또한 기능 상수는 Ref_GuestBook 헤더파일에 정의한다.
 /// </summary>
-MakeButton bt_Clear(10, 10, 100, 30, ERASE, L"ERASE");
-MakeButton bt_Replay(10, 50, 100, 100, REPLAY, L"REPLAY");
-MakeButton bt_SAVE(130, 10, 100, 30, SAVE, L"SAVE");
-MakeButton bt_Load(130, 50, 100, 30, LOAD, L"LOAD");
-MakeButton bt_Widthup(275, 10, 30, 30, W_DOWN, L"-");
-MakeButton bt_Widthdown(350, 10, 30, 30, W_UP, L"+");
+MakeButton bt_Clear(120, 10, 100, 100, ERASE, L"ERASE");
+MakeButton bt_Replay(10, 10, 100, 100, REPLAY, L"REPLAY");
+MakeButton bt_SAVE(230, 10, 100, 45, SAVE, L"SAVE");
+MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
+MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
+MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -157,8 +157,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         // 윈도우 창 생성시 버튼 생성 메서드 실행
         // 인자 관련 설명은 button.cpp 파일 주석 참고
-        bt_Replay.mkButton(IDI_REPLAY2_ICON);
-        bt_Clear.mkButton();                        // 지우기 버튼
+        bt_Replay.mkButton(IDI_REPLAY_ICON);
+        bt_Clear.mkButton(IDI_ERASE_ICON);                        // 지우기 버튼
 
         bt_SAVE.mkButton();
         bt_Load.mkButton();
@@ -222,7 +222,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 펜 굵기 출력
             WCHAR szPenWidth[10];
             wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
-            TextOut(hdc, 320, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
+            TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
 
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);

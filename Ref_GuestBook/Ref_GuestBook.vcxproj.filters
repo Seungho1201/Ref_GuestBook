@@ -78,16 +78,13 @@
     <Image Include="Ref_GuestBook.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="..\..\icon\Erase.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\..\icon\Pen.ico">
+    <Image Include="..\ImgResource\Size.ico">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="..\ImgResource\REPLAY.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="..\ImgResource\Size.ico">
+    <Image Include="..\ImgResource\ERASE.ico">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
