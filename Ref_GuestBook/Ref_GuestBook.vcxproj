@@ -136,6 +136,7 @@
     <ClInclude Include="replay.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Window_Size.h" />
     <ClInclude Include="w_control.h" />
   </ItemGroup>
   <ItemGroup>

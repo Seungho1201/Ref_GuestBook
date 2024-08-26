@@ -152,6 +152,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_GETMINMAXINFO: // 윈도우 창 크기 고정
+    {
+
+        ((MINMAXINFO*)lParam)->ptMinTrackSize.x = Window_Size_Width;
+        ((MINMAXINFO*)lParam)->ptMinTrackSize.y = Window_Size_Height;
+        break;
+    }
     case WM_CREATE:
         g_Hwnd = hWnd;
 
