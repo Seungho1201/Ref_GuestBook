@@ -130,6 +130,7 @@
     <ClInclude Include="button.h" />
     <ClInclude Include="drawline.h" />
     <ClInclude Include="erase.h" />
+    <ClInclude Include="file_io.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Pen_Str.h" />
     <ClInclude Include="Ref_GuestBook.h" />
@@ -142,6 +143,7 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="drawline.cpp" />
     <ClCompile Include="erase.cpp" />
+    <ClCompile Include="file_io.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
     <ClCompile Include="w_control.cpp" />

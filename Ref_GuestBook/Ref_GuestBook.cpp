@@ -128,10 +128,19 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 vector<PEN_INFO> penMemory;             // 펜 구조체 정보 저장 벡터 변수 전역변수 정의
 PEN_INFO g_Pen_Info;                    // 펜 정보 구조체 전역변수 정의
+SPINFO spinfo;
 COLORREF pen_Color = RGB(0, 0, 0);      // 펜 기본 색상 BLACK
 HWND g_Hwnd;                            // HWND 전역변수 정의
 int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
 
+OPENFILENAME OFN;
+
+wchar_t str[256] = { 0, };
+wchar_t file_name[256] = L"";
+wchar_t file_open_name[256] = { 0, };
+
+#define GET_X_LPARAM(lp) ((int)(short)LOWORD(lp))
+#define GET_Y_LPARAM(lp) ((int)(short)HIWORD(lp))
 
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
@@ -188,8 +197,52 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                
             // SAVE, LOAD 기능
             case SAVE:
+                memset(&OFN, 0, sizeof(OPENFILENAME));
+                
+                OFN.lStructSize = sizeof(OPENFILENAME);
+                OFN.hwndOwner = hWnd;
+                OFN.lpstrFilter = L"모든 파일(*.*)\0*.*\0";
+                OFN.lpstrFile = file_name;
+                OFN.nMaxFile = 256;
+
+                if (GetSaveFileName(&OFN) != 0)
+                {
+                    wsprintf(str, L"%s", OFN.lpstrFile);
+                    if (file_save(spinfo, str))
+                        MessageBox(hWnd, str, L"파일 저장 성공", MB_OK);
+                    else
+                    MessageBox(hWnd, L"실패1", L"파일 저장 실패", MB_OK);
+                }
+                else
+                {
+                    MessageBox(hWnd, L"실패", L"파일 저장 실패", MB_OK);
+                }
                 break;
+
             case LOAD:
+
+                memset(&OFN, 0, sizeof(OPENFILENAME));
+
+                OFN.lStructSize = sizeof(OPENFILENAME);
+                OFN.hwndOwner = hWnd;
+                OFN.lpstrFilter = L"모든 파일(*.*)\0*.*\0";
+                OFN.lpstrFile = file_open_name;
+                OFN.nMaxFile = 256;
+                
+                if (GetOpenFileName(&OFN) != 0)
+                {
+                    wsprintf(str, L"%s", OFN.lpstrFile);
+                    if (file_load(spinfo, str))
+                        MessageBox(hWnd, str, L"파일 열기 성공", MB_OK);
+                    else
+                        MessageBox(hWnd, L"실패1", L"파일 열기 실패", MB_OK);
+                }
+                else
+                {
+                    MessageBox(hWnd, L"실패", L"파일 열기 실패", MB_OK);
+                }
+                InvalidateRect(NULL, NULL, true);
+
                 break;
 
             // 펜 굵기 관련 기능
@@ -215,19 +268,48 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
 
     case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+
+        // 펜 색상과 굵기 설정!
+        HPEN hPen = CreatePen(PS_SOLID, pen_Width, pen_Color);
+        HPEN hOldPen = (HPEN)SelectObject(hdc, hPen);
+
+        // 그리기 시작
+        for (size_t i = 0; i < penMemory.size(); ++i)
         {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
+            const PEN_INFO& penInfo = penMemory[i];
 
-            // 펜 굵기 출력
-            WCHAR szPenWidth[10];
-            wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
-            TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
+            // 좌표 변환
+            int x = GET_X_LPARAM(penInfo.penCoordinate);
+            int y = GET_Y_LPARAM(penInfo.penCoordinate);
 
-            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-            EndPaint(hWnd, &ps);
+            // 첫 번째 점이 아닌 경우
+            if (i > 0) {
+                const PEN_INFO& prevPenInfo = penMemory[i - 1];
+                int prevX = GET_X_LPARAM(prevPenInfo.penCoordinate);
+                int prevY = GET_Y_LPARAM(prevPenInfo.penCoordinate);
+
+                // 이전 점에서 현재 점까지 선을 그리기
+                MoveToEx(hdc, prevX, prevY, NULL);
+                LineTo(hdc, x, y);
+            }
         }
-        break;
+
+        // 펜 굵기 출력
+        WCHAR szPenWidth[10];
+        wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
+        TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (420, 15)에 출력
+
+        // Clean up
+        SelectObject(hdc, hOldPen);
+        DeleteObject(hPen);
+
+        EndPaint(hWnd, &ps);
+    }
+    break;
+
 
     case WM_DESTROY:
         PostQuitMessage(0);
