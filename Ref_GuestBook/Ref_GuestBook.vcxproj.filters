@@ -45,6 +45,9 @@
     <ClInclude Include="w_control.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="c_color.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ref_GuestBook.cpp">
@@ -63,6 +66,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="w_control.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="c_color.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

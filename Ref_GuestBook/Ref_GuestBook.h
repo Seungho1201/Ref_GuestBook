@@ -7,6 +7,7 @@
 #include "button.h"
 #include "erase.h"
 #include "w_control.h"
+#include "c_color.h"
 
 // COMMAND 기능 상수 선언
 

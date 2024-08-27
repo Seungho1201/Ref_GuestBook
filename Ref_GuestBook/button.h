@@ -10,6 +10,7 @@ private:
     int height;           // 버튼의 높이
     int func;             // 버튼의 ID
     LPCWSTR text;         // 버튼 텍스트
+    HWND hButton;
 
 public:
     /**
@@ -24,6 +25,8 @@ public:
 
     // 이미지 경로 상수 인자값
     void mkButton(int path);
+
+    HWND GetHandle();
 
 private:
     void insertIconImg(LPCWSTR text, int path, HINSTANCE hInst);

@@ -147,6 +147,18 @@ MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
 MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
 
+MakeButton bt_ColorRed(375, 65, 40, 40, C_RED, L"빨");
+MakeButton bt_ColorOrange(425, 65, 40, 40, C_ORANGE, L"주");
+MakeButton bt_ColorYellow(475, 65, 40, 40, C_YELLOW, L"노");
+MakeButton bt_ColorGreen(525, 65, 40, 40, C_GREEN, L"초");
+MakeButton bt_ColorBlue(575, 65, 40, 40, C_BLUE, L"파");
+MakeButton bt_ColorNavy(625, 65, 40, 40, C_NAVY, L"남");
+MakeButton bt_ColorPurple(675, 65, 40, 40, C_PURPLE, L"보");
+MakeButton bt_ColorBlack(725, 65, 40, 40, C_BLACK, L"검");
+
+HBRUSH hbrBkgnd_Red;
+HBRUSH hbrBkgnd_Green;
+HBRUSH hbrBkgnd_Blue;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -166,8 +178,41 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthup.mkButton();
         bt_Widthdown.mkButton();
 
-        
+        hbrBkgnd_Red = CreateSolidBrush(C_RED);
+        hbrBkgnd_Green = CreateSolidBrush(C_GREEN);
+        hbrBkgnd_Blue = CreateSolidBrush(C_BLUE);
 
+        bt_ColorRed.mkButton();
+        bt_ColorOrange.mkButton();
+        bt_ColorYellow.mkButton();
+        bt_ColorGreen.mkButton();
+        bt_ColorBlue.mkButton();
+        bt_ColorNavy.mkButton();
+        bt_ColorPurple.mkButton();
+        bt_ColorBlack.mkButton();
+        
+    case WM_CTLCOLORBTN:
+    {
+        HDC hdcButton = (HDC)wParam;
+        HWND hwndButton = (HWND)lParam;
+
+        if (hwndButton == bt_ColorRed.GetHandle())  // bt_ColorRed 버튼일 경우
+        {
+            SetBkColor(hdcButton, C_RED);
+            return (INT_PTR)hbrBkgnd_Red;
+        }
+        else if (hwndButton == bt_ColorGreen.GetHandle())  // bt_ColorGreen 버튼일 경우
+        {
+            SetBkColor(hdcButton, C_GREEN);
+            return (INT_PTR)hbrBkgnd_Green;
+        }
+        else if (hwndButton == bt_ColorBlue.GetHandle())  // bt_ColorBlue 버튼일 경우
+        {
+            SetBkColor(hdcButton, C_BLUE);
+            return (INT_PTR)hbrBkgnd_Blue;
+        }
+        break;
+    }
         /// 버튼으로 구현한 func 상수 기능은 여기서 정의한다.
     case WM_COMMAND:
         {
@@ -198,6 +243,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case W_UP:
                 w_Control(g_Hwnd, W_UP);
+                break;
+
+            case C_RED:
+                Change_Color(C_RED);
+                break;
+            case C_ORANGE:
+                Change_Color(C_ORANGE);
+                break;
+            case C_YELLOW:
+                Change_Color(C_YELLOW);
+                break;
+            case C_GREEN:
+                Change_Color(C_GREEN);
+                break;
+            case C_BLUE:
+                Change_Color(C_BLUE);
+                break;
+            case C_NAVY:
+                Change_Color(C_NAVY);
+                break;
+            case C_PURPLE:
+                Change_Color(C_PURPLE);
+                break;
+            case C_BLACK:
+                Change_Color(C_BLACK); 
                 break;
             
             case IDM_ABOUT:
@@ -230,6 +300,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
 
     case WM_DESTROY:
+        DeleteObject(hbrBkgnd_Red);
+        DeleteObject(hbrBkgnd_Green);
+        DeleteObject(hbrBkgnd_Blue);
         PostQuitMessage(0);
         break;
 

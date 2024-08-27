@@ -30,3 +30,4 @@ extern vector<PEN_INFO> penMemory;
 extern PEN_INFO g_Pen_Info;     // 펜 구조체 전역변수 선언 (extern)
 extern COLORREF pen_Color;      // 펜 색상 전역변수 선언 (extern)
 extern int pen_Width;           // 펜 굵기 전역변수 선언 (ectern)
+
