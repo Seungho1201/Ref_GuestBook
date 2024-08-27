@@ -131,7 +131,8 @@ PEN_INFO g_Pen_Info;                    // 펜 정보 구조체 전역변수 정
 COLORREF pen_Color = RGB(0, 0, 0);      // 펜 기본 색상 BLACK
 HWND g_Hwnd;                            // HWND 전역변수 정의
 int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
-bool stampActive = false;               // 스탬프 확인
+bool stampActive = false;               // 스탬프 버틀 활성화 확인
+int stampIcon = 0;                         // 스탬프 아이콘 값
 
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
@@ -146,7 +147,11 @@ MakeButton bt_SAVE(230, 10, 100, 45, SAVE, L"SAVE");
 MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
 MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
-MakeButton bt_Stamp(1000, 10, 80, 30, STAMP, L"STAMP");
+
+MakeButton bt_Heart_Stamp(840, 10, 50, 50, HEART_STAMP, L"HEART");
+MakeButton bt_Uh_Stamp(900, 10, 50, 50, UH_STAMP, L"UH");
+MakeButton bt_Yuhan_Stamp(960, 10, 50, 50, YUHAN_STAMP, L"YUHAN");
+MakeButton bt_Yongbin_Stamp(1020, 10, 50, 50, YONGBIN_STAMP, L"YONGBIN");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -166,9 +171,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthup.mkButton();
         bt_Widthdown.mkButton();
 
-        bt_Stamp.mkButton();
-
-        
+        bt_Heart_Stamp.mkButton(IDI_HEART_ICON);
+        bt_Uh_Stamp.mkButton(IDI_UH_ICON);
+        bt_Yuhan_Stamp.mkButton(IDI_YUHAN_ICON);
+        bt_Yongbin_Stamp.mkButton(IDI_YONGBIN_ICON);
 
         /// 버튼으로 구현한 func 상수 기능은 여기서 정의한다.
     case WM_COMMAND:
@@ -188,11 +194,34 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
                 break;
             
-            case STAMP:
-                stamp(hWnd, message, lParam);
-                if (stampActive) {
-                    stampActive = false;
-                } else {
+            case HEART_STAMP:
+                stampIcon = IDI_HEART_ICON;
+                stamp(hWnd, message, lParam, stampIcon);
+                if (!stampActive) {
+                    stampActive = true;
+                }
+                break;
+
+            case UH_STAMP:
+                stampIcon = IDI_UH_ICON;
+                stamp(hWnd, message, lParam, stampIcon);
+                if (!stampActive) {
+                    stampActive = true;
+                }
+                break;
+
+            case YUHAN_STAMP:
+                stampIcon = IDI_YUHAN_ICON;
+                stamp(hWnd, message, lParam, stampIcon);
+                if (!stampActive) {
+                    stampActive = true;
+                }
+                break;
+
+            case YONGBIN_STAMP:
+                stampIcon = IDI_YONGBIN_ICON;
+                stamp(hWnd, message, lParam, stampIcon);
+                if (!stampActive) {
                     stampActive = true;
                 }
                 break;
@@ -250,7 +279,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONUP:
         // 그리기 함수
         if (stampActive) {
-            stamp(hWnd, message, lParam);
+            stamp(hWnd, message, lParam, stampIcon);
         }
         else {
             drawLine(hWnd, message, lParam);

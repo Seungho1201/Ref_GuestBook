@@ -20,6 +20,10 @@
 #define IDI_REPLAY_ICON                        131
 #define IDI_ERASE_ICON                        130
 
+#define IDI_HEART_ICON                        132
+#define IDI_UH_ICON							  133
+#define IDI_YUHAN_ICON                        134
+#define IDI_YONGBIN_ICON                      135
 
 #endif
 // 다음은 새 개체에 사용할 기본값입니다.

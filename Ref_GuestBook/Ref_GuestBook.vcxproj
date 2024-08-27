@@ -153,13 +153,13 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\ImgResource\ERASE.ico" />
+    <Image Include="..\ImgResource\heart.ico" />
     <Image Include="..\ImgResource\REPLAY.ico" />
     <Image Include="..\ImgResource\Size.ico" />
-    <Image Include="heart.ico" />
+    <Image Include="..\ImgResource\uh.ico" />
+    <Image Include="..\ImgResource\yongbin.ico" />
     <Image Include="Ref_GuestBook.ico" />
     <Image Include="small.ico" />
-    <Image Include="어.ico" />
-    <Image Include="하트.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

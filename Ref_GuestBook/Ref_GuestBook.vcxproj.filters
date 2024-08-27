@@ -93,13 +93,13 @@
     <Image Include="..\ImgResource\ERASE.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="어.ico">
+    <Image Include="..\ImgResource\heart.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="하트.ico">
+    <Image Include="..\ImgResource\uh.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="heart.ico">
+    <Image Include="..\ImgResource\yongbin.ico">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
