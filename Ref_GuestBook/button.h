@@ -26,8 +26,6 @@ public:
     // 이미지 경로 상수 인자값
     void mkButton(int path);
 
-    HWND GetHandle();
-
 private:
     void insertIconImg(LPCWSTR text, int path, HINSTANCE hInst);
 };

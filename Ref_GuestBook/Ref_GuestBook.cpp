@@ -146,7 +146,9 @@ MakeButton bt_SAVE(230, 10, 100, 45, SAVE, L"SAVE");
 MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
 MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
-
+/*
+///펜 색상 변경 버튼 
+*/
 MakeButton bt_ColorRed(375, 65, 40, 40, C_RED, L"빨");
 MakeButton bt_ColorOrange(425, 65, 40, 40, C_ORANGE, L"주");
 MakeButton bt_ColorYellow(475, 65, 40, 40, C_YELLOW, L"노");
@@ -155,10 +157,6 @@ MakeButton bt_ColorBlue(575, 65, 40, 40, C_BLUE, L"파");
 MakeButton bt_ColorNavy(625, 65, 40, 40, C_NAVY, L"남");
 MakeButton bt_ColorPurple(675, 65, 40, 40, C_PURPLE, L"보");
 MakeButton bt_ColorBlack(725, 65, 40, 40, C_BLACK, L"검");
-
-HBRUSH hbrBkgnd_Red;
-HBRUSH hbrBkgnd_Green;
-HBRUSH hbrBkgnd_Blue;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -178,10 +176,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthup.mkButton();
         bt_Widthdown.mkButton();
 
-        hbrBkgnd_Red = CreateSolidBrush(C_RED);
-        hbrBkgnd_Green = CreateSolidBrush(C_GREEN);
-        hbrBkgnd_Blue = CreateSolidBrush(C_BLUE);
-
         bt_ColorRed.mkButton();
         bt_ColorOrange.mkButton();
         bt_ColorYellow.mkButton();
@@ -191,28 +185,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_ColorPurple.mkButton();
         bt_ColorBlack.mkButton();
         
-    case WM_CTLCOLORBTN:
-    {
-        HDC hdcButton = (HDC)wParam;
-        HWND hwndButton = (HWND)lParam;
-
-        if (hwndButton == bt_ColorRed.GetHandle())  // bt_ColorRed 버튼일 경우
-        {
-            SetBkColor(hdcButton, C_RED);
-            return (INT_PTR)hbrBkgnd_Red;
-        }
-        else if (hwndButton == bt_ColorGreen.GetHandle())  // bt_ColorGreen 버튼일 경우
-        {
-            SetBkColor(hdcButton, C_GREEN);
-            return (INT_PTR)hbrBkgnd_Green;
-        }
-        else if (hwndButton == bt_ColorBlue.GetHandle())  // bt_ColorBlue 버튼일 경우
-        {
-            SetBkColor(hdcButton, C_BLUE);
-            return (INT_PTR)hbrBkgnd_Blue;
-        }
-        break;
-    }
         /// 버튼으로 구현한 func 상수 기능은 여기서 정의한다.
     case WM_COMMAND:
         {
@@ -245,6 +217,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 w_Control(g_Hwnd, W_UP);
                 break;
 
+            // 펜 색상 변경 기능
             case C_RED:
                 Change_Color(C_RED);
                 break;
@@ -300,9 +273,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
 
     case WM_DESTROY:
-        DeleteObject(hbrBkgnd_Red);
-        DeleteObject(hbrBkgnd_Green);
-        DeleteObject(hbrBkgnd_Blue);
         PostQuitMessage(0);
         break;
 

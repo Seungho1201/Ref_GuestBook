@@ -10,7 +10,6 @@ MakeButton::MakeButton(int x, int y, int width, int height, int func, LPCWSTR te
     this->height = height;
     this->func = func;
     this->text = text;
-    this->hButton = nullptr;
     // 이미지 경로 변수 추가 예정
 }
 
@@ -25,9 +24,6 @@ MakeButton::MakeButton(int x, int y, int width, int height, int func, LPCWSTR te
 /// rc 파일에서 정의 후 Resource.h 파일에서 상수로 재정의 한다 (ex: #define IDI_ERASE_ICON     130)
 /// 이제 아이콘 이미지를 넣을 인스턴트의 mkButton(int path) 메서드의 인자로 Resource.h 파일에서 정의한 상수를 넣는다.
 /// </summary>
-HWND MakeButton::GetHandle() {
-    return hButton;
-}
 void MakeButton::mkButton() {
     CreateWindow(
         L"BUTTON",                                                          // 버튼 클래스 이름

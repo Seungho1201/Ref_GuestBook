@@ -2,8 +2,13 @@
 #include "framework.h"
 #include "Pen_Str.h"
 #include "c_color.h"
+
+    /*
+    펜 색상 변경 함수
+    */
 void Change_Color(int color) {
 
+    
     switch (color)
     {
     case C_RED:
