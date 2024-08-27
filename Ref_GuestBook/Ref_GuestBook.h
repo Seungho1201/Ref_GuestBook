@@ -7,6 +7,7 @@
 #include "button.h"
 #include "erase.h"
 #include "w_control.h"
+#include "stamp.h"
 
 // COMMAND 기능 상수 선언
 
@@ -21,3 +22,8 @@
 /// 
 #define W_UP 500
 #define W_DOWN 600
+
+///
+/// 스탬프 func
+/// 
+#define STAMP 700

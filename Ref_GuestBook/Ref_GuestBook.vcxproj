@@ -135,6 +135,7 @@
     <ClInclude Include="Ref_GuestBook.h" />
     <ClInclude Include="replay.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="stamp.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="w_control.h" />
   </ItemGroup>
@@ -144,6 +145,7 @@
     <ClCompile Include="erase.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
+    <ClCompile Include="stamp.cpp" />
     <ClCompile Include="w_control.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,8 +155,11 @@
     <Image Include="..\ImgResource\ERASE.ico" />
     <Image Include="..\ImgResource\REPLAY.ico" />
     <Image Include="..\ImgResource\Size.ico" />
+    <Image Include="heart.ico" />
     <Image Include="Ref_GuestBook.ico" />
     <Image Include="small.ico" />
+    <Image Include="어.ico" />
+    <Image Include="하트.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

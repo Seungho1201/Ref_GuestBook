@@ -131,7 +131,7 @@ PEN_INFO g_Pen_Info;                    // 펜 정보 구조체 전역변수 정
 COLORREF pen_Color = RGB(0, 0, 0);      // 펜 기본 색상 BLACK
 HWND g_Hwnd;                            // HWND 전역변수 정의
 int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
-
+bool stampActive = false;               // 스탬프 확인
 
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
@@ -146,7 +146,7 @@ MakeButton bt_SAVE(230, 10, 100, 45, SAVE, L"SAVE");
 MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
 MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
-
+MakeButton bt_Stamp(1000, 10, 80, 30, STAMP, L"STAMP");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -165,6 +165,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         bt_Widthup.mkButton();
         bt_Widthdown.mkButton();
+
+        bt_Stamp.mkButton();
 
         
 
@@ -185,7 +187,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 // 리플레이 기능은 스레드화
                 CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
                 break;
-               
+            
+            case STAMP:
+                stamp(hWnd, message, lParam);
+                if (stampActive) {
+                    stampActive = false;
+                } else {
+                    stampActive = true;
+                }
+                break;
+
             // SAVE, LOAD 기능
             case SAVE:
                 break;
@@ -238,7 +249,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     case WM_LBUTTONUP:
         // 그리기 함수
-        drawLine(hWnd, message, lParam);
+        if (stampActive) {
+            stamp(hWnd, message, lParam);
+        }
+        else {
+            drawLine(hWnd, message, lParam);
+        }
         break;
 
     default:
