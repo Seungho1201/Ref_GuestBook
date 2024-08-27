@@ -176,14 +176,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthup.mkButton();
         bt_Widthdown.mkButton();
 
-        bt_ColorRed.mkButton();
-        bt_ColorOrange.mkButton();
-        bt_ColorYellow.mkButton();
-        bt_ColorGreen.mkButton();
-        bt_ColorBlue.mkButton();
-        bt_ColorNavy.mkButton();
-        bt_ColorPurple.mkButton();
-        bt_ColorBlack.mkButton();
+        bt_ColorRed.mkButton(IDI_RED_ICON);
+        bt_ColorOrange.mkButton(IDI_ORANGE_ICON);
+        bt_ColorYellow.mkButton(IDI_YELLOW_ICON);
+        bt_ColorGreen.mkButton(IDI_GREEN_ICON);
+        bt_ColorBlue.mkButton(IDI_BLUE_ICON);
+        bt_ColorNavy.mkButton(IDI_NAVY_ICON);
+        bt_ColorPurple.mkButton(IDI_PURPLE_ICON);
+        bt_ColorBlack.mkButton(IDI_BLACK_ICON);
         
         /// 버튼으로 구현한 func 상수 기능은 여기서 정의한다.
     case WM_COMMAND:

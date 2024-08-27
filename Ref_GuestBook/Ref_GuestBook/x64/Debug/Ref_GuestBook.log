@@ -1,7 +1,3 @@
-﻿  Ref_GuestBook.cpp
-C:\2nd\방명록\Ref_GuestBook\Ref_GuestBook\resource.h(20,1): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
-  (소스 파일 'Ref_GuestBook.cpp'을(를) 컴파일하는 중)
-  C:\2nd\방명록\Ref_GuestBook\Ref_GuestBook\resource.h(19,1):
-  'IDI_REPLAY_ICON'의 이전 정의를 참조하십시오.
+﻿resource.h(20): warning RC4005: 'IDI_REPLAY_ICON' : redefinition
   
   Ref_GuestBook.vcxproj -> C:\2nd\방명록\Ref_GuestBook\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe

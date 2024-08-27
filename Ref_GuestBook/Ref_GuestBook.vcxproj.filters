@@ -93,5 +93,29 @@
     <Image Include="..\ImgResource\ERASE.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="..\ImgResource\RED.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Orange.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Yellow.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Green.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Blue.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Navy.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Purple.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Black.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

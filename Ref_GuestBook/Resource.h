@@ -18,7 +18,15 @@
 
 #define IDI_REPLAY_ICON                        129
 #define IDI_REPLAY_ICON                        131
-#define IDI_ERASE_ICON                        130
+#define IDI_ERASE_ICON                        1
+#define IDI_RED_ICON						132
+#define IDI_ORANGE_ICON						133
+#define IDI_YELLOW_ICON						134
+#define IDI_GREEN_ICON						135
+#define IDI_BLUE_ICON						136
+#define IDI_NAVY_ICON						137
+#define IDI_PURPLE_ICON						138
+#define IDI_BLACK_ICON						139
 
 
 #endif
