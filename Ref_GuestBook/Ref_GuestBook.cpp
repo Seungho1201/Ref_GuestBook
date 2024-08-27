@@ -149,14 +149,14 @@ MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
 /*
 ///펜 색상 변경 버튼 
 */
-MakeButton bt_ColorRed(375, 65, 40, 40, C_RED, L"빨");
-MakeButton bt_ColorOrange(425, 65, 40, 40, C_ORANGE, L"주");
-MakeButton bt_ColorYellow(475, 65, 40, 40, C_YELLOW, L"노");
-MakeButton bt_ColorGreen(525, 65, 40, 40, C_GREEN, L"초");
-MakeButton bt_ColorBlue(575, 65, 40, 40, C_BLUE, L"파");
-MakeButton bt_ColorNavy(625, 65, 40, 40, C_NAVY, L"남");
-MakeButton bt_ColorPurple(675, 65, 40, 40, C_PURPLE, L"보");
-MakeButton bt_ColorBlack(725, 65, 40, 40, C_BLACK, L"검");
+MakeButton bt_ColorRed(500, 10, 30, 30, C_RED, L"빨");
+MakeButton bt_ColorOrange(540, 10, 30, 30, C_ORANGE, L"주");
+MakeButton bt_ColorYellow(580, 10, 30, 30, C_YELLOW, L"노");
+MakeButton bt_ColorGreen(620, 10, 30, 30, C_GREEN, L"초");
+MakeButton bt_ColorBlue(500, 50, 30, 30, C_BLUE, L"파");
+MakeButton bt_ColorNavy(540, 50, 30, 30, C_NAVY, L"남");
+MakeButton bt_ColorPurple(580, 50, 30, 30, C_PURPLE, L"보");
+MakeButton bt_ColorBlack(620, 50, 30, 30, C_BLACK, L"검");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
