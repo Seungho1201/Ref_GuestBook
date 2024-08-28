@@ -211,11 +211,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     if (file_save(spinfo, str))
                         MessageBox(hWnd, str, L"파일 저장 성공", MB_OK);
                     else
-                    MessageBox(hWnd, L"실패1", L"파일 저장 실패", MB_OK);
-                }
-                else
-                {
-                    MessageBox(hWnd, L"실패", L"파일 저장 실패", MB_OK);
+                        MessageBox(hWnd, L"실패", L"파일 저장 실패", MB_OK);
                 }
                 break;
 
@@ -235,11 +231,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     if (file_load(spinfo, str))
                         MessageBox(hWnd, str, L"파일 열기 성공", MB_OK);
                     else
-                        MessageBox(hWnd, L"실패1", L"파일 열기 실패", MB_OK);
-                }
-                else
-                {
-                    MessageBox(hWnd, L"실패", L"파일 열기 실패", MB_OK);
+                        MessageBox(hWnd, L"실패", L"파일 열기 실패", MB_OK);
                 }
                 InvalidateRect(NULL, NULL, true);
 
@@ -271,41 +263,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-
-        // 펜 색상과 굵기 설정!
-        HPEN hPen = CreatePen(PS_SOLID, pen_Width, pen_Color);
-        HPEN hOldPen = (HPEN)SelectObject(hdc, hPen);
-
-        // 그리기 시작
-        for (size_t i = 0; i < penMemory.size(); ++i)
-        {
-            const PEN_INFO& penInfo = penMemory[i];
-
-            // 좌표 변환
-            int x = GET_X_LPARAM(penInfo.penCoordinate);
-            int y = GET_Y_LPARAM(penInfo.penCoordinate);
-
-            // 첫 번째 점이 아닌 경우
-            if (i > 0) {
-                const PEN_INFO& prevPenInfo = penMemory[i - 1];
-                int prevX = GET_X_LPARAM(prevPenInfo.penCoordinate);
-                int prevY = GET_Y_LPARAM(prevPenInfo.penCoordinate);
-
-                // 이전 점에서 현재 점까지 선을 그리기
-                MoveToEx(hdc, prevX, prevY, NULL);
-                LineTo(hdc, x, y);
-            }
-        }
-
-        // 펜 굵기 출력
-        WCHAR szPenWidth[10];
-        wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
-        TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (420, 15)에 출력
-
-        // Clean up
-        SelectObject(hdc, hOldPen);
-        DeleteObject(hPen);
-
+        // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+        mouse_paint(hdc);
         EndPaint(hWnd, &ps);
     }
     break;
@@ -349,3 +308,120 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     return (INT_PTR)FALSE;
 }
 
+void mouse_proc(HWND hWnd, UINT message, LPARAM lParam, int size, COLORREF col)
+{
+    static int pre_x, pre_y;
+    static bool left = false;
+
+    HDC hdc;
+    HPEN npen, open;
+    PEN_INFO p_info;
+    int x, y;
+
+    hdc = GetDC(hWnd);
+
+    npen = CreatePen(PS_SOLID, size, col);
+    open = (HPEN)SelectObject(hdc, npen);
+
+    x = LOWORD(lParam);
+    y = HIWORD(lParam);
+
+    switch (message)
+    {
+    case WM_LBUTTONDOWN:
+
+        left = true;
+        MoveToEx(hdc, x, y, NULL);
+        LineTo(hdc, x, y + 1);
+
+        pre_x = x;
+        pre_y = y;
+
+        p_info.penCoordinate = lParam;
+        p_info.penState = message;
+        p_info.penColor = col;
+        p_info.penWidth = size;
+        p_info.penTime = (DWORD)GetTickCount64();
+
+        penMemory.push_back(p_info);
+        break;
+
+    case WM_MOUSEMOVE:
+
+        if (left)
+        {
+            left = true;
+            MoveToEx(hdc, x, y, NULL);
+            LineTo(hdc, pre_x, pre_y);
+
+            pre_x = x;
+            pre_y = y;
+
+            p_info.penCoordinate = lParam;
+            p_info.penState = message;
+            p_info.penColor = col;
+            p_info.penWidth = size;
+            p_info.penTime = (DWORD)GetTickCount64();
+
+            penMemory.push_back(p_info);
+        }
+        break;
+
+    case WM_LBUTTONUP:
+        if (left)
+        {
+            p_info.penCoordinate = lParam;
+            p_info.penState = message;
+            p_info.penColor = col;
+            p_info.penWidth = size;
+            p_info.penTime = (DWORD)GetTickCount64();
+
+            penMemory.push_back(p_info);
+        }
+
+        left = false;
+        break;
+    }
+
+    DeleteObject(npen);
+    ReleaseDC(hWnd, hdc);
+    return;
+}
+
+void mouse_paint(HDC hdc)
+{
+    HPEN open, npen;
+    bool left = false;
+    int x, y;
+    npen = CreatePen(PS_SOLID, 5, RGB(255, 255, 255));
+    open = (HPEN)SelectObject(hdc, npen);
+    for (const auto& i : penMemory)
+    {
+        x = LOWORD(i.penCoordinate);
+        y = HIWORD(i.penCoordinate);
+
+        DeleteObject(npen);
+        npen = CreatePen(PS_SOLID, i.penWidth, i.penColor);
+        SelectObject(hdc, npen);
+
+        switch (i.penState)
+        {
+        case WM_LBUTTONDOWN:
+
+            MoveToEx(hdc, x, y, NULL);
+            LineTo(hdc, x, y + 1);
+            left = true;
+            break;
+        case WM_MOUSEMOVE:
+            LineTo(hdc, x, y);
+            break;
+        case WM_LBUTTONUP:
+            left = false;
+            break;
+        default:
+            break;
+        }
+    }
+    SelectObject(hdc, open);
+
+}

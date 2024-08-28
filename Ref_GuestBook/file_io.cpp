@@ -6,21 +6,13 @@ bool file_save(const SPINFO& info_vector, const wchar_t* path)
 {
 	fstream fs;
 
-	MessageBox(0, path, L"저장 경로", MB_OK);
-
-	if (penMemory.size() < 100) {
-		MessageBox(0, L"ddd", L"벡터 크기", MB_OK);						// 백터 크기 확인
+	if (penMemory.size() < 50) {
 		return false;
 	}
 
 	fs.open(path, ios::out | ios::trunc);
 	if (fs.fail())	// 파일 열기에 실패한 경우
 		return false;
-
-	//fs << info_vector.x << " ";
-	//fs << info_vector.y << " ";
-	//fs << info_vector.width << " ";
-	//fs << info_vector.height << endl;
 
 	for (const auto& i : penMemory)
 	{

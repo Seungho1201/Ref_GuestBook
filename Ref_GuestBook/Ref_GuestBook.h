@@ -9,6 +9,8 @@
 #include "w_control.h"
 #include "file_io.h"
 
+void mouse_paint(HDC hdc);
+
 // COMMAND 기능 상수 선언
 
 #define REPLAY 100
