@@ -225,6 +225,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
 
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+            Rectangle(hdc, 30, 120, 1000, 700);
+
             EndPaint(hWnd, &ps);
         }
         break;
