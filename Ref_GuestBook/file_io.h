@@ -1,7 +1,5 @@
 #pragma once
 
-// extern vector<PEN_INFO> penMemory;
-
 #include "Pen_Str.h"
 #include <fstream>
 

@@ -1,17 +1,16 @@
-﻿// Ref_GuestBook.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-//
+﻿/// Ref_GuestBook.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 
 #include "framework.h"
 #include "Ref_GuestBook.h"
 
 #define MAX_LOADSTRING 100
 
-// 전역 변수:
-HINSTANCE hInst;                                // 현재 인스턴스입니다.
-WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
-WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+/// 전역 변수:
+HINSTANCE hInst;                                /// 현재 인스턴스입니다.
+WCHAR szTitle[MAX_LOADSTRING];                  /// 제목 표시줄 텍스트입니다.
+WCHAR szWindowClass[MAX_LOADSTRING];            /// 기본 창 클래스 이름입니다.
 
-// 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
+/// 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -25,14 +24,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: 여기에 코드를 입력합니다.
+    /// TODO: 여기에 코드를 입력합니다.
 
-    // 전역 문자열을 초기화합니다.
+    /// 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_REFGUESTBOOK, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
-    // 애플리케이션 초기화를 수행합니다:
+    /// 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
     {
         return FALSE;
@@ -42,7 +41,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-    // 기본 메시지 루프입니다:
+    /// 기본 메시지 루프입니다:
     while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -57,11 +56,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
 
-//
-//  함수: MyRegisterClass()
-//
-//  용도: 창 클래스를 등록합니다.
-//
+
+///  함수: MyRegisterClass()
+
+///  용도: 창 클래스를 등록합니다.
+
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;
@@ -83,16 +82,16 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     return RegisterClassExW(&wcex);
 }
 
-//
-//   함수: InitInstance(HINSTANCE, int)
-//
-//   용도: 인스턴스 핸들을 저장하고 주 창을 만듭니다.
-//
-//   주석:
-//
-//        이 함수를 통해 인스턴스 핸들을 전역 변수에 저장하고
-//        주 프로그램 창을 만든 다음 표시합니다.
-//
+
+///   함수: InitInstance(HINSTANCE, int)
+
+///   용도: 인스턴스 핸들을 저장하고 주 창을 만듭니다.
+
+///   주석:
+
+///        이 함수를 통해 인스턴스 핸들을 전역 변수에 저장하고
+///        주 프로그램 창을 만든 다음 표시합니다.
+
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
@@ -111,27 +110,26 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
-//
-//  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
-//
-//  용도: 주 창의 메시지를 처리합니다.
-//
-//  WM_COMMAND  - 애플리케이션 메뉴를 처리합니다.
-//  WM_PAINT    - 주 창을 그립니다.
-//  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
-//
-//
+///  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
+
+///  용도: 주 창의 메시지를 처리합니다.
+
+///  WM_COMMAND  - 애플리케이션 메뉴를 처리합니다.
+///  WM_PAINT    - 주 창을 그립니다.
+///  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 
 /// 전역변수 정의
 /// 다른 파일에서 사용할 시 앞에 extern을 쓰고 선언한다.
 /// ex) extern vector<PEN_INFO> penMemory;
 
-vector<PEN_INFO> penMemory;             // 펜 구조체 정보 저장 벡터 변수 전역변수 정의
-PEN_INFO g_Pen_Info;                    // 펜 정보 구조체 전역변수 정의
+vector<PEN_INFO> penMemory;             /// 펜 구조체 정보 저장 벡터 변수 전역변수 정의
+PEN_INFO g_Pen_Info;                    /// 펜 정보 구조체 전역변수 정의
+
 SPINFO spinfo;
-COLORREF pen_Color = RGB(0, 0, 0);      // 펜 기본 색상 BLACK
-HWND g_Hwnd;                            // HWND 전역변수 정의
-int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
+
+COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK
+HWND g_Hwnd;                            /// HWND 전역변수 정의
+int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
 
 OPENFILENAME OFN;
 
@@ -139,8 +137,7 @@ wchar_t str[256] = { 0, };
 wchar_t file_name[256] = L"";
 wchar_t file_open_name[256] = { 0, };
 
-#define GET_X_LPARAM(lp) ((int)(short)LOWORD(lp))
-#define GET_Y_LPARAM(lp) ((int)(short)HIWORD(lp))
+
 
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
@@ -164,8 +161,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
         g_Hwnd = hWnd;
 
-        // 윈도우 창 생성시 버튼 생성 메서드 실행
-        // 인자 관련 설명은 button.cpp 파일 주석 참고
+        /// 윈도우 창 생성시 버튼 생성 메서드 실행
+        /// 인자 관련 설명은 button.cpp 파일 주석 참고
         bt_Replay.mkButton(IDI_REPLAY_ICON);
         bt_Clear.mkButton(IDI_ERASE_ICON);                        // 지우기 버튼
 
@@ -181,63 +178,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
-            // 메뉴 선택을 구문 분석합니다:
+            /// 메뉴 선택을 구문 분석합니다:
             switch (wmId)
             {
-            // 지우기 기능 
+            /// 지우기 기능 
             case ERASE:
                 erase(g_Hwnd);
                 break;
 
-            // 리플레이 기능
+            /// 리플레이 기능
             case REPLAY:
                 // 리플레이 기능은 스레드화
                 CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
                 break;
                
-            // SAVE, LOAD 기능
+            /// SAVE, LOAD 기능
             case SAVE:
-                memset(&OFN, 0, sizeof(OPENFILENAME));
-                
-                OFN.lStructSize = sizeof(OPENFILENAME);
-                OFN.hwndOwner = hWnd;
-                OFN.lpstrFilter = L"모든 파일(*.*)\0*.*\0";
-                OFN.lpstrFile = file_name;
-                OFN.nMaxFile = 256;
-
-                if (GetSaveFileName(&OFN) != 0)
-                {
-                    wsprintf(str, L"%s", OFN.lpstrFile);
-                    if (file_save(spinfo, str))
-                        MessageBox(hWnd, str, L"파일 저장 성공", MB_OK);
-                    else
-                        MessageBox(hWnd, L"실패", L"파일 저장 실패", MB_OK);
-                }
+                SaveFile(hWnd, spinfo);  /// SaveFile 호출
                 break;
 
             case LOAD:
 
-                memset(&OFN, 0, sizeof(OPENFILENAME));
-
-                OFN.lStructSize = sizeof(OPENFILENAME);
-                OFN.hwndOwner = hWnd;
-                OFN.lpstrFilter = L"모든 파일(*.*)\0*.*\0";
-                OFN.lpstrFile = file_open_name;
-                OFN.nMaxFile = 256;
-                
-                if (GetOpenFileName(&OFN) != 0)
-                {
-                    wsprintf(str, L"%s", OFN.lpstrFile);
-                    if (file_load(spinfo, str))
-                        MessageBox(hWnd, str, L"파일 열기 성공", MB_OK);
-                    else
-                        MessageBox(hWnd, L"실패", L"파일 열기 실패", MB_OK);
-                }
-                InvalidateRect(NULL, NULL, true);
-
+                LoadFile(hWnd, spinfo);  /// LoadFile 호출
                 break;
 
-            // 펜 굵기 관련 기능
+            /// 펜 굵기 관련 기능
             case W_DOWN:
                 w_Control(g_Hwnd, W_DOWN);
                 break;
@@ -263,8 +228,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-        // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-        mouse_paint(hdc);
+        /// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+        /// 펜 굵기 출력
+        WCHAR szPenWidth[10];
+        wsprintf(szPenWidth, L"%d", pen_Width); /// 펜 굵기를 문자열로 변환
+        TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); /// 위치 (310, 15)에 출력
+
         EndPaint(hWnd, &ps);
     }
     break;
@@ -278,7 +248,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONDOWN:
 
     case WM_LBUTTONUP:
-        // 그리기 함수
+        
+        /// 그리기 함수
         drawLine(hWnd, message, lParam);
         break;
 
@@ -288,7 +259,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-// 정보 대화 상자의 메시지 처리기입니다.
+/// 정보 대화 상자의 메시지 처리기입니다.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
@@ -308,120 +279,3 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     return (INT_PTR)FALSE;
 }
 
-void mouse_proc(HWND hWnd, UINT message, LPARAM lParam, int size, COLORREF col)
-{
-    static int pre_x, pre_y;
-    static bool left = false;
-
-    HDC hdc;
-    HPEN npen, open;
-    PEN_INFO p_info;
-    int x, y;
-
-    hdc = GetDC(hWnd);
-
-    npen = CreatePen(PS_SOLID, size, col);
-    open = (HPEN)SelectObject(hdc, npen);
-
-    x = LOWORD(lParam);
-    y = HIWORD(lParam);
-
-    switch (message)
-    {
-    case WM_LBUTTONDOWN:
-
-        left = true;
-        MoveToEx(hdc, x, y, NULL);
-        LineTo(hdc, x, y + 1);
-
-        pre_x = x;
-        pre_y = y;
-
-        p_info.penCoordinate = lParam;
-        p_info.penState = message;
-        p_info.penColor = col;
-        p_info.penWidth = size;
-        p_info.penTime = (DWORD)GetTickCount64();
-
-        penMemory.push_back(p_info);
-        break;
-
-    case WM_MOUSEMOVE:
-
-        if (left)
-        {
-            left = true;
-            MoveToEx(hdc, x, y, NULL);
-            LineTo(hdc, pre_x, pre_y);
-
-            pre_x = x;
-            pre_y = y;
-
-            p_info.penCoordinate = lParam;
-            p_info.penState = message;
-            p_info.penColor = col;
-            p_info.penWidth = size;
-            p_info.penTime = (DWORD)GetTickCount64();
-
-            penMemory.push_back(p_info);
-        }
-        break;
-
-    case WM_LBUTTONUP:
-        if (left)
-        {
-            p_info.penCoordinate = lParam;
-            p_info.penState = message;
-            p_info.penColor = col;
-            p_info.penWidth = size;
-            p_info.penTime = (DWORD)GetTickCount64();
-
-            penMemory.push_back(p_info);
-        }
-
-        left = false;
-        break;
-    }
-
-    DeleteObject(npen);
-    ReleaseDC(hWnd, hdc);
-    return;
-}
-
-void mouse_paint(HDC hdc)
-{
-    HPEN open, npen;
-    bool left = false;
-    int x, y;
-    npen = CreatePen(PS_SOLID, 5, RGB(255, 255, 255));
-    open = (HPEN)SelectObject(hdc, npen);
-    for (const auto& i : penMemory)
-    {
-        x = LOWORD(i.penCoordinate);
-        y = HIWORD(i.penCoordinate);
-
-        DeleteObject(npen);
-        npen = CreatePen(PS_SOLID, i.penWidth, i.penColor);
-        SelectObject(hdc, npen);
-
-        switch (i.penState)
-        {
-        case WM_LBUTTONDOWN:
-
-            MoveToEx(hdc, x, y, NULL);
-            LineTo(hdc, x, y + 1);
-            left = true;
-            break;
-        case WM_MOUSEMOVE:
-            LineTo(hdc, x, y);
-            break;
-        case WM_LBUTTONUP:
-            left = false;
-            break;
-        default:
-            break;
-        }
-    }
-    SelectObject(hdc, open);
-
-}

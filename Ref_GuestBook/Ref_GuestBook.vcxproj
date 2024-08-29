@@ -136,6 +136,7 @@
     <ClInclude Include="Ref_GuestBook.h" />
     <ClInclude Include="replay.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="file_operations.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="w_control.h" />
   </ItemGroup>
@@ -144,6 +145,7 @@
     <ClCompile Include="drawline.cpp" />
     <ClCompile Include="erase.cpp" />
     <ClCompile Include="file_io.cpp" />
+    <ClCompile Include="file_operations.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
     <ClCompile Include="w_control.cpp" />

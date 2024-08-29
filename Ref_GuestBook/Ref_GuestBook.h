@@ -8,10 +8,9 @@
 #include "erase.h"
 #include "w_control.h"
 #include "file_io.h"
+#include "file_operations.h"
 
-void mouse_paint(HDC hdc);
-
-// COMMAND 기능 상수 선언
+/// COMMAND 기능 상수 선언
 
 #define REPLAY 100
 #define ERASE 200			// 지우기
