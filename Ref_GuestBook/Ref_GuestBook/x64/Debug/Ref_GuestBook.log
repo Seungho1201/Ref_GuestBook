@@ -1,15 +1,17 @@
-﻿  file_operations.cpp
+﻿  button.cpp
+  drawline.cpp
+C:\Users\ohseu\Desktop\Ref_GuestBook\Ref_GuestBook\button.cpp(28,5): warning C4312: '형식 캐스트': 'int'에서 더 큰 'HMENU'(으)로의 변환입니다.
+C:\Users\ohseu\Desktop\Ref_GuestBook\Ref_GuestBook\button.cpp(44,5): warning C4312: '형식 캐스트': 'int'에서 더 큰 'HMENU'(으)로의 변환입니다.
+  erase.cpp
+  file_io.cpp
+C:\Users\ohseu\Desktop\Ref_GuestBook\Ref_GuestBook\file_io.cpp(33,10): warning C4101: 'dir' :참조되지 않은 지역 변수입니다.
+  file_operations.cpp
   Ref_GuestBook.cpp
-C:\C++\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
-  (소스 파일 'Ref_GuestBook.cpp'을(를) 컴파일하는 중)
-      C:\C++\Ref_GuestBook\Ref_GuestBook\resource.h(19,9):
-      'IDI_REPLAY_ICON'의 이전 정의를 참조하십시오.
-  
+C:\Users\ohseu\Desktop\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
+  replay.cpp
   w_control.cpp
-C:\C++\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
-  (소스 파일 'w_control.cpp'을(를) 컴파일하는 중)
-      C:\C++\Ref_GuestBook\Ref_GuestBook\resource.h(19,9):
-      'IDI_REPLAY_ICON'의 이전 정의를 참조하십시오.
-  
+C:\Users\ohseu\Desktop\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
   코드를 생성하고 있습니다...
-  Ref_GuestBook.vcxproj -> C:\C++\Ref_GuestBook\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe
+resource.h(20): warning RC4005: 'IDI_REPLAY_ICON' : redefinition
+  
+  Ref_GuestBook.vcxproj -> C:\Users\ohseu\Desktop\Ref_GuestBook\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe
