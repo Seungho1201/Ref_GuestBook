@@ -10,6 +10,7 @@ private:
     int height;           // 버튼의 높이
     int func;             // 버튼의 ID
     LPCWSTR text;         // 버튼 텍스트
+    HWND hButton;
 
 public:
     /**

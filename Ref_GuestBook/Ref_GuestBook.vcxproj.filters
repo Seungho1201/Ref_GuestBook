@@ -45,10 +45,14 @@
     <ClInclude Include="w_control.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="file_io.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="file_operations.h">
+=======
+    <ClInclude Include="c_color.h">
+>>>>>>> feature/pen-color
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,10 +75,14 @@
     <ClCompile Include="w_control.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="file_io.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="file_operations.cpp">
+=======
+    <ClCompile Include="c_color.cpp">
+>>>>>>> feature/pen-color
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,6 +105,30 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="..\ImgResource\ERASE.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\ImgResource\RED.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Orange.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Yellow.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Green.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Blue.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Navy.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Purple.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Users\user1\Downloads\Black.ico">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

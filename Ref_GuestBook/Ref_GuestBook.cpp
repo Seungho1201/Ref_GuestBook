@@ -152,7 +152,17 @@ MakeButton bt_SAVE(230, 10, 100, 45, SAVE, L"SAVE");
 MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
 MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
-
+/*
+///펜 색상 변경 버튼 
+*/
+MakeButton bt_ColorRed(500, 10, 30, 30, C_RED, L"빨");
+MakeButton bt_ColorOrange(540, 10, 30, 30, C_ORANGE, L"주");
+MakeButton bt_ColorYellow(580, 10, 30, 30, C_YELLOW, L"노");
+MakeButton bt_ColorGreen(620, 10, 30, 30, C_GREEN, L"초");
+MakeButton bt_ColorBlue(500, 50, 30, 30, C_BLUE, L"파");
+MakeButton bt_ColorNavy(540, 50, 30, 30, C_NAVY, L"남");
+MakeButton bt_ColorPurple(580, 50, 30, 30, C_PURPLE, L"보");
+MakeButton bt_ColorBlack(620, 50, 30, 30, C_BLACK, L"검");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -172,8 +182,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthup.mkButton();
         bt_Widthdown.mkButton();
 
+        bt_ColorRed.mkButton(IDI_RED_ICON);
+        bt_ColorOrange.mkButton(IDI_ORANGE_ICON);
+        bt_ColorYellow.mkButton(IDI_YELLOW_ICON);
+        bt_ColorGreen.mkButton(IDI_GREEN_ICON);
+        bt_ColorBlue.mkButton(IDI_BLUE_ICON);
+        bt_ColorNavy.mkButton(IDI_NAVY_ICON);
+        bt_ColorPurple.mkButton(IDI_PURPLE_ICON);
+        bt_ColorBlack.mkButton(IDI_BLACK_ICON);
         
-
         /// 버튼으로 구현한 func 상수 기능은 여기서 정의한다.
     case WM_COMMAND:
         {
@@ -208,6 +225,32 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case W_UP:
                 w_Control(g_Hwnd, W_UP);
+                break;
+
+            // 펜 색상 변경 기능
+            case C_RED:
+                Change_Color(C_RED);
+                break;
+            case C_ORANGE:
+                Change_Color(C_ORANGE);
+                break;
+            case C_YELLOW:
+                Change_Color(C_YELLOW);
+                break;
+            case C_GREEN:
+                Change_Color(C_GREEN);
+                break;
+            case C_BLUE:
+                Change_Color(C_BLUE);
+                break;
+            case C_NAVY:
+                Change_Color(C_NAVY);
+                break;
+            case C_PURPLE:
+                Change_Color(C_PURPLE);
+                break;
+            case C_BLACK:
+                Change_Color(C_BLACK); 
                 break;
             
             case IDM_ABOUT:
