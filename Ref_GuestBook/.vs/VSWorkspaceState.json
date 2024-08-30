@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Ref_GuestBook"
   ],
-  "SelectedNode": "\\Ref_GuestBook.sln",
+  "SelectedNode": "\\Ref_GuestBook\\file_io.cpp",
   "PreviewInSolutionExplorer": false
 }
