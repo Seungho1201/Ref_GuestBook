@@ -31,8 +31,8 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
         preX = x;
         preY = y;
 
-        ///마우스 y좌표가 버튼보다 클경우 그리기 실행
-        if (preY > 140) {
+        ///마우스 좌표가 영역보다 작을 경우 실행
+        if (y > 120 && x < 1000) {
 
             drawStart = true;
 
@@ -56,7 +56,7 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
     case WM_MOUSEMOVE:
 
         ///마우스 x,y 좌표기준 그리기 영역지정
-        if (preY <= 140 || preY >=700 || preX <= 55 || preX >= 950) {
+        if (y <= 115 || y >=795 || x <5 || x > 995) {
             drawStart = false;
         }
 

@@ -1,5 +1,2 @@
-﻿  Ref_GuestBook.cpp
-D:\Reference_study\GuestBook\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
-  drawline.cpp
-  코드를 생성하고 있습니다...
+﻿  drawline.cpp
   Ref_GuestBook.vcxproj -> D:\Reference_study\GuestBook\Ref_GuestBook\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe

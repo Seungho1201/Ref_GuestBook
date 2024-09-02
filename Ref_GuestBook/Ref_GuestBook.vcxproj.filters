@@ -45,6 +45,9 @@
     <ClInclude Include="w_control.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="paint_area.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ref_GuestBook.cpp">
