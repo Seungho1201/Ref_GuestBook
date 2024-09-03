@@ -131,8 +131,10 @@ PEN_INFO g_Pen_Info;                    // 펜 정보 구조체 전역변수 정
 COLORREF pen_Color = RGB(0, 0, 0);      // 펜 기본 색상 BLACK
 HWND g_Hwnd;                            // HWND 전역변수 정의
 int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
+
+int stamp_Size = 80;                    // 스탬프 크기 가로, 세로 80으로 정의
 bool stampActive = false;               // 스탬프 버틀 활성화 확인
-int stampIcon = 0;                         // 스탬프 아이콘 값
+int stampIcon = 132;                      // 스탬프 아이콘 초기값
 
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
@@ -194,33 +196,27 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
                 break;
             
+
+            // 스탬프 기능 추가
             case HEART_STAMP:
-                stampIcon = IDI_HEART_ICON;
-                stamp(hWnd, message, lParam, stampIcon);
-                if (!stampActive) {
-                    stampActive = true;
-                }
-                break;
-
             case UH_STAMP:
-                stampIcon = IDI_UH_ICON;
-                stamp(hWnd, message, lParam, stampIcon);
-                if (!stampActive) {
-                    stampActive = true;
-                }
-                break;
-
             case YUHAN_STAMP:
-                stampIcon = IDI_YUHAN_ICON;
-                stamp(hWnd, message, lParam, stampIcon);
-                if (!stampActive) {
-                    stampActive = true;
-                }
-                break;
-
             case YONGBIN_STAMP:
-                stampIcon = IDI_YONGBIN_ICON;
-                stamp(hWnd, message, lParam, stampIcon);
+                switch (wParam) {
+                case HEART_STAMP:
+                    stampIcon = IDI_HEART_ICON;
+                    break;
+                case UH_STAMP:
+                    stampIcon = IDI_UH_ICON;
+                    break;
+                case YUHAN_STAMP:
+                    stampIcon = IDI_YUHAN_ICON;
+                    break;
+                case YONGBIN_STAMP:
+                    stampIcon = IDI_YONGBIN_ICON;
+                    break;
+                }
+                stamp(g_Hwnd, message, lParam, stampIcon);
                 if (!stampActive) {
                     stampActive = true;
                 }
@@ -259,11 +255,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
 
-            // 펜 굵기 출력
-            WCHAR szPenWidth[10];
-            wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
-            TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
-
+            // 스탬크 활성화 확인
+            if (stampActive == true) {
+                // 스탬프 크기 출력
+                WCHAR szStampSize[10];
+                wsprintf(szStampSize, L"%d", (stamp_Size /10)); // 펜 굵기를 문자열로 변환
+                TextOut(hdc, 320 + 100, 15, szStampSize, lstrlen(szStampSize)); // 위치 (310, 15)에 출력
+            }
+            else {
+                // 펜 굵기 출력
+                WCHAR szPenWidth[10];
+                wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
+                TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
+            }
+            
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }

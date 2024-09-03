@@ -17,7 +17,6 @@
 #define IDC_STATIC				-1
 
 #define IDI_REPLAY_ICON                        129
-#define IDI_REPLAY_ICON                        131
 #define IDI_ERASE_ICON                        130
 
 #define IDI_HEART_ICON                        132

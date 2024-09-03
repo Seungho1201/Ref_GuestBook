@@ -2,6 +2,8 @@
 #include <windows.h>
 #include "framework.h"
 #include "Pen_Str.h"
+#include "stamp.h"
+#include "resource.h"
 
 // 스레드는 인자를 하나밖에 못받기에 HWND 전역변수는 스레드 항목에서 할당
 extern HWND g_Hwnd;
@@ -33,6 +35,26 @@ DWORD WINAPI replay(LPVOID points)
             x = LOWORD(penMemory[i].penCoordinate);
             y = HIWORD(penMemory[i].penCoordinate);
 
+            // pen_str 구조체 파일에서 변수 두개를 추가했음
+            // 스티커 그리기 상태, 어떤 스티커인지 에 대한 변수 두개
+
+            // stamp 파일에서 보면 test(아이콘 그린건지)변수가 true로 하고
+            //img 변수에 해당 클릭한 이미지(int)를 구조체에 대입 후 PUSH
+            // 이제 펜 버튼 추가해서 전환이 자유롭게 가능하면 될듯 함
+            if (penMemory[i].test == true) {
+                int stampX = x;
+                int stampY = y;
+                int stampIcon = penMemory[i].img;
+                // 아이콘 로드 및 크기 조정
+                int stampWidth = 80;  // 원하는 아이콘 너비
+                int stampHeight = 80; // 원하는 아이콘 높이
+
+                HICON hIcon = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(stampIcon), IMAGE_ICON, stampWidth, stampHeight, 0);
+                DrawIconEx(hdc, stampX - stampWidth / 2, stampY - stampHeight / 2, hIcon, stampWidth, stampHeight, 0, NULL, DI_NORMAL);
+                break;
+            }
+
+
             MoveToEx(hdc, x, y, NULL);
             LineTo(hdc, x, y);  //점찍기
             break;
@@ -55,7 +77,7 @@ DWORD WINAPI replay(LPVOID points)
             Sleep(penMemory[i + 1].penTime - penMemory[i].penTime);
         }
 
-        
+
         SelectObject(hdc, osP);
         DeleteObject(myP);          // 리소스 자원 확보 위해 삭제
     }

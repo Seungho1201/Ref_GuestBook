@@ -17,6 +17,8 @@ typedef struct Pen_Info
     COLORREF    penColor;          // Ææ »ö±ò
     DWORD       penTime;           // ½Ã°£
     UINT        penState;          // »óÅÂ (LBUTTON)
+    bool        test;
+    int         img;
 
 } PEN_INFO;
 

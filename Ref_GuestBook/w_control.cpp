@@ -6,6 +6,8 @@
 // 변경시 갱신되는 영역 지정
 RECT textRect = { 310 + 100, 15, 340 + 100, 45 };
 extern int pen_Width;
+extern int stamp_Size;
+extern bool stampActive;
 
 // 펜 굵기 변경 함수 (HWND, 실행 값)
 void w_Control(HWND g_Hwnd, int con)
@@ -15,8 +17,10 @@ void w_Control(HWND g_Hwnd, int con)
     case W_UP:
         // 펜 최대 굵기는 20
         if (pen_Width == 20) { break; }
+        if (stamp_Size == 100) { break; }
 
-        pen_Width += 1;
+        if (stampActive == true) { stamp_Size += 10; }
+        else { pen_Width += 1; }
 
         InvalidateRect(g_Hwnd, &textRect, TRUE);  // 텍스트 영역만 무효화
         UpdateWindow(g_Hwnd);
@@ -25,9 +29,11 @@ void w_Control(HWND g_Hwnd, int con)
     case W_DOWN:
         // 펜 최소 굵기는 1
         if (pen_Width == 1) { break; }
+        if (stamp_Size == 10) { break; }
 
-        pen_Width -= 1;
-
+        if (stampActive == true) { stamp_Size -= 10; }
+        else { pen_Width -= 1; }
+        
         InvalidateRect(g_Hwnd, &textRect, TRUE);  // 텍스트 영역만 무효화
         UpdateWindow(g_Hwnd);
         break;

@@ -7,18 +7,6 @@
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Ref_GuestBook.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Ref_GuestBook.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.rc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Ref_GuestBook.rc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\stamp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:stamp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -27,68 +15,77 @@
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:stamp.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:w_control.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Pen_Str.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Pen_Str.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:w_control.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:replay.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\small.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:small.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:drawline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:drawline.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Resource.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:replay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\REPLAY.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\Size.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Ref_GuestBook.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Ref_GuestBook.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:erase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:replay.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.rc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Ref_GuestBook.rc||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Pen_Str.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:Pen_Str.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\REPLAY.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:drawline.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:w_control.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ohseu\\Desktop\\icon\\Pen.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:drawline.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ohseu\\Desktop\\icon\\Erase.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\small.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:small.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:erase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ohseu\\Desktop\\icon\\Pen.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     }
   ],
   "DocumentGroupContainers": [
@@ -102,19 +99,20 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Size.ico",
-              "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\Size.ico",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\Size.ico",
-              "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\Size.ico",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\Size.ico",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
-              "WhenOpened": "2024-08-20T05:23:18.394Z",
+              "DocumentIndex": 17,
+              "Title": "framework.h",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\framework.h",
+              "RelativeDocumentMoniker": "framework.h",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\framework.h",
+              "RelativeToolTip": "framework.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-14T05:49:12.349Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 13,
               "Title": "REPLAY.ico - Icon [100x100, 32\uBE44\uD2B8, BMP]",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\REPLAY.ico",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\ohseu\\Desktop\\Ref_GuestBook\\ImgResource\\REPLAY.ico",
@@ -132,136 +130,142 @@
               "RelativeDocumentMoniker": "Ref_GuestBook.cpp",
               "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.cpp",
               "RelativeToolTip": "Ref_GuestBook.cpp",
-              "ViewState": "AQIAAIwAAAAAAAAAAAAmwJ8AAAATAAAA",
+              "ViewState": "AQIAAPwAAAAAAAAAAAAmwAQBAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-14T05:34:10.631Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "button.cpp",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.cpp",
-              "RelativeDocumentMoniker": "button.cpp",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.cpp",
-              "RelativeToolTip": "button.cpp",
-              "ViewState": "AQIAACcAAAAAAAAAAAAcwEQAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-15T10:45:20.833Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Ref_GuestBook.ico - Icon [256x256, 32\uBE44\uD2B8, PNG]",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.ico",
-              "RelativeDocumentMoniker": "Ref_GuestBook.ico",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.ico - Icon [256x256, 32\uBE44\uD2B8, PNG]",
-              "RelativeToolTip": "Ref_GuestBook.ico - Icon [256x256, 32\uBE44\uD2B8, PNG]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
-              "WhenOpened": "2024-08-19T07:41:31.786Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "Ref_GuestBook.h",
               "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.h",
               "RelativeDocumentMoniker": "Ref_GuestBook.h",
               "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.h",
               "RelativeToolTip": "Ref_GuestBook.h",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAB4AAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-14T05:49:12.831Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "drawline.cpp",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.cpp",
-              "RelativeDocumentMoniker": "drawline.cpp",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.cpp",
-              "RelativeToolTip": "drawline.cpp",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAAA0AAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-14T05:48:29.631Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "drawline.h",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.h",
-              "RelativeDocumentMoniker": "drawline.h",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.h",
-              "RelativeToolTip": "drawline.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-14T05:48:38.284Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "replay.cpp",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp",
-              "RelativeDocumentMoniker": "replay.cpp",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp",
-              "RelativeToolTip": "replay.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA4AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-14T09:32:26.282Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "button.h",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.h",
-              "RelativeDocumentMoniker": "button.h",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.h",
-              "RelativeToolTip": "button.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-15T10:45:11.231Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "w_control.cpp",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp",
-              "RelativeDocumentMoniker": "w_control.cpp",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp",
-              "RelativeToolTip": "w_control.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-19T01:02:31.367Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "Ref_GuestBook.rc",
               "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.rc",
               "RelativeDocumentMoniker": "Ref_GuestBook.rc",
               "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.rc",
               "RelativeToolTip": "Ref_GuestBook.rc",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACkAAABLAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACkAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
               "WhenOpened": "2024-08-19T13:55:51.473Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
+              "Title": "Ref_GuestBook.ico - Icon [256x256, 32\uBE44\uD2B8, PNG]",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.ico",
+              "RelativeDocumentMoniker": "Ref_GuestBook.ico",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Ref_GuestBook.ico - Icon [256x256, 32\uBE44\uD2B8, PNG]",
+              "RelativeToolTip": "Ref_GuestBook.ico - Icon [256x256, 32\uBE44\uD2B8, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2024-08-19T07:41:31.786Z",
+              "EditorCaption": " - Icon [256x256, 32\uBE44\uD2B8, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "replay.cpp",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp",
+              "RelativeDocumentMoniker": "replay.cpp",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.cpp",
+              "RelativeToolTip": "replay.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADMAAABfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-14T09:32:26.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "replay.h",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.h",
+              "RelativeDocumentMoniker": "replay.h",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.h",
+              "RelativeToolTip": "replay.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-14T09:32:37.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "button.cpp",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.cpp",
+              "RelativeDocumentMoniker": "button.cpp",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.cpp",
+              "RelativeToolTip": "button.cpp",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAsAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-15T10:45:20.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "button.h",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.h",
+              "RelativeDocumentMoniker": "button.h",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\button.h",
+              "RelativeToolTip": "button.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-15T10:45:11.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "w_control.cpp",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp",
+              "RelativeDocumentMoniker": "w_control.cpp",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.cpp",
+              "RelativeToolTip": "w_control.cpp",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-19T01:02:31.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "w_control.h",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.h",
+              "RelativeDocumentMoniker": "w_control.h",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.h",
+              "RelativeToolTip": "w_control.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-19T01:02:41.784Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Resource.h",
               "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Resource.h",
               "RelativeDocumentMoniker": "Resource.h",
               "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Resource.h",
               "RelativeToolTip": "Resource.h",
-              "ViewState": "AQIAABAAAAAAAAAAAAAcwBkAAAAxAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAWwBIAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-14T05:51:21.5Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "small.ico - Icon [256x256, 32\uBE44\uD2B8, PNG]",
               "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\small.ico",
               "RelativeDocumentMoniker": "small.ico",
@@ -283,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "erase.cpp",
               "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\erase.cpp",
               "RelativeDocumentMoniker": "erase.cpp",
@@ -295,19 +299,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "w_control.h",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.h",
-              "RelativeDocumentMoniker": "w_control.h",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\w_control.h",
-              "RelativeToolTip": "w_control.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-19T01:02:41.784Z"
+              "DocumentIndex": 16,
+              "Title": "drawline.cpp",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.cpp",
+              "RelativeDocumentMoniker": "drawline.cpp",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.cpp",
+              "RelativeToolTip": "drawline.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-14T05:48:29.631Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 14,
+              "Title": "drawline.h",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.h",
+              "RelativeDocumentMoniker": "drawline.h",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\drawline.h",
+              "RelativeToolTip": "drawline.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-14T05:48:38.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Pen_Str.h",
+              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Pen_Str.h",
+              "RelativeDocumentMoniker": "Pen_Str.h",
+              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Pen_Str.h",
+              "RelativeToolTip": "Pen_Str.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-14T05:45:09.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "Erase.ico",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\icon\\Erase.ico",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\ohseu\\Desktop\\icon\\Erase.ico",
@@ -318,63 +347,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "framework.h",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\framework.h",
-              "RelativeDocumentMoniker": "framework.h",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\framework.h",
-              "RelativeToolTip": "framework.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-14T05:49:12.349Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "replay.h",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.h",
-              "RelativeDocumentMoniker": "replay.h",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\replay.h",
-              "RelativeToolTip": "replay.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-14T09:32:37.145Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Pen_Str.h",
-              "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Pen_Str.h",
-              "RelativeDocumentMoniker": "Pen_Str.h",
-              "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\Pen_Str.h",
-              "RelativeToolTip": "Pen_Str.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-14T05:45:09.97Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "stamp.cpp",
               "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\stamp.cpp",
               "RelativeDocumentMoniker": "stamp.cpp",
               "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\stamp.cpp",
               "RelativeToolTip": "stamp.cpp",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAmwBgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-27T04:05:06.018Z"
+              "WhenOpened": "2024-08-27T04:05:06.018Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "stamp.h",
               "DocumentMoniker": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\stamp.h",
               "RelativeDocumentMoniker": "stamp.h",
               "ToolTip": "C:\\Users\\jsyon\\OneDrive\\\uBC14\uD0D5 \uD654\uBA74\\Ref_GuestBook\\Ref_GuestBook\\stamp.h",
               "RelativeToolTip": "stamp.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-27T04:05:10.972Z"
+              "WhenOpened": "2024-08-27T04:05:10.972Z",
+              "EditorCaption": ""
             }
           ]
         }
