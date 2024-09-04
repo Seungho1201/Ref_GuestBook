@@ -149,16 +149,17 @@ MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
+{    /**
+    * static을 사용해서 불필요한 메모리 낭비 줄이기
+    */
+    static WindowSizeManager windowSizeManager(Window_Size_Width, Window_Size_Height);
     switch (message)
-    {
-    case WM_GETMINMAXINFO: // 윈도우 창 크기 고정
-    {
-
-        ((MINMAXINFO*)lParam)->ptMinTrackSize.x = Window_Size_Width;
-        ((MINMAXINFO*)lParam)->ptMinTrackSize.y = Window_Size_Height;
+    { 
+    case WM_GETMINMAXINFO:
+        // 창 크기 고정을 위해 HandleMinMaxInfo 호출
+        windowSizeManager.HandleMinMaxInfo(lParam);
         break;
-    }
+
     case WM_CREATE:
         g_Hwnd = hWnd;
 
