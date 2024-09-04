@@ -143,6 +143,7 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="drawline.cpp" />
     <ClCompile Include="erase.cpp" />
+    <ClCompile Include="paint_area.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
     <ClCompile Include="w_control.cpp" />

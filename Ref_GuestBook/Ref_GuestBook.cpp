@@ -3,7 +3,6 @@
 
 #include "framework.h"
 #include "Ref_GuestBook.h"
-#include "paint_area.h"
 
 #define MAX_LOADSTRING 100
 

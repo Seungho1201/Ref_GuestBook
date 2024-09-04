@@ -68,6 +68,9 @@
     <ClCompile Include="w_control.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="paint_area.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Ref_GuestBook.rc">

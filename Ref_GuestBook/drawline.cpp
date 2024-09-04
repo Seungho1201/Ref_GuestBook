@@ -1,6 +1,7 @@
 #include <iostream>
 #include "framework.h"
 #include "Pen_Str.h"
+#include "paint_area.h"
 
 // 전역변수 정의
 extern vector<PEN_INFO> penMemory;
@@ -50,7 +51,7 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
     case WM_MOUSEMOVE:
 
         ///마우스 x,y 좌표기준 그리기 영역지정
-        if (HIWORD(lParam) <= 125|| HIWORD(lParam) >=695 || LOWORD(lParam) <5 || LOWORD(lParam) > 995) {
+        if (HIWORD(lParam) <= 125|| HIWORD(lParam) >=695 || LOWORD(lParam) <15 || LOWORD(lParam) > 995) {
             drawStart = false;
         }
 
