@@ -10,6 +10,8 @@
 #include "file_io.h"
 #include "file_operations.h"
 #include "c_color.h"
+#include "paint_area.h"
+
 
 
 /// COMMAND 기능 상수 선언

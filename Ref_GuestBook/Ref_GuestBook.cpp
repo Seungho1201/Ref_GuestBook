@@ -278,6 +278,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         wsprintf(szPenWidth, L"%d", pen_Width); /// 펜 굵기를 문자열로 변환
         TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); /// 위치 (310, 15)에 출력
 
+        Square(hdc);
+
         EndPaint(hWnd, &ps);
     }
     break;
