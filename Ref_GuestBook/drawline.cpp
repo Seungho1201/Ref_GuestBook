@@ -51,7 +51,7 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
     case WM_MOUSEMOVE:
 
         ///마우스 x,y 좌표기준 그리기 영역지정
-        if (HIWORD(lParam) <= 125|| HIWORD(lParam) >=695 || LOWORD(lParam) <15 || LOWORD(lParam) > 995) {
+        if (HIWORD(lParam) <= Rectangle_top+5 || HIWORD(lParam) >= Rectangle_bottom-5 || LOWORD(lParam) < (Rectangle_left+5) || LOWORD(lParam) > Rectangle_right-5) {
             drawStart = false;
         }
 

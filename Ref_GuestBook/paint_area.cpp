@@ -1,7 +1,5 @@
 #include <windows.h>
-
-const int left = 10, top = 120, right = 1000, bottom = 700;
-
+#include "paint_area.h"
 
 void Square(HDC hdc) {
 
@@ -10,7 +8,7 @@ void Square(HDC hdc) {
      HPEN OldPen = (HPEN)SelectObject(hdc, MyPen);
 
      ///»ç°¢Çü (hdc,left, top, right, bottom)
-     Rectangle(hdc, left, top, right, bottom);
+     Rectangle(hdc, Rectangle_left, Rectangle_top, Rectangle_right, Rectangle_bottom);
      SelectObject(hdc, OldPen);
 
      DeleteObject(MyPen);
