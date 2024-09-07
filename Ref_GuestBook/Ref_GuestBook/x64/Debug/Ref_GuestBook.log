@@ -5,7 +5,6 @@ C:\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON
       'IDI_REPLAY_ICON'의 이전 정의를 참조하십시오.
   
   drawline.cpp
-  erase.cpp
   file_io.cpp
   file_operations.cpp
   replay.cpp

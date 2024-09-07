@@ -8,12 +8,13 @@ using namespace std;
 
 class FileOperations {
 public:
-
-    bool save(const SPINFO& info_vector, const wchar_t* path);
-    bool load(SPINFO& info_vector, const wchar_t* path);
+    bool save(const wchar_t* path);
+    bool load(const wchar_t* path);
 
 private:
-
+    bool openForWrite(const wchar_t* path);
+    bool openForRead(const wchar_t* path);
+    std::fstream fs; 
 };
 
 extern vector<PEN_INFO> penMemory;

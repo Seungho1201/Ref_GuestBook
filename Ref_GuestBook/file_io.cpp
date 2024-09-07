@@ -3,51 +3,55 @@
 
 LPARAM lParam;
 
-bool FileOperations::save(const SPINFO& info_vector, const wchar_t* path)
+bool FileOperations::save(const wchar_t* path)
 {
-    fstream fs;
-
     if (penMemory.size() < 80) {
         return false;
     }
 
-    fs.open(path, ios::out | ios::trunc);
-    if (fs.fail()) {
+    if (!openForWrite(path)) {
         return false;
     }
 
     for (const auto& i : penMemory) {
-        fs << i.penCoordinate << " ";
-        fs << i.penWidth << " ";
-        fs << i.penColor << " ";
-        fs << i.penTime << " ";
-        fs << i.penState << endl;
+        this->fs << i.penCoordinate << ' '
+            << i.penWidth << ' '
+            << i.penColor << ' '
+            << i.penTime << ' '
+            << i.penState << '\n';
     }
 
-    fs.close();
+    this->fs.close();
     return true;
 }
 
-bool FileOperations::load(SPINFO& info_vector, const wchar_t* path)
+bool FileOperations::load(const wchar_t* path)
 {
-    fstream fs;
-
-    fs.open(path, ios::in);
-    if (fs.fail()) {
+    if (!openForRead(path)) {
         return false;
     }
 
     penMemory.clear();
 
-    while (fs.good()) {
-        PEN_INFO pen_info;
-        if (!(fs >> pen_info.penCoordinate >> pen_info.penWidth >> pen_info.penColor >> pen_info.penTime >> pen_info.penState)) {
-            break;
-        }
+    PEN_INFO pen_info;
+    while (this->fs >> pen_info.penCoordinate >> pen_info.penWidth >> pen_info.penColor >> pen_info.penTime >> pen_info.penState) {
         penMemory.push_back(pen_info);
     }
 
+    this->fs.close();
     CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
 
     return true;
+}
+
+bool FileOperations::openForWrite(const wchar_t* path)
+{
+    this->fs.open(path, std::ios::out | std::ios::trunc);
+    return !this->fs.fail();
+}
+
+bool FileOperations::openForRead(const wchar_t* path)
+{
+    this->fs.open(path, std::ios::in);
+    return !this->fs.fail();
 }

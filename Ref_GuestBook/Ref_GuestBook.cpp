@@ -125,8 +125,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 vector<PEN_INFO> penMemory;             /// 펜 구조체 정보 저장 벡터 변수 전역변수 정의
 PEN_INFO g_Pen_Info;                    /// 펜 정보 구조체 전역변수 정의
 
-SPINFO spinfo;
-
 COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK
 HWND g_Hwnd;                            /// HWND 전역변수 정의
 int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
@@ -191,11 +189,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                
             /// SAVE, LOAD 기능
             case SAVE:
-                fileManager.SaveFile(hWnd, spinfo);         /// 저장하기
+                fileManager.SaveFile(hWnd);         /// 저장하기
                 break;
 
             case LOAD:
-                fileManager.LoadFile(hWnd, spinfo);         /// 불러오기
+                fileManager.LoadFile(hWnd);         /// 불러오기
                 break;
 
             /// 펜 굵기 관련 기능
