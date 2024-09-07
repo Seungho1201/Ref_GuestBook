@@ -1,15 +1,8 @@
-#include <windows.h>
-#include <commdlg.h>
-
 #include "file_operations.h"
-#include "Pen_Str.h"  
-#include "file_io.h"
 
-bool SaveFile(HWND hWnd, SPINFO penInfo) {
-    OPENFILENAME OFN = { 0 };
-    WCHAR fileName[256] = { 0 };
-    WCHAR str[256] = { 0 };
+bool File_Manager::SaveFile(HWND hWnd, SPINFO penInfo) {
 
+    // OPENFILENAME 구조체 설정
     OFN.lStructSize = sizeof(OPENFILENAME);
     OFN.hwndOwner = hWnd;
     OFN.lpstrFilter = L"모든 파일(*.*)\0*.*\0";
@@ -18,8 +11,7 @@ bool SaveFile(HWND hWnd, SPINFO penInfo) {
 
     if (GetSaveFileName(&OFN) != 0) {
         wsprintf(str, L"%s", OFN.lpstrFile);
-        if (file_save(penInfo, str)) {
-            MessageBox(hWnd, str, L"파일 저장 성공", MB_OK);
+        if (fileOps.save(penInfo, str)) {                       /// FileOperations의 save 메서드 호출
             return true;
         }
         else {
@@ -30,11 +22,9 @@ bool SaveFile(HWND hWnd, SPINFO penInfo) {
     return false;
 }
 
-bool LoadFile(HWND hWnd, SPINFO penInfo) {
-    OPENFILENAME OFN = { 0 };
-    WCHAR fileOpenName[256] = { 0 };
-    WCHAR str[256] = { 0 };
+bool File_Manager::LoadFile(HWND hWnd, SPINFO penInfo) {
 
+    // OPENFILENAME 구조체 설정
     OFN.lStructSize = sizeof(OPENFILENAME);
     OFN.hwndOwner = hWnd;
     OFN.lpstrFilter = L"모든 파일(*.*)\0*.*\0";
@@ -43,7 +33,7 @@ bool LoadFile(HWND hWnd, SPINFO penInfo) {
 
     if (GetOpenFileName(&OFN) != 0) {
         wsprintf(str, L"%s", OFN.lpstrFile);
-        if (file_load(penInfo, str)) {
+        if (fileOps.load(penInfo, str)) {                       /// FileOperations의 load 메서드 호출
             return true;
         }
         else {

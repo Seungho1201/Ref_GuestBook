@@ -131,11 +131,8 @@ COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK
 HWND g_Hwnd;                            /// HWND 전역변수 정의
 int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
 
-OPENFILENAME OFN;
-
-wchar_t str[256] = { 0, };
-wchar_t file_name[256] = L"";
-wchar_t file_open_name[256] = { 0, };
+File_Manager fileManager;               /// File_Manager 클래스의 인스턴스 생성
+Eraser eraser;                          /// Eraser 클래스의 인스턴스 생성
 
 
 
@@ -183,7 +180,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             /// 지우기 기능 
             case ERASE:
-                erase(g_Hwnd);
+                eraser.erase(hWnd);                         /// 지우기                  
                 break;
 
             /// 리플레이 기능
@@ -194,12 +191,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                
             /// SAVE, LOAD 기능
             case SAVE:
-                SaveFile(hWnd, spinfo);  /// SaveFile 호출
+                fileManager.SaveFile(hWnd, spinfo);         /// 저장하기
                 break;
 
             case LOAD:
-
-                LoadFile(hWnd, spinfo);  /// LoadFile 호출
+                fileManager.LoadFile(hWnd, spinfo);         /// 불러오기
                 break;
 
             /// 펜 굵기 관련 기능

@@ -1,15 +1,19 @@
-﻿  file_operations.cpp
-  Ref_GuestBook.cpp
-C:\C++\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
+﻿  Ref_GuestBook.cpp
+C:\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
   (소스 파일 'Ref_GuestBook.cpp'을(를) 컴파일하는 중)
-      C:\C++\Ref_GuestBook\Ref_GuestBook\resource.h(19,9):
+      C:\Ref_GuestBook\Ref_GuestBook\resource.h(19,9):
       'IDI_REPLAY_ICON'의 이전 정의를 참조하십시오.
   
+  drawline.cpp
+  erase.cpp
+  file_io.cpp
+  file_operations.cpp
+  replay.cpp
   w_control.cpp
-C:\C++\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
+C:\Ref_GuestBook\Ref_GuestBook\resource.h(20,9): warning C4005: 'IDI_REPLAY_ICON': 매크로 재정의
   (소스 파일 'w_control.cpp'을(를) 컴파일하는 중)
-      C:\C++\Ref_GuestBook\Ref_GuestBook\resource.h(19,9):
+      C:\Ref_GuestBook\Ref_GuestBook\resource.h(19,9):
       'IDI_REPLAY_ICON'의 이전 정의를 참조하십시오.
   
   코드를 생성하고 있습니다...
-  Ref_GuestBook.vcxproj -> C:\C++\Ref_GuestBook\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe
+  Ref_GuestBook.vcxproj -> C:\Ref_GuestBook\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe

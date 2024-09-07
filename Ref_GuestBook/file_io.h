@@ -2,10 +2,19 @@
 
 #include "Pen_Str.h"
 #include <fstream>
-
-#define FILE_PATH L"../Save"
+#include <vector>
 
 using namespace std;
 
-bool file_save(const SPINFO& info_vector,  const wchar_t* name);
-bool file_load(SPINFO& info_vector, const wchar_t* name);
+class FileOperations {
+public:
+
+    bool save(const SPINFO& info_vector, const wchar_t* path);
+    bool load(SPINFO& info_vector, const wchar_t* path);
+
+private:
+
+};
+
+extern vector<PEN_INFO> penMemory;
+extern LPARAM lParam;
