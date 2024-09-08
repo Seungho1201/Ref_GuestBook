@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|solutionrelative:button.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{240CD101-3E04-4C16-B1B5-063666B3FE16}|Ref_GuestBook.vcxproj|C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\paint_area.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -64,7 +64,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 493,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -84,8 +84,7 @@
               "RelativeToolTip": "paint_area.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-06T09:32:05.394Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-06T09:32:05.394Z"
             },
             {
               "$type": "Document",
@@ -144,8 +143,7 @@
               "RelativeToolTip": "file_operations.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-04T14:50:21.172Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T14:50:21.172Z"
             },
             {
               "$type": "Document",
@@ -181,31 +179,29 @@
               "RelativeToolTip": "Ref_GuestBook.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAADsAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-04T14:50:21.176Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T14:50:21.176Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "button.cpp",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.cpp",
               "RelativeDocumentMoniker": "button.cpp",
               "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.cpp",
               "RelativeToolTip": "button.cpp",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAAAG8AAAAGAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAG8AAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-04T14:50:21.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T14:50:21.177Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "button.h",
               "DocumentMoniker": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.h",
               "RelativeDocumentMoniker": "button.h",
               "ToolTip": "C:\\Users\\ohseu\\Desktop\\Ref_GuestBook\\Ref_GuestBook\\button.h",
               "RelativeToolTip": "button.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-04T14:50:21.179Z",
               "EditorCaption": ""
