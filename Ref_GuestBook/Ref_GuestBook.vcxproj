@@ -147,12 +147,9 @@
     <ClCompile Include="c_color.cpp" />
     <ClCompile Include="drawline.cpp" />
     <ClCompile Include="erase.cpp" />
-
     <ClCompile Include="file_io.cpp" />
     <ClCompile Include="file_operations.cpp" />
-
     <ClCompile Include="paint_area.cpp" />
-
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
     <ClCompile Include="w_control.cpp" />
@@ -161,15 +158,7 @@
     <ResourceCompile Include="Ref_GuestBook.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Users\user1\Downloads\Black.ico" />
-    <Image Include="..\..\..\..\Users\user1\Downloads\Blue.ico" />
-    <Image Include="..\..\..\..\Users\user1\Downloads\Green.ico" />
-    <Image Include="..\..\..\..\Users\user1\Downloads\Navy.ico" />
-    <Image Include="..\..\..\..\Users\user1\Downloads\Orange.ico" />
-    <Image Include="..\..\..\..\Users\user1\Downloads\Purple.ico" />
-    <Image Include="..\..\..\..\Users\user1\Downloads\Yellow.ico" />
     <Image Include="..\ImgResource\ERASE.ico" />
-    <Image Include="..\ImgResource\RED.ico" />
     <Image Include="..\ImgResource\REPLAY.ico" />
     <Image Include="..\ImgResource\Size.ico" />
     <Image Include="Ref_GuestBook.ico" />

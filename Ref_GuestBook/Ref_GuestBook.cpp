@@ -58,7 +58,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
 ///  함수: MyRegisterClass()
-
 ///  용도: 창 클래스를 등록합니다.
 
 ATOM MyRegisterClass(HINSTANCE hInstance)
@@ -84,11 +83,8 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
 
 ///   함수: InitInstance(HINSTANCE, int)
-
 ///   용도: 인스턴스 핸들을 저장하고 주 창을 만듭니다.
-
 ///   주석:
-
 ///        이 함수를 통해 인스턴스 핸들을 전역 변수에 저장하고
 ///        주 프로그램 창을 만든 다음 표시합니다.
 
@@ -111,13 +107,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 }
 
 ///  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
-
 ///  용도: 주 창의 메시지를 처리합니다.
 
 ///  WM_COMMAND  - 애플리케이션 메뉴를 처리합니다.
 ///  WM_PAINT    - 주 창을 그립니다.
 ///  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
-
 /// 전역변수 정의
 /// 다른 파일에서 사용할 시 앞에 extern을 쓰고 선언한다.
 /// ex) extern vector<PEN_INFO> penMemory;
@@ -125,17 +119,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 vector<PEN_INFO> penMemory;             /// 펜 구조체 정보 저장 벡터 변수 전역변수 정의
 PEN_INFO g_Pen_Info;                    /// 펜 정보 구조체 전역변수 정의
 
-SPINFO spinfo;
-
 COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK
 HWND g_Hwnd;                            /// HWND 전역변수 정의
 int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
 
-OPENFILENAME OFN;
-
-wchar_t str[256] = { 0, };
-wchar_t file_name[256] = L"";
-wchar_t file_open_name[256] = { 0, };
+File_Manager fileManager;               /// File_Manager 클래스의 인스턴스 생성
+Eraser eraser;                          /// Eraser 클래스의 인스턴스 생성
 
 
 
@@ -200,7 +189,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             {
             /// 지우기 기능 
             case ERASE:
-                erase(g_Hwnd);
+                eraser.erase(hWnd);                         /// 지우기                  
                 break;
 
             /// 리플레이 기능
@@ -211,12 +200,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                
             /// SAVE, LOAD 기능
             case SAVE:
-                SaveFile(hWnd, spinfo);  /// SaveFile 호출
+                fileManager.SaveFile(hWnd);         /// 저장하기
                 break;
 
             case LOAD:
-
-                LoadFile(hWnd, spinfo);  /// LoadFile 호출
+                fileManager.LoadFile(hWnd);         /// 불러오기
                 break;
 
             /// 펜 굵기 관련 기능

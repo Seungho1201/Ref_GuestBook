@@ -20,15 +20,6 @@ typedef struct Pen_Info
 
 } PEN_INFO;
 
-typedef struct Scale_Point_Info
-{
-    std::vector<PEN_INFO> pinfo;
-    int x;
-    int y;
-    int width;
-    int height;
-}SPINFO;
-
 
 /**
  * @brief       Pen_Info 구조체를 벡터 자료구조로 저장하기 위한 벡터 구조체
