@@ -11,6 +11,7 @@
 #include "file_operations.h"
 #include "c_color.h"
 #include "paint_area.h"
+#include "Window_Size.h"
 
 
 

@@ -16,3 +16,6 @@ public:
     void erase(HWND hWnd);
 };
 
+
+void erase(HWND hWnd);
+

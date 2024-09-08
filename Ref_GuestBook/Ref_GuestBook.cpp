@@ -154,9 +154,17 @@ MakeButton bt_ColorPurple(580, 50, 30, 30, C_PURPLE, L"보");
 MakeButton bt_ColorBlack(620, 50, 30, 30, C_BLACK, L"검");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
+{    /**
+    * static을 사용해서 불필요한 메모리 낭비 줄이기
+    */
+    static WindowSizeManager windowSizeManager(Window_Size_Width, Window_Size_Height);
     switch (message)
-    {
+    { 
+    case WM_GETMINMAXINFO:
+        // 창 크기 고정을 위해 HandleMinMaxInfo 호출
+        windowSizeManager.HandleMinMaxInfo(lParam);
+        break;
+
     case WM_CREATE:
         g_Hwnd = hWnd;
 
@@ -202,7 +210,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case SAVE:
                 fileManager.SaveFile(hWnd);         /// 저장하기
                 break;
-
             case LOAD:
                 fileManager.LoadFile(hWnd);         /// 불러오기
                 break;
