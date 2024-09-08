@@ -127,6 +127,10 @@ File_Manager fileManager;               /// File_Manager 클래스의 인스턴�
 Eraser eraser;                          /// Eraser 클래스의 인스턴스 생성
 
 
+int stamp_Size = 80;                    // 스탬프 크기 가로, 세로 80으로 정의
+int stampIcon = 132;                    // 스탬프 아이콘 초기값
+bool stampActive = false;               // 스탬프 버틀 활성화 확인
+static Stamp* stampInfo = nullptr;      // Stamp 객체를 저장할 포인터
 
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
@@ -141,6 +145,7 @@ MakeButton bt_SAVE(230, 10, 100, 45, SAVE, L"SAVE");
 MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
 MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
+
 /*
 ///펜 색상 변경 버튼 
 */
@@ -153,11 +158,21 @@ MakeButton bt_ColorNavy(540, 50, 30, 30, C_NAVY, L"남");
 MakeButton bt_ColorPurple(580, 50, 30, 30, C_PURPLE, L"보");
 MakeButton bt_ColorBlack(620, 50, 30, 30, C_BLACK, L"검");
 
+
+MakeButton bt_Change_Pen(780, 10, 50, 50, CHANGE_PEN, L"PEN");
+MakeButton bt_Heart_Stamp(840, 10, 50, 50, HEART_STAMP, L"HEART");
+MakeButton bt_Uh_Stamp(900, 10, 50, 50, UH_STAMP, L"UH");
+MakeButton bt_Yuhan_Stamp(960, 10, 50, 50, YUHAN_STAMP, L"YUHAN");
+MakeButton bt_Yongbin_Stamp(1020, 10, 50, 50, YONGBIN_STAMP, L"YONGBIN");
+
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+
 {    /**
     * static을 사용해서 불필요한 메모리 낭비 줄이기
     */
     static WindowSizeManager windowSizeManager(Window_Size_Width, Window_Size_Height);
+
     switch (message)
     { 
     case WM_GETMINMAXINFO:
@@ -167,6 +182,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     case WM_CREATE:
         g_Hwnd = hWnd;
+        if (stampInfo) {
+            delete stampInfo;
+        }
+        stampInfo = new Stamp(stamp_Size, stampIcon, penMemory);
 
         /// 윈도우 창 생성시 버튼 생성 메서드 실행
         /// 인자 관련 설명은 button.cpp 파일 주석 참고
@@ -179,6 +198,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthup.mkButton();
         bt_Widthdown.mkButton();
 
+
         bt_ColorRed.mkButton(IDI_RED_ICON);
         bt_ColorOrange.mkButton(IDI_ORANGE_ICON);
         bt_ColorYellow.mkButton(IDI_YELLOW_ICON);
@@ -188,6 +208,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_ColorPurple.mkButton(IDI_PURPLE_ICON);
         bt_ColorBlack.mkButton(IDI_BLACK_ICON);
         
+
+        bt_Change_Pen.mkButton();
+        bt_Heart_Stamp.mkButton(IDI_HEART_ICON);
+        bt_Uh_Stamp.mkButton(IDI_UH_ICON);
+        bt_Yuhan_Stamp.mkButton(IDI_YUHAN_ICON);
+        bt_Yongbin_Stamp.mkButton(IDI_YONGBIN_ICON);
+
+
         /// 버튼으로 구현한 func 상수 기능은 여기서 정의한다.
     case WM_COMMAND:
         {
@@ -205,8 +233,43 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 // 리플레이 기능은 스레드화
                 CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
                 break;
-               
-            /// SAVE, LOAD 기능
+            
+            case CHANGE_PEN:
+                if (!stampActive) {
+                    stampActive = true;
+                    MakeButton bt_Change_Pen(780, 10, 50, 50, CHANGE_PEN, L"STAMP");
+                }
+                else {
+                    stampActive = false;
+                    MakeButton bt_Change_Pen(780, 10, 50, 50, CHANGE_PEN, L"PEN");
+                }
+                bt_Change_Pen.mkButton();
+                break;
+
+            // 스탬프 기능 추가
+            case HEART_STAMP:
+            case UH_STAMP:
+            case YUHAN_STAMP:
+            case YONGBIN_STAMP:
+                switch (wParam) {
+                case HEART_STAMP:
+                    stampIcon = IDI_HEART_ICON;
+                    break;
+                case UH_STAMP:
+                    stampIcon = IDI_UH_ICON;
+                    break;
+                case YUHAN_STAMP:
+                    stampIcon = IDI_YUHAN_ICON;
+                    break;
+                case YONGBIN_STAMP:
+                    stampIcon = IDI_YONGBIN_ICON;
+                    break;
+                }
+                if (!stampActive) { stampActive = true; }
+                break;
+
+            // SAVE, LOAD 기능
+
             case SAVE:
                 fileManager.SaveFile(hWnd);         /// 저장하기
                 break;
@@ -266,21 +329,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
-        /// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+        WCHAR szPenWidth[10] = {};
 
-        /// 펜 굵기 출력
-        WCHAR szPenWidth[10];
-        wsprintf(szPenWidth, L"%d", pen_Width); /// 펜 굵기를 문자열로 변환
-        TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); /// 위치 (310, 15)에 출력
+        wsprintf(szPenWidth, L"%d", stampActive ? (stamp_Size / 10) : pen_Width);
+        TextOut(hdc, 420, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (420, 15)에 출력
 
         Square(hdc);
-
         EndPaint(hWnd, &ps);
+        break;
     }
-    break;
-
-
     case WM_DESTROY:
+        if (stampInfo) {
+            delete stampInfo;
+            stampInfo = nullptr;
+        }
         PostQuitMessage(0);
         break;
 
@@ -288,9 +350,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONDOWN:
 
     case WM_LBUTTONUP:
-        
-        /// 그리기 함수
-        drawLine(hWnd, message, lParam);
+        // 그리기 함수
+        if (stampActive) {
+            stampInfo = new Stamp(stamp_Size, stampIcon, penMemory);
+            stampInfo->handleStamp(hWnd, message, lParam);
+        }
+        else {
+            drawLine(hWnd, message, lParam);
+        }
         break;
 
     default:

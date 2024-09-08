@@ -16,9 +16,10 @@
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1
 
-#define IDI_REPLAY_ICON                        129
+
 #define IDI_REPLAY_ICON                        131
-#define IDI_ERASE_ICON                        1
+#define IDI_ERASE_ICON                        130
+
 #define IDI_RED_ICON						132
 #define IDI_ORANGE_ICON						133
 #define IDI_YELLOW_ICON						134
@@ -28,6 +29,10 @@
 #define IDI_PURPLE_ICON						138
 #define IDI_BLACK_ICON						139
 
+#define IDI_HEART_ICON                        140
+#define IDI_UH_ICON							  141
+#define IDI_YUHAN_ICON                        142
+#define IDI_YONGBIN_ICON                      143
 
 #endif
 // 다음은 새 개체에 사용할 기본값입니다.

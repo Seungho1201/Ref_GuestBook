@@ -17,7 +17,9 @@ typedef struct Pen_Info
     COLORREF    penColor;          // 펜 색깔
     DWORD       penTime;           // 시간
     UINT        penState;          // 상태 (LBUTTON)
-
+    bool        test;
+    int         stampImg;          // 스탬프 이미지
+    int         stampSize;         // 스탬프 사이즈
 } PEN_INFO;
 
 

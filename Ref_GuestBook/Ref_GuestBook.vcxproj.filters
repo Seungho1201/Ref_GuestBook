@@ -118,7 +118,13 @@
 		<Image Include="..\ImgResource\ERASE.ico">
 			<Filter>리소스 파일</Filter>
 		</Image>
-		<Image Include="..\ImgResource\RED.ico">
+		<Image Include="..\ImgResource\heart.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="..\ImgResource\uh.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="..\ImgResource\yongbin.ico">
 			<Filter>리소스 파일</Filter>
 		</Image>
 		<Image Include="..\..\..\..\Users\user1\Downloads\Orange.ico">

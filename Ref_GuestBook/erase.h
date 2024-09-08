@@ -19,3 +19,4 @@ public:
 
 void erase(HWND hWnd);
 
+
