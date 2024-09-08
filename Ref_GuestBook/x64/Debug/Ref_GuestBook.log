@@ -1,8 +1,0 @@
-﻿  button.cpp
-C:\c++\Ref_GuestBook\Ref_GuestBook\button.cpp(30,1): warning C4312: '형식 캐스트': 'int'에서 더 큰 'HMENU'(으)로의 변환입니다.
-  drawline.cpp
-  erase.cpp
-  Ref_GuestBook.cpp
-  replay.cpp
-  코드를 생성하고 있습니다...
-  Ref_GuestBook.vcxproj -> C:\c++\Ref_GuestBook\Ref_GuestBook\x64\Debug\Ref_GuestBook.exe
