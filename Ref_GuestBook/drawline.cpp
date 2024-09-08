@@ -7,6 +7,7 @@ extern vector<PEN_INFO> penMemory;
 extern PEN_INFO g_Pen_Info;
 extern COLORREF pen_Color;
 extern int pen_Width;
+RECT pentext = { 310 + 100, 15, 340 + 100, 45 };
 
 void drawLine(HWND hWnd, UINT message, LPARAM lParam)
 {
@@ -15,6 +16,9 @@ void drawLine(HWND hWnd, UINT message, LPARAM lParam)
     int x, y;
     HDC hdc;
     HPEN myP, osP;
+
+    InvalidateRect(hWnd, &pentext, TRUE);  // 텍스트 영역만 무효화
+    UpdateWindow(hWnd);
 
     x = LOWORD(lParam);
     y = HIWORD(lParam);

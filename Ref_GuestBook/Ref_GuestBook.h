@@ -26,7 +26,8 @@
 ///
 /// ½ºÅÆÇÁ func
 /// 
-#define HEART_STAMP 700
-#define UH_STAMP 800
-#define YUHAN_STAMP 900
-#define YONGBIN_STAMP 1000
+#define CHANGE_PEN 700
+#define HEART_STAMP 800
+#define UH_STAMP 900
+#define YUHAN_STAMP 1000
+#define YONGBIN_STAMP 1100

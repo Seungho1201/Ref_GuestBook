@@ -133,8 +133,9 @@ HWND g_Hwnd;                            // HWND 전역변수 정의
 int pen_Width = 10;                     // 펜 기본 굵기 10으로 정의
 
 int stamp_Size = 80;                    // 스탬프 크기 가로, 세로 80으로 정의
+int stampIcon = 132;                    // 스탬프 아이콘 초기값
 bool stampActive = false;               // 스탬프 버틀 활성화 확인
-int stampIcon = 132;                      // 스탬프 아이콘 초기값
+static Stamp* stampInfo = nullptr;      // Stamp 객체를 저장할 포인터
 
 /// <summary>
 /// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
@@ -150,6 +151,7 @@ MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
 MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
 
+MakeButton bt_Change_Pen(780, 10, 50, 50, CHANGE_PEN, L"PEN");
 MakeButton bt_Heart_Stamp(840, 10, 50, 50, HEART_STAMP, L"HEART");
 MakeButton bt_Uh_Stamp(900, 10, 50, 50, UH_STAMP, L"UH");
 MakeButton bt_Yuhan_Stamp(960, 10, 50, 50, YUHAN_STAMP, L"YUHAN");
@@ -161,6 +163,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
         g_Hwnd = hWnd;
+        stampInfo = new Stamp(stamp_Size, stampIcon, penMemory);
 
         // 윈도우 창 생성시 버튼 생성 메서드 실행
         // 인자 관련 설명은 button.cpp 파일 주석 참고
@@ -173,6 +176,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthup.mkButton();
         bt_Widthdown.mkButton();
 
+        bt_Change_Pen.mkButton();
         bt_Heart_Stamp.mkButton(IDI_HEART_ICON);
         bt_Uh_Stamp.mkButton(IDI_UH_ICON);
         bt_Yuhan_Stamp.mkButton(IDI_YUHAN_ICON);
@@ -196,6 +200,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
                 break;
             
+            case CHANGE_PEN:
+                if (!stampActive) {
+                    stampActive = true;
+                    MakeButton bt_Change_Pen(780, 10, 50, 50, CHANGE_PEN, L"STAMP");
+                }
+                else {
+                    stampActive = false;
+                    MakeButton bt_Change_Pen(780, 10, 50, 50, CHANGE_PEN, L"PEN");
+                }
+                bt_Change_Pen.mkButton();
+                break;
 
             // 스탬프 기능 추가
             case HEART_STAMP:
@@ -216,10 +231,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     stampIcon = IDI_YONGBIN_ICON;
                     break;
                 }
-                stamp(g_Hwnd, message, lParam, stampIcon);
-                if (!stampActive) {
-                    stampActive = true;
-                }
+                if (!stampActive) { stampActive = true; }
                 break;
 
             // SAVE, LOAD 기능
@@ -254,21 +266,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+            WCHAR szPenWidth[10];
 
             // 스탬크 활성화 확인
             if (stampActive == true) {
                 // 스탬프 크기 출력
-                WCHAR szStampSize[10];
-                wsprintf(szStampSize, L"%d", (stamp_Size /10)); // 펜 굵기를 문자열로 변환
-                TextOut(hdc, 320 + 100, 15, szStampSize, lstrlen(szStampSize)); // 위치 (310, 15)에 출력
+                wsprintf(szPenWidth, L"%d", (stamp_Size /10)); // 스탬프 굵기를 문자열로 변환
             }
-            else {
+            else if (stampActive == false) {
                 // 펜 굵기 출력
-                WCHAR szPenWidth[10];
                 wsprintf(szPenWidth, L"%d", pen_Width); // 펜 굵기를 문자열로 변환
-                TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
             }
-            
+            TextOut(hdc, 320 + 100, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (310, 15)에 출력
+
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
@@ -284,7 +294,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONUP:
         // 그리기 함수
         if (stampActive) {
-            stamp(hWnd, message, lParam, stampIcon);
+            stampInfo = new Stamp(stamp_Size, stampIcon, penMemory);
+            stampInfo->handleStamp(hWnd, message, lParam);
         }
         else {
             drawLine(hWnd, message, lParam);

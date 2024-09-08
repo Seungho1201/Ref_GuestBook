@@ -1,67 +1,44 @@
+#include "Stamp.h"
 #include <iostream>
-#include <windows.h>
-#include "framework.h"
-#include "Pen_Str.h"
-#include "stamp.h"
 
-// 전역변수 정의
-extern int stamp_Size;
-extern int stampIcon;
+Stamp::Stamp(int size, int icon, std::vector<PEN_INFO>& memory)
+    : stampSize(size), stampIcon(icon), penMemory(memory), stampX(0), stampY(0) {}
 
-extern bool stampActive;
-extern vector<PEN_INFO> penMemory;
+void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam) {
+    int x = LOWORD(lParam);
+    int y = HIWORD(lParam);
+    HDC hdc = GetDC(hWnd);
 
-void stamp(HWND hWnd, UINT message, LPARAM lParam, INT stampIcon) {
-    static int stampX, stampY;
-    int x, y;
-    HDC hdc;
-
-    x = LOWORD(lParam);
-    y = HIWORD(lParam);
-    hdc = GetDC(hWnd);
+    InvalidateRect(hWnd, &stamptext, TRUE);  // 텍스트 영역만 무효화
+    UpdateWindow(hWnd);
 
     // 아이콘 로드 및 크기 조정
-    int stampWidth = stamp_Size;  // 원하는 아이콘 너비
-    int stampHeight = stamp_Size; // 원하는 아이콘 높이
-
-    HICON hIcon = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(stampIcon), IMAGE_ICON, stampWidth, stampHeight, 0);
+    HICON hIcon = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(stampIcon), IMAGE_ICON, stampSize, stampSize, 0);
     if (!hIcon) {
         MessageBox(hWnd, L"아이콘을 로드할 수 없습니다.", L"Error", MB_OK | MB_ICONERROR);
         ReleaseDC(hWnd, hdc);
         return;
     }
 
-    // 아이콘을 커서로 사용
-    HCURSOR hCursor = CopyIcon(hIcon);
-    if (!hCursor) {
-        MessageBox(hWnd, L"커서를 복사할 수 없습니다.", L"Error", MB_OK | MB_ICONERROR);
-        DestroyIcon(hIcon);
-        ReleaseDC(hWnd, hdc);
-        return;
-    }
-
-    SetCursor(hCursor);  // 커서 변경
-
-    switch (message)
-    {
+    switch (message) {
     case WM_LBUTTONDOWN:
         stampX = x;
         stampY = y;
 
-        // 아이콘을 특정 영역에 그리기
-        DrawIconEx(hdc, stampX - stampWidth / 2, stampY - stampHeight / 2, hIcon, stampWidth, stampHeight, 0, NULL, DI_NORMAL);
+        // 아이콘을 그리기
+        drawIcon(hdc, stampX, stampY, hIcon);
 
-        //replay cpp 확인 바람
-        g_Pen_Info.penCoordinate = lParam;              // 마우스 x, y 좌표 (lParam) 
-        //g_Pen_Info.penWidth = pen_Width;                // 펜 굵기 (기본 값 10)
-        //g_Pen_Info.penColor = pen_Color;                // 펜 색상 (기본 값 RGB(0, 0, 0))
-        g_Pen_Info.penTime = (DWORD)GetTickCount64();   // 그리기 시간
-        g_Pen_Info.penState = message;                  // 상태 (ex WM_LBUTTONDOWN)
+        // 그리기 정보 저장
+        PEN_INFO g_Pen_Info;
+        g_Pen_Info.penCoordinate = lParam;
+        g_Pen_Info.penTime = (DWORD)GetTickCount64();
+        g_Pen_Info.penState = message;
+        g_Pen_Info.stampImg = stampIcon;
+        g_Pen_Info.stampSize = stampSize;
         g_Pen_Info.test = true;
-        g_Pen_Info.img = stampIcon;
-        // 벡터 변수에 위 구조체 데이터 PUSH
-        penMemory.push_back(g_Pen_Info);
 
+        // 펜 정보 벡터에 저장
+        penMemory.push_back(g_Pen_Info);
         break;
 
     case WM_MOUSEMOVE:
@@ -70,13 +47,15 @@ void stamp(HWND hWnd, UINT message, LPARAM lParam, INT stampIcon) {
         break;
 
     case WM_LBUTTONUP:
+        // 여기서 추가 기능을 구현할 수 있습니다.
         break;
     }
 
     ReleaseDC(hWnd, hdc);
-
-    // 리소스 해제
-    DestroyCursor(hCursor);  // 커서 해제
-    DestroyIcon(hIcon);      // 아이콘 해제
+    DestroyIcon(hIcon);
 }
 
+void Stamp::drawIcon(HDC hdc, int x, int y, HICON hIcon) {
+    // 아이콘을 중심으로 그리기
+    DrawIconEx(hdc, x - stampSize / 2, y - stampSize / 2, hIcon, stampSize, stampSize, 0, NULL, DI_NORMAL);
+}
