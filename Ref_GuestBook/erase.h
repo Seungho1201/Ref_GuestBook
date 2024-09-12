@@ -2,21 +2,16 @@
 
 #include <iostream>
 #include "framework.h"
-#include "Pen_Str.h"
+#include "Ref_GuestBook.h"
 
 class Eraser {
-
 public:
-    Eraser() = default;
-    ~Eraser() = default;
+    Eraser();
+    void erase(HWND hWnd, vector<Pen_Info>* penMemory);
 
-    Eraser(const Eraser&) = delete;
-    Eraser& operator=(const Eraser&) = delete;
-
-    void erase(HWND hWnd);
+private:
+    RECT paintArea;
 };
 
-
-void erase(HWND hWnd);
 
 

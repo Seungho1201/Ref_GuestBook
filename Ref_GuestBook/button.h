@@ -2,10 +2,8 @@
 @file button.h
 @brief 버튼 관련 클래스 멤버 정의 파일
 */
-
 #pragma once
 #include <windows.h>  /// CreateWindow에 필요한 헤더
-
 
 class MakeButton {
 private:
@@ -20,8 +18,8 @@ private:
 public:
     MakeButton(int x, int y, int width, int height, int func, LPCWSTR text);
 
-    void mkButton();
-    void mkButton(int path);
+    void mkButton(HWND g_Hwnd);
+    void mkButton(HWND g_Hwnd, int path);
 
 private:
     void insertIconImg(LPCWSTR text, int path, HINSTANCE hInst);

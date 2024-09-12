@@ -1,9 +1,10 @@
 #include "file_operations.h"
 
-bool File_Manager::SaveFile(HWND hWnd) {
+bool File_Manager::SaveFile(HWND hWnd, vector<Pen_Info>* penMemory) 
+{
     if (ConfigureDialog(hWnd, OFN_PATHMUSTEXIST | OFN_OVERWRITEPROMPT, fileName, sizeof(fileName))) {
         wsprintf(str, L"%s", OFN.lpstrFile);
-        if (fileOps.save(str)) {            /// FileOperations의 save 메서드 호출
+        if (fileOps.save(str, &*penMemory)) {            /// FileOperations의 save 메서드 호출
             WCHAR successMessage[512];
             wsprintf(successMessage, L"파일이 성공적으로 저장되었습니다.\n경로: %s", str);
             MessageBox(hWnd, successMessage, L"파일 저장 성공", MB_OK);
@@ -17,10 +18,11 @@ bool File_Manager::SaveFile(HWND hWnd) {
     return false;
 }
 
-bool File_Manager::LoadFile(HWND hWnd) {
+bool File_Manager::LoadFile(HWND hWnd, vector<Pen_Info>* penMemory) 
+{
     if (ConfigureDialog(hWnd, OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST, fileOpenName, sizeof(fileOpenName))) {
         wsprintf(str, L"%s", OFN.lpstrFile);
-        if (fileOps.load(str)) {            /// FileOperations의 load 메서드 호출
+        if (fileOps.load(str, &*penMemory, hWnd)) {            /// FileOperations의 load 메서드 호출
             return true;
         }
         else {
@@ -31,8 +33,8 @@ bool File_Manager::LoadFile(HWND hWnd) {
     return false;
 }
 
-bool File_Manager::ConfigureDialog(HWND hWnd, DWORD flags, WCHAR* fileBuffer, DWORD bufferSize) {
-
+bool File_Manager::ConfigureDialog(HWND hWnd, DWORD flags, WCHAR* fileBuffer, DWORD bufferSize) 
+{
     /// OPENFILENAME 구조체 설정
     OFN.lStructSize = sizeof(OPENFILENAME);
     OFN.hwndOwner = hWnd;

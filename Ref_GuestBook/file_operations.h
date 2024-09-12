@@ -14,9 +14,9 @@ public:
     File_Manager(const File_Manager&) = delete;
     File_Manager& operator=(const File_Manager&) = delete;
 
-    bool SaveFile(HWND hWnd);
+    bool SaveFile(HWND hWnd, vector<Pen_Info>* penMemory);
 
-    bool LoadFile(HWND hWnd);
+    bool LoadFile(HWND hWnd, vector<Pen_Info>* penMemory);
 
 private:
     bool ConfigureDialog(HWND hWnd, DWORD flags, WCHAR* fileBuffer, DWORD bufferSize);

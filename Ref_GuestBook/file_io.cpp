@@ -1,11 +1,13 @@
 #include "file_io.h"
 #include "replay.h"
 
-LPARAM lParam;
 
-bool FileOperations::save(const wchar_t* path)
+
+bool FileOperations::save(const wchar_t* path, vector<Pen_Info>* penMemory)
 {
-    if (penMemory.size() < 80) {
+   
+
+    if (penMemory->size() < 80) {
         return false;
     }
 
@@ -13,33 +15,52 @@ bool FileOperations::save(const wchar_t* path)
         return false;
     }
 
-    for (const auto& i : penMemory) {
+    for (const auto& i : *penMemory) {
         this->fs << i.penCoordinate << ' '
             << i.penWidth << ' '
             << i.penColor << ' '
-            << i.penTime << ' '
-            << i.penState << '\n';
+            << i.penTime  << ' '
+            << i.penState << ' '
+            << i.stampOn  << ' '
+            << i.stampImg << ' '
+            << i.stampSize << '\n';
     }
 
     this->fs.close();
     return true;
 }
 
-bool FileOperations::load(const wchar_t* path)
+
+bool FileOperations::load(const wchar_t* path, vector<Pen_Info>* penMemory, HWND g_Hwnd)
 {
+   
     if (!openForRead(path)) {
         return false;
     }
 
-    penMemory.clear();
+    DrawReplay testReplay1;
+
+    penMemory->clear();
 
     PEN_INFO pen_info;
-    while (this->fs >> pen_info.penCoordinate >> pen_info.penWidth >> pen_info.penColor >> pen_info.penTime >> pen_info.penState) {
-        penMemory.push_back(pen_info);
+
+    while (this->fs >> 
+        pen_info.penCoordinate >> 
+        pen_info.penWidth >> 
+        pen_info.penColor >> 
+        pen_info.penTime >> 
+        pen_info.penState >>
+        pen_info.stampOn >>
+        pen_info.stampImg >>
+        pen_info.stampSize) {
+
+        penMemory->push_back(pen_info);
     }
 
     this->fs.close();
-    CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
+    
+
+    //testReplay1.replayThread(g_Hwnd, penMemory);
 
     return true;
 }

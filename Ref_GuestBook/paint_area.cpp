@@ -1,15 +1,23 @@
-#include <windows.h>
 #include "paint_area.h"
 
-void Square(HDC hdc) {
+PaintAreaSquare::PaintAreaSquare() 
+{
+    this->MyPen = CreatePen(PS_SOLID, 3, RGB(0, 0, 0));
+    this->OldPen = nullptr;
+}
 
-     ///사각형 그리기위한 펜 설정 PS_SOLID(선 종류 선택),두께,색상(RGB)값
-     HPEN MyPen = CreatePen(PS_SOLID, 3, RGB(0, 0, 0));
-     HPEN OldPen = (HPEN)SelectObject(hdc, MyPen);
+PaintAreaSquare::~PaintAreaSquare() 
+{
+    if (this->MyPen) {
+        DeleteObject(this->MyPen);  // 소멸자에서 펜 삭제
+    }
+}
 
-     ///사각형 (hdc,left, top, right, bottom)
-     Rectangle(hdc, Rectangle_left, Rectangle_top, Rectangle_right, Rectangle_bottom);
-     SelectObject(hdc, OldPen);
+void PaintAreaSquare::makeSquare(HDC hdc) 
+{
+    this->OldPen = (HPEN)SelectObject(hdc, MyPen);
 
-     DeleteObject(MyPen);
+    ///사각형 (hdc,left, top, right, bottom)
+    Rectangle(hdc, PAINT_R_LEFT, PAINT_R_TOP, PAINT_R_RIGHT, PAINT_R_BOTTOM);
+    SelectObject(hdc, OldPen);   
 }

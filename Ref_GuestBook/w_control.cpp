@@ -1,40 +1,43 @@
-#include <iostream>
-#include "framework.h"
-#include "Pen_Str.h"
-#include "Ref_GuestBook.h"
+#include "w_control.h"
 
-// 변경시 갱신되는 영역 지정
-RECT textRect = { 310 + 100, 15, 340 + 100, 45 };
-extern int pen_Width;
-extern int stamp_Size;
-extern bool stampActive;
+PenWidthControl::PenWidthControl() {
+    this->textRect = { WIDTH_R_LEFT, 
+                       WIDTH_R_TOP, 
+                       WIDTH_R_RIGHT,
+                       WIDTH_R_BOTTOM };
+}
 
-// 펜 굵기 변경 함수 (HWND, 실행 값)
-void w_Control(HWND g_Hwnd, int con)
+void PenWidthControl::widthControl(HWND g_Hwnd, int func, int* pen_Width, int* stamp_Size, bool* stampActive)
 {
-    switch (con)
+    switch (func)
     {
     case W_UP:
         // 펜 최대 굵기는 20
-        if (pen_Width == 20) { break; }
-        if (stamp_Size == 100) { break; }
+        if (*pen_Width == 20)   { break; }
+        if (*stamp_Size == 100) { break; }
 
-        if (stampActive == true) { stamp_Size += 10; }
-        else { pen_Width += 1; }
+        if (*stampActive == true) { 
+            *stamp_Size += 10; 
+        } else { 
+            *pen_Width += 1; 
+        }
 
-        InvalidateRect(g_Hwnd, &textRect, TRUE);  // 텍스트 영역만 무효화
+        InvalidateRect(g_Hwnd, &this->textRect, TRUE);  // 텍스트 영역만 무효화
         UpdateWindow(g_Hwnd);
+
         break;
 
     case W_DOWN:
         // 펜 최소 굵기는 1
-        if (pen_Width == 1) { break; }
-        if (stamp_Size == 10) { break; }
+        if (*pen_Width == 1)   { break; }
+        if (*stamp_Size == 10) { break; }
 
-        if (stampActive == true) { stamp_Size -= 10; }
-        else { pen_Width -= 1; }
-        
-        InvalidateRect(g_Hwnd, &textRect, TRUE);  // 텍스트 영역만 무효화
+        if (*stampActive == true) { 
+            *stamp_Size -= 10; 
+        } else {
+            *pen_Width -= 1; 
+        }
+        InvalidateRect(g_Hwnd, &this->textRect, TRUE);  // 텍스트 영역만 무효화
         UpdateWindow(g_Hwnd);
         break;
     }

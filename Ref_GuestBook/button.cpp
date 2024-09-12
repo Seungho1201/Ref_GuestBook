@@ -2,12 +2,9 @@
 @file button.cpp
 @brief 버튼 생성 관련 클래스 외부 정의 파일
 */
-
 #include "button.h"
 
-extern HWND g_Hwnd;
-
-/**
+/*
 @fn  MakeButton::MakeButton(int x, int y, int width, int height, int func, LPCWSTR text)
 @brief 버튼 클래스 생성자
 @param x 버튼의 x 좌표
@@ -24,7 +21,9 @@ MakeButton::MakeButton(int x, int y, int width, int height, int func, LPCWSTR te
     this->height = height;
     this->func = func;
     this->text = text;
+    this->hButton = nullptr;
 }
+
 
 /// <summary>
 /// 버튼 구현은 두가지로 나뉜다
@@ -42,8 +41,11 @@ MakeButton::MakeButton(int x, int y, int width, int height, int func, LPCWSTR te
 /**
 @fn  MakeButton::mkButton()
 @brief 버튼 클래스의 버튼 생성 메서드
+@param g_Hwnd 윈도우 핸들
 */
-void MakeButton::mkButton() {
+void MakeButton::mkButton(HWND g_Hwnd) {
+    this->hButton = g_Hwnd;
+
     /// CreateWindow 함수로 버튼 생성
     CreateWindow(
         L"BUTTON",                                                          // 버튼 클래스 이름
@@ -53,9 +55,9 @@ void MakeButton::mkButton() {
         y,                                                                  // 버튼의 y 위치
         width,                                                              // 버튼의 폭
         height,                                                             // 버튼의 높이
-        g_Hwnd,                                                             // 부모 윈도우 핸들
+        this->hButton,                                                             // 부모 윈도우 핸들
         (HMENU)func,                                                        // 버튼의 ID
-        (HINSTANCE)GetWindowLongPtr(g_Hwnd, GWLP_HINSTANCE),                // 인스턴스 핸들
+        (HINSTANCE)GetWindowLongPtr(this->hButton, GWLP_HINSTANCE),                // 인스턴스 핸들
         NULL                                                                // 추가 매개변수
     );
 }
@@ -64,9 +66,12 @@ void MakeButton::mkButton() {
 @fn   MakeButton::mkButton(int path)
 @brief 버튼 클래스의 이미지 버튼 생성 메서드
 @details 이 메서드는 지정된 리소스 경로의 이미지를 사용하여 버튼을 생성
+@param g_Hwnd 윈도우 핸들
 @param path 버튼에 삽입될 비트맵 이미지 경로 (resource.h)
 */
-void MakeButton::mkButton(int path) {
+void MakeButton::mkButton(HWND g_Hwnd, int path) {
+    this->hButton = g_Hwnd;
+
     CreateWindow(
         L"BUTTON",                                                          // 버튼 클래스 이름
         text,                                                               // 버튼 텍스트
@@ -75,13 +80,13 @@ void MakeButton::mkButton(int path) {
         y,                                                                  // 버튼의 y 위치
         width,                                                              // 버튼의 폭
         height,                                                             // 버튼의 높이
-        g_Hwnd,                                                             // 부모 윈도우 핸들
+        this->hButton,                                                             // 부모 윈도우 핸들
         (HMENU)func,                                                        // 버튼의 ID
-        (HINSTANCE)GetWindowLongPtr(g_Hwnd, GWLP_HINSTANCE),                // 인스턴스 핸들
+        (HINSTANCE)GetWindowLongPtr(this->hButton, GWLP_HINSTANCE),                // 인스턴스 핸들
         NULL                                                                // 추가 매개변수
     );
 
-    insertIconImg(text, path, (HINSTANCE)GetWindowLongPtr(g_Hwnd, GWLP_HINSTANCE));
+    insertIconImg(text, path, (HINSTANCE)GetWindowLongPtr(this->hButton, GWLP_HINSTANCE));
 }
 
 /**
@@ -105,7 +110,7 @@ void MakeButton::insertIconImg(LPCWSTR text, int path, HINSTANCE hInst)
 
     /// 버튼에 아이콘 설정 함수
     SendMessageW(
-        FindWindowExW(g_Hwnd, NULL, L"BUTTON", text),   /// 버튼의 핸들을 찾습니다.
+        FindWindowExW(this->hButton, NULL, L"BUTTON", text),   /// 버튼의 핸들을 찾습니다.
         BM_SETIMAGE,                                    /// 버튼에 이미지를 설정하는 메시지
         IMAGE_ICON,                                     /// 이미지 유형이 아이콘임을 지정
         (LPARAM)hIcon                                   /// 설정할 아이콘

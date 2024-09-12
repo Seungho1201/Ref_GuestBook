@@ -155,6 +155,7 @@
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="replay.cpp" />
     <ClCompile Include="stamp.cpp" />
+    <ClCompile Include="Window_Size.cpp" />
     <ClCompile Include="w_control.cpp" />
   </ItemGroup>
   <ItemGroup>

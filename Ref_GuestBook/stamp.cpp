@@ -1,19 +1,63 @@
 #include "Stamp.h"
-#include <iostream>
 
-Stamp::Stamp(int size, int icon, std::vector<PEN_INFO>& memory)
-    : stampSize(size), stampIcon(icon), penMemory(memory), stampX(0), stampY(0) {}
+Stamp::Stamp(int size, int icon) {
+    this->stampSize = size;
+    this->stampIcon = icon;
+    this->stampX = 0;
+    this->stampY = 0;
+    this->stamptext = { WIDTH_R_LEFT, 
+                        WIDTH_R_TOP, 
+                        WIDTH_R_RIGHT, 
+                        WIDTH_R_BOTTOM };
+}
 
-void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam) {
+void Stamp::changeModeToPen(HWND g_Hwnd, bool* stampActive)
+{
+    /// 스탬프 모드 비활성화
+    *stampActive = false;
+
+    InvalidateRect(g_Hwnd, &this->stamptext, TRUE);  // 텍스트 영역만 무효화
+    UpdateWindow(g_Hwnd);
+}
+
+void Stamp::changeModeToStamp(bool* stampActive, HWND g_Hwnd, int* stampIcon, int wParam)
+{
+    /// 스탬프 모드 비활성화일시 활성화
+    if (!*stampActive) {
+        *stampActive = true;
+    }
+
+    InvalidateRect(g_Hwnd, &this->stamptext, TRUE);  // 텍스트 영역만 무효화
+    UpdateWindow(g_Hwnd);
+
+    switch (wParam) 
+    {
+    case HEART_STAMP:
+        *stampIcon = IDI_HEART_ICON;
+        break;
+    case UH_STAMP:
+        *stampIcon = IDI_UH_ICON;
+        break;
+    case YUHAN_STAMP:
+        *stampIcon = IDI_YUHAN_ICON;
+        break;
+    case YONGBIN_STAMP:
+        *stampIcon = IDI_YONGBIN_ICON;
+        break;
+    }
+
+    
+}
+
+void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam, std::vector<PEN_INFO>* penMemory) {
+
     int x = LOWORD(lParam);
     int y = HIWORD(lParam);
     HDC hdc = GetDC(hWnd);
 
-    InvalidateRect(hWnd, &stamptext, TRUE);  // 텍스트 영역만 무효화
-    UpdateWindow(hWnd);
-
     // 아이콘 로드 및 크기 조정
-    HICON hIcon = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(stampIcon), IMAGE_ICON, stampSize, stampSize, 0);
+    HICON hIcon = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(this->stampIcon), IMAGE_ICON, stampSize, stampSize, 0);
+    
     if (!hIcon) {
         MessageBox(hWnd, L"아이콘을 로드할 수 없습니다.", L"Error", MB_OK | MB_ICONERROR);
         ReleaseDC(hWnd, hdc);
@@ -21,7 +65,16 @@ void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam) {
     }
 
     switch (message) {
+
     case WM_LBUTTONDOWN:
+        ///마우스 x,y 좌표기준 그리기 영역지정
+        if (HIWORD(lParam)    <= PAINT_R_TOP    + 45
+            || HIWORD(lParam) >= PAINT_R_BOTTOM - 45
+            || LOWORD(lParam) < PAINT_R_LEFT    + 45
+            || LOWORD(lParam) > PAINT_R_RIGHT   - 45) {
+            break;
+        }
+
         stampX = x;
         stampY = y;
 
@@ -30,15 +83,19 @@ void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam) {
 
         // 그리기 정보 저장
         PEN_INFO g_Pen_Info;
+
         g_Pen_Info.penCoordinate = lParam;
+        g_Pen_Info.penWidth = 0;
+        g_Pen_Info.penColor = 0;
         g_Pen_Info.penTime = (DWORD)GetTickCount64();
         g_Pen_Info.penState = message;
+
+        g_Pen_Info.stampOn = true;
         g_Pen_Info.stampImg = stampIcon;
         g_Pen_Info.stampSize = stampSize;
-        g_Pen_Info.test = true;
 
         // 펜 정보 벡터에 저장
-        penMemory.push_back(g_Pen_Info);
+        penMemory->push_back(g_Pen_Info);
         break;
 
     case WM_MOUSEMOVE:

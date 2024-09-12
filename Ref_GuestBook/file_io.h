@@ -8,14 +8,16 @@ using namespace std;
 
 class FileOperations {
 public:
-    bool save(const wchar_t* path);
-    bool load(const wchar_t* path);
+
+    bool save(const wchar_t* path, vector<Pen_Info>* penMemory);
+    bool load(const wchar_t* path, vector<Pen_Info>* penMemory, HWND g_Hwnd);
 
 private:
+
+    LPARAM lParam;
+    std::fstream fs; 
+
     bool openForWrite(const wchar_t* path);
     bool openForRead(const wchar_t* path);
-    std::fstream fs; 
 };
 
-extern vector<PEN_INFO> penMemory;
-extern LPARAM lParam;
