@@ -1,20 +1,14 @@
 #include "file_io.h"
-#include "replay.h"
-
 
 
 bool FileOperations::save(const wchar_t* path, vector<Pen_Info>* penMemory)
 {
-   
-
     if (penMemory->size() < 80) {
         return false;
     }
-
     if (!openForWrite(path)) {
         return false;
     }
-
     for (const auto& i : *penMemory) {
         this->fs << i.penCoordinate << ' '
             << i.penWidth << ' '
@@ -25,7 +19,6 @@ bool FileOperations::save(const wchar_t* path, vector<Pen_Info>* penMemory)
             << i.stampImg << ' '
             << i.stampSize << '\n';
     }
-
     this->fs.close();
     return true;
 }
@@ -33,13 +26,11 @@ bool FileOperations::save(const wchar_t* path, vector<Pen_Info>* penMemory)
 
 bool FileOperations::load(const wchar_t* path, vector<Pen_Info>* penMemory, HWND g_Hwnd)
 {
+    RECT paintAreaLoad = { 10, 120, 1425, 830 };
    
     if (!openForRead(path)) {
         return false;
     }
-
-    DrawReplay testReplay1;
-
     penMemory->clear();
 
     PEN_INFO pen_info;
@@ -56,12 +47,9 @@ bool FileOperations::load(const wchar_t* path, vector<Pen_Info>* penMemory, HWND
 
         penMemory->push_back(pen_info);
     }
-
     this->fs.close();
-    
 
-    //testReplay1.replayThread(g_Hwnd, penMemory);
-
+    InvalidateRect(g_Hwnd, &paintAreaLoad, TRUE);
     return true;
 }
 

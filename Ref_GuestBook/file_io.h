@@ -8,12 +8,10 @@ using namespace std;
 
 class FileOperations {
 public:
-
     bool save(const wchar_t* path, vector<Pen_Info>* penMemory);
     bool load(const wchar_t* path, vector<Pen_Info>* penMemory, HWND g_Hwnd);
 
 private:
-
     LPARAM lParam;
     std::fstream fs; 
 

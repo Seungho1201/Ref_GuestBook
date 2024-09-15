@@ -5,6 +5,7 @@
 #include <commdlg.h>
 #include "file_io.h"
 #include "Pen_Str.h"
+#include "Ref_GuestBook.h"
 
 class File_Manager {
 public:
@@ -17,6 +18,8 @@ public:
     bool SaveFile(HWND hWnd, vector<Pen_Info>* penMemory);
 
     bool LoadFile(HWND hWnd, vector<Pen_Info>* penMemory);
+
+    void selectFileMode(int wmId, HWND g_Hwnd, vector<Pen_Info>* penMemory);
 
 private:
     bool ConfigureDialog(HWND hWnd, DWORD flags, WCHAR* fileBuffer, DWORD bufferSize);

@@ -1,8 +1,8 @@
 /**
-@file drawline.cpp
+@file DrawFunc.cpp
 @brief 그리기 관련  코드
 */
-#include "drawline.h"
+#include "DrawFunc.h"
 
 /*
 @fn  PenDraw::PenDraw()
@@ -18,7 +18,8 @@ PenDraw::PenDraw() {
     this->x = 0;
     this->y = 0;
     this->s_Hdc = nullptr;
-
+    this->penStay = true;
+    this->paint_area = { PAINT_R_LEFT,PAINT_R_TOP, PAINT_R_RIGHT, PAINT_R_BOTTOM };
 }
 
 /*
@@ -34,7 +35,6 @@ PenDraw::PenDraw() {
 */
 void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, PEN_INFO* g_Pen_Info, vector<PEN_INFO>* penMemory)
 {
-
     x = LOWORD(lParam);
     y = HIWORD(lParam);
     hdc = GetDC(hWnd);
@@ -85,9 +85,7 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
         if (HIWORD(lParam) <= PAINT_R_TOP       + 5
             || HIWORD(lParam) >= PAINT_R_BOTTOM - 5
             || LOWORD(lParam) < PAINT_R_LEFT    + 5
-            || LOWORD(lParam) > PAINT_R_RIGHT   - 5)
-        {
-
+            || LOWORD(lParam) > PAINT_R_RIGHT   - 5) {
             drawStart = false;
             break;
         }
@@ -102,7 +100,7 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
 
             // 각 LBUTTON state 별 데이터 구조체에 저장
             g_Pen_Info->penCoordinate = lParam;              // 마우스 x, y 좌표 (lParam) 
-            g_Pen_Info->penWidth = *pen_Width;                // 펜 굵기 (기본 값 10)
+            g_Pen_Info->penWidth = *pen_Width;               // 펜 굵기 (기본 값 10)
             g_Pen_Info->penColor = *pen_Color;               // 펜 색상 (기본 값 RGB(0, 0, 0))
             g_Pen_Info->penTime = (DWORD)GetTickCount64();   // 그리기 시간
             g_Pen_Info->penState = message;                  // 상태 (ex WM_LBUTTONDOWN)
@@ -113,7 +111,6 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
             // 벡터 변수에 위 구조체 데이터 PUSH
             //penMemory->push_back(*g_Pen_Info);
             penMemory->emplace_back(std::move(*g_Pen_Info));
-           
         }
         break;
 
@@ -122,7 +119,7 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
         {
             // 각 LBUTTON state 별 데이터 구조체에 저장
             g_Pen_Info->penCoordinate = lParam;              // 마우스 x, y 좌표 (lParam) 
-            g_Pen_Info->penWidth = *pen_Width;                // 펜 굵기 (기본 값 10)
+            g_Pen_Info->penWidth = *pen_Width;               // 펜 굵기 (기본 값 10)
             g_Pen_Info->penColor = *pen_Color;               // 펜 색상 (기본 값 RGB(0, 0, 0))
             g_Pen_Info->penTime = (DWORD)GetTickCount64();   // 그리기 시간
             g_Pen_Info->penState = message;                  // 상태 (ex WM_LBUTTONDOWN)
@@ -141,7 +138,6 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
         break;
     }
     SelectObject(hdc, osP);
-
     DeleteObject(myP);      // 펜을 삭제
     ReleaseDC(hWnd, hdc);  // HDC 자원 해제
 }
@@ -153,10 +149,14 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
 @param hWnd 윈도우 핸들
 @param penMemory 벡터 변수
 */
-void PenDraw::stayPaint(HDC hdc, HWND hWnd, vector<PEN_INFO>* penMemory) {
+void PenDraw::drawStay(HDC hdc, HWND hWnd, vector<PEN_INFO>* penMemory) {
+
+    /// 그리기 유지 조건이 false일 때 return
+    if (!penStay) { return; }
 
     this->s_Hdc = hdc;
 
+    /// 벡터 데이터 크기 만큼 반복
     for (size_t i = 0; i < penMemory->size(); i++) {
 
         // 포인터를 역참조하여 PEN_INFO 객체에 접근
@@ -165,17 +165,20 @@ void PenDraw::stayPaint(HDC hdc, HWND hWnd, vector<PEN_INFO>* penMemory) {
         myP = CreatePen(PS_SOLID, penInfo.penWidth, penInfo.penColor);
         osP = (HPEN)SelectObject(s_Hdc, myP);
 
+        /// 좌클릭 상태(state)
         switch (penInfo.penState) {
+
         case WM_LBUTTONDOWN:
             x = LOWORD(penInfo.penCoordinate);
             y = HIWORD(penInfo.penCoordinate);
 
+            /// 펜 모드가 아닌 스탬프 모드일 때 스탬프를 그리기 위한 조건문
             if (penInfo.stampOn == true) {
                 int stampX = x;
                 int stampY = y;
                 int stampIcon = penInfo.stampImg;
-                int stampWidth = penInfo.stampSize;   // 원하는 아이콘 너비
-                int stampHeight = penInfo.stampSize;  // 원하는 아이콘 높이
+                int stampWidth = penInfo.stampSize;  
+                int stampHeight = penInfo.stampSize;  
 
                 HICON hIcon = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(stampIcon), IMAGE_ICON, stampWidth, stampHeight, 0);
                 DrawIconEx(hdc, stampX - stampWidth / 2, stampY - stampHeight / 2, hIcon, stampWidth, stampHeight, 0, NULL, DI_NORMAL);
@@ -187,9 +190,6 @@ void PenDraw::stayPaint(HDC hdc, HWND hWnd, vector<PEN_INFO>* penMemory) {
             break;
 
         case WM_MOUSEMOVE:
-            LineTo(hdc, LOWORD(penInfo.penCoordinate), HIWORD(penInfo.penCoordinate));
-            break;
-
         case WM_LBUTTONUP:
             LineTo(hdc, LOWORD(penInfo.penCoordinate), HIWORD(penInfo.penCoordinate));
             break;
@@ -198,8 +198,99 @@ void PenDraw::stayPaint(HDC hdc, HWND hWnd, vector<PEN_INFO>* penMemory) {
             break;
         }
         SelectObject(s_Hdc, osP);
+        DeleteObject(myP);  
+    }
+    ReleaseDC(hWnd, s_Hdc);
+}
+
+/*
+@fn PenDraw::replaythread(HWND g_Hwnd, vector<Pen_Info>* penMemory)
+@brief 리플레이 스레드 호출 메서드
+@param g_Hwnd: 윈도우 핸들
+@param penMemory: main에서 사용되는 벡터 변수에 대한 포인터
+*/
+void PenDraw::replayThread(HWND g_Hwnd, vector<Pen_Info>* penMemory)
+{
+    /// 메인 접근이 아닌 스레드 접근을 위해 벡터 복사
+    copiedMemory = *penMemory;
+
+    /// 람다식 사용
+    /// [this, g_Hwnd] : 람다식의 캡처리스트 (함수 내에서 사용할 외부변수 캡쳐)
+    /// 포인터 사용하여 drwaReplay 실행 
+    startReplayThread = thread([this, g_Hwnd]() { this->drawReplay(g_Hwnd); });
+
+    /// 스레드 반환
+    startReplayThread.detach();
+}
+
+/*
+@fn PenDraw::drawReplay(HWND g_Hwnd)
+@brief 리플레이 스레드로 호출되는 메서드
+@param g_Hwnd: 윈도우 핸들
+*/
+void PenDraw::drawReplay(HWND g_Hwnd)
+{
+    /// WM_PAINT 에서 그리기 유지하는 조건을 리플레이 실행 동안 비활성화
+    this->penStay = false;
+
+    HDC hdc;
+    hdc = GetDC(g_Hwnd);
+  
+    /// 윈도우 그리기 영역(&paint_area) 초기화
+    InvalidateRect(g_Hwnd, &paint_area, TRUE);
+    UpdateWindow(g_Hwnd);
+
+    // 벡터 변수 penMemory를 반복
+    for (size_t i = 0; i < copiedMemory.size(); i++) {
+        myP = CreatePen(PS_SOLID, copiedMemory[i].penWidth, copiedMemory[i].penColor);
+        osP = (HPEN)SelectObject(hdc, myP);
+
+        switch (copiedMemory[i].penState)
+        {
+        case WM_LBUTTONDOWN:
+            x = LOWORD(copiedMemory[i].penCoordinate);
+            y = HIWORD(copiedMemory[i].penCoordinate);
+
+            if (copiedMemory[i].stampOn == true) {
+                int stampX = x;
+                int stampY = y;
+                int stampIcon = copiedMemory[i].stampImg;
+                int stampWidth = copiedMemory[i].stampSize;   // 원하는 아이콘 너비
+                int stampHeight = copiedMemory[i].stampSize;  // 원하는 아이콘 높이
+
+                HICON hIcon = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(stampIcon), IMAGE_ICON, stampWidth, stampHeight, 0);
+                DrawIconEx(hdc, stampX - stampWidth / 2, stampY - stampHeight / 2, hIcon, stampWidth, stampHeight, 0, NULL, DI_NORMAL);
+                Sleep(100);
+                break;
+            }
+
+            MoveToEx(hdc, x, y, NULL);
+            LineTo(hdc, x, y);  // 점찍기
+            break;
+
+        case WM_MOUSEMOVE:
+            LineTo(hdc, LOWORD(copiedMemory[i].penCoordinate), HIWORD(copiedMemory[i].penCoordinate));
+            break;
+
+        case WM_LBUTTONUP:
+            LineTo(hdc, LOWORD(copiedMemory[i].penCoordinate), HIWORD(copiedMemory[i].penCoordinate));
+            break;
+
+        default:
+            break;
+        }
+
+        // 벡터 변수 반복 중단점
+        if (i + 1 < copiedMemory.size() && copiedMemory[i + 1].penState == WM_MOUSEMOVE) {
+            Sleep(copiedMemory[i + 1].penTime - copiedMemory[i].penTime);
+        }
+
+        SelectObject(hdc, osP);
         DeleteObject(myP);  // 리소스 자원 확보 위해 삭제
     }
+    /// 리플레이 기능 종료 시 그리기 유지 활성화
+    this->penStay = true;
 
-    ReleaseDC(hWnd, s_Hdc);
+    ReleaseDC(g_Hwnd, hdc);
+    //return 0;
 }

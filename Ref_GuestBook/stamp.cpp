@@ -25,10 +25,10 @@ void Stamp::changeModeToStamp(bool* stampActive, HWND g_Hwnd, int* stampIcon, in
     /// 스탬프 모드 비활성화일시 활성화
     if (!*stampActive) {
         *stampActive = true;
-    }
 
-    InvalidateRect(g_Hwnd, &this->stamptext, TRUE);  // 텍스트 영역만 무효화
-    UpdateWindow(g_Hwnd);
+        InvalidateRect(g_Hwnd, &this->stamptext, TRUE);  // 텍스트 영역만 무효화
+        UpdateWindow(g_Hwnd);
+    }
 
     switch (wParam) 
     {
@@ -45,8 +45,6 @@ void Stamp::changeModeToStamp(bool* stampActive, HWND g_Hwnd, int* stampIcon, in
         *stampIcon = IDI_YONGBIN_ICON;
         break;
     }
-
-    
 }
 
 void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam, std::vector<PEN_INFO>* penMemory) {

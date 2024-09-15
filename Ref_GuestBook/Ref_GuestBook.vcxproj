@@ -129,14 +129,13 @@
   <ItemGroup>
     <ClInclude Include="button.h" />
     <ClInclude Include="c_color.h" />
-    <ClInclude Include="drawline.h" />
+    <ClInclude Include="DrawFunc.h" />
     <ClInclude Include="erase.h" />
     <ClInclude Include="file_io.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="paint_area.h" />
     <ClInclude Include="Pen_Str.h" />
     <ClInclude Include="Ref_GuestBook.h" />
-    <ClInclude Include="replay.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="file_operations.h" />
     <ClInclude Include="targetver.h" />
@@ -147,13 +146,12 @@
   <ItemGroup>
     <ClCompile Include="button.cpp" />
     <ClCompile Include="c_color.cpp" />
-    <ClCompile Include="drawline.cpp" />
+    <ClCompile Include="DrawFunc.cpp" />
     <ClCompile Include="erase.cpp" />
     <ClCompile Include="file_io.cpp" />
     <ClCompile Include="file_operations.cpp" />
     <ClCompile Include="paint_area.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
-    <ClCompile Include="replay.cpp" />
     <ClCompile Include="stamp.cpp" />
     <ClCompile Include="Window_Size.cpp" />
     <ClCompile Include="w_control.cpp" />

@@ -120,22 +120,12 @@ PaintAreaSquare paintSquare;            /// 그리기 영역 사각형 인스턴
 PenWidthControl penWidthControl;        /// 펜 굵기 조절 관련 인스턴스 선언
 File_Manager fileManager;               /// File_Manager 클래스의 인스턴스 생성
 Eraser eraser;                          /// Eraser 클래스의 인스턴스 생성
-DrawReplay testReplay;
 
 int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
-int stamp_Size = 100;                    // 스탬프 크기 가로, 세로 80으로 정의
-int stampIcon = 132;                    // 스탬프 아이콘 초기값
-bool stampActive = false;               // 스탬프 버틀 활성화 확인
-static Stamp* stampInfo = nullptr;      // Stamp 객체를 저장할 포인터
-
-
-/// <summary>
-/// 버튼 구현 인스턴스 선언은 전역변수로 선언한다.
-/// 생성자의 인자로는 x좌표, y좌표, 너비, 높이, func(해당 기능), 버튼 텍스트(이미지 삽입으로 변경 예정)
-/// 버튼 생성 메서드는 WM_CREATE 레이블에서 선언하며
-/// 해당 기능 작동은 WM_COMMAND에서 정의한다.
-/// 또한 기능 상수는 Ref_GuestBook 헤더파일에 정의한다.
-/// </summary>
+int stamp_Size = 100;                   /// 스탬프 크기 가로, 세로 80으로 정의
+int stampIcon = 132;                    /// 스탬프 아이콘 초기값
+bool stampActive = false;                       /// 스탬프 버튼 활성화 확인
+static Stamp* stampInfo = nullptr;      /// Stamp 객체를 저장할 포인터
 
 /// 기능 기본 버튼
 MakeButton bt_Clear(120, 10, 100, 100, ERASE, L"ERASE");
@@ -177,7 +167,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     case WM_CREATE:
         g_Hwnd = hWnd;
-        //stampInfo = new Stamp(stamp_Size, stampIcon, penMemory);
 
         /// 윈도우 창 생성시 버튼 생성 메서드 실행
         /// 인자 관련 설명은 button.cpp 파일 주석 참고
@@ -225,31 +214,29 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
 
-    /// 버튼으로 구현한 func 상수 기능은 COMMAND 에서 정의한다.
+    /// 버튼으로 구현한 func 기능은 COMMAND 에서 정의한다.
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
             /// 메뉴 선택을 구문 분석합니다:
             switch (wmId)
             {
-            /// 지우기 기능  ============================================
+            /// 지우기 기능
             case ERASE:
                 eraser.erase(hWnd, &penMemory);                                      
                 break;
 
-            /// 리플레이 기능 ============================================
+            /// 리플레이 기능 
             case REPLAY:
-                // 리플레이 기능은 스레드화
-                testReplay.replayThread(g_Hwnd, &penMemory);
-                //CreateThread(NULL, 0, replay, (LPVOID)lParam, 0, NULL);
+                drawInstance.replayThread(g_Hwnd, &penMemory);
                 break;
 
-            /// 펜 모드 (펜, 스탬프) ============================================
+            /// 펜 모드 (펜, 스탬프) 
             case CHANGE_PEN:
                 stampInfo->changeModeToPen(g_Hwnd, &stampActive);
                 break;
 
-            /// 스탬프 관련 case ============================================
+            /// 스탬프 관련 case 
             case HEART_STAMP:
             case UH_STAMP:
             case YUHAN_STAMP:
@@ -257,21 +244,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 stampInfo->changeModeToStamp(&stampActive, g_Hwnd, &stampIcon, wParam);
                 break;
 
-            /// SAVE, LOAD 기능 ============================================
+            /// SAVE, LOAD 기능 
             case SAVE:
-                fileManager.SaveFile(g_Hwnd, &penMemory);         /// 저장하기
-                break;
             case LOAD:
-                fileManager.LoadFile(g_Hwnd, &penMemory);         /// 불러오기
+                fileManager.selectFileMode(wmId, g_Hwnd, &penMemory);
                 break;
 
-            /// 펜 굵기 관련 기능 ============================================
+            /// 펜 굵기 관련 기능
             case W_DOWN:
             case W_UP:
                 penWidthControl.widthControl(g_Hwnd, wmId, &pen_Width, &stamp_Size, &stampActive);            /// 펜 굵기 조절
                 break;
 
-            /// 펜 색상 변경 기능 ============================================
+            /// 펜 색상 변경 기능
             case C_RED:
             case C_ORANGE:
             case C_YELLOW:
@@ -300,13 +285,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        WCHAR szPenWidth[10] = {};
-        /// 스탬프 모드일 때 스탬프 사이즈를 출력하며 아닐시 펜 굵기를 출력한다
-        wsprintf(szPenWidth, L"%d", stampActive ? (stamp_Size / 10) : pen_Width);
-        TextOut(hdc, 420, 15, szPenWidth, lstrlen(szPenWidth)); // 위치 (420, 15)에 출력
+        penWidthControl.penWidthDisplay(hdc, &stampActive, &stamp_Size, &pen_Width);
 
+        /// 그리기 영역 사각형 그리기
         paintSquare.makeSquare(hdc);
-        //drawInstance.stayPaint(hdc, g_Hwnd, &penMemory);
+        /// 그리기 한 벡터 데이터 그리기 유지
+        drawInstance.drawStay(hdc, g_Hwnd, &penMemory);
         
         EndPaint(hWnd, &ps);
         break;
@@ -318,6 +302,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
+
     return 0;
 }
 /// 정보 대화 상자의 메시지 처리기입니다.

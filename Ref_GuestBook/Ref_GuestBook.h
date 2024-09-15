@@ -2,7 +2,7 @@
 
 #include "resource.h"
 #include "Pen_Str.h"
-#include "drawline.h"
+#include "DrawFunc.h"
 #include "replay.h"
 #include "button.h"
 #include "erase.h"
