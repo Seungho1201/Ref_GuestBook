@@ -21,7 +21,7 @@ Eraser::Eraser() {
 @param hWnd 윈도우 핸들
 @param penMemory 지우기 기능과 동시에 벡터변수 초기화를 위한 포인터 인자
 */
-void Eraser::erase(HWND hWnd, vector<Pen_Info>* penMemory)
+void Eraser::erase(HWND hWnd, std::vector<Pen_Info>* penMemory)
 {
     /// 벡터 변수 초기화
     penMemory->clear();

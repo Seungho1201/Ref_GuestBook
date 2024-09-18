@@ -1,11 +1,11 @@
-/// file_operations.h
 #pragma once
 
 #include <Windows.h>
 #include <commdlg.h>
-#include "file_io.h"
+#include <vector>
 #include "Pen_Str.h"
-#include "Ref_GuestBook.h"
+#include "Resource.h"
+#include "file_io.h"
 
 class File_Manager {
 public:
@@ -15,11 +15,11 @@ public:
     File_Manager(const File_Manager&) = delete;
     File_Manager& operator=(const File_Manager&) = delete;
 
-    bool SaveFile(HWND hWnd, vector<Pen_Info>* penMemory);
+    bool SaveFile(HWND hWnd, std::vector<Pen_Info>* penMemory);
 
-    bool LoadFile(HWND hWnd, vector<Pen_Info>* penMemory);
+    bool LoadFile(HWND hWnd, std::vector<Pen_Info>* penMemory);
 
-    void selectFileMode(int wmId, HWND g_Hwnd, vector<Pen_Info>* penMemory);
+    void selectFileMode(int wmId, HWND g_Hwnd, std::vector<Pen_Info>* penMemory);
 
 private:
     bool ConfigureDialog(HWND hWnd, DWORD flags, WCHAR* fileBuffer, DWORD bufferSize);
@@ -30,4 +30,5 @@ private:
     WCHAR str[256] = { 0 };             /// 파일 경로를 저장
 
     FileOperations fileOps;             /// FileOperations 객체
+
 };

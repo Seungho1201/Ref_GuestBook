@@ -1,6 +1,6 @@
 #pragma once
 #include <windows.h>
-#include "Ref_GuestBook.h"
+#include "Resource.h"
 
 
 class PaintAreaSquare {

@@ -16,7 +16,7 @@ void Stamp::changeModeToPen(HWND g_Hwnd, bool* stampActive)
     /// 스탬프 모드 비활성화
     *stampActive = false;
 
-    InvalidateRect(g_Hwnd, &this->stamptext, TRUE);  // 텍스트 영역만 무효화
+    InvalidateRect(g_Hwnd, &this->stamptext, TRUE); 
     UpdateWindow(g_Hwnd);
 }
 
@@ -30,6 +30,7 @@ void Stamp::changeModeToStamp(bool* stampActive, HWND g_Hwnd, int* stampIcon, in
         UpdateWindow(g_Hwnd);
     }
 
+    /// 버튼 클릭한 func 값
     switch (wParam) 
     {
     case HEART_STAMP:
@@ -61,6 +62,9 @@ void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam, std::vector<PEN_
         ReleaseDC(hWnd, hdc);
         return;
     }
+
+    /// DrawFunc의 리플레이 메서드가 실행중일시 스탬프 기능 일시 정지
+    if (PenDraw::isReplay) { return; }
 
     switch (message) {
 

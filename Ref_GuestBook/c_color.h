@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <iostream>
 #include "framework.h"
-#include "Ref_GuestBook.h"
+#include "Resource.h"
 
 class PenColorManager {
 

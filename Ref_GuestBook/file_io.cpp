@@ -1,7 +1,7 @@
 #include "file_io.h"
 
 
-bool FileOperations::save(const wchar_t* path, vector<Pen_Info>* penMemory)
+bool FileOperations::save(const wchar_t* path, std::vector<Pen_Info>* penMemory)
 {
     if (penMemory->size() < 80) {
         return false;
@@ -24,9 +24,9 @@ bool FileOperations::save(const wchar_t* path, vector<Pen_Info>* penMemory)
 }
 
 
-bool FileOperations::load(const wchar_t* path, vector<Pen_Info>* penMemory, HWND g_Hwnd)
+bool FileOperations::load(const wchar_t* path, std::vector<Pen_Info>* penMemory, HWND g_Hwnd)
 {
-    RECT paintAreaLoad = { 10, 120, 1425, 830 };
+    RECT paintAreaLoad = { PAINT_R_LEFT, PAINT_R_TOP, PAINT_R_RIGHT, PAINT_R_BOTTOM };
    
     if (!openForRead(path)) {
         return false;

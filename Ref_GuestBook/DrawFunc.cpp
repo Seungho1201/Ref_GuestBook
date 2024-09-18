@@ -9,18 +9,23 @@
 @brief 그리기 기능 코드 생성자
 */
 PenDraw::PenDraw() {
+    this->x = 0;
+    this->y = 0;
+    this->preX = 0;
+    this->preY = 0;
     this->hdc = nullptr;
     this->myP = nullptr;
     this->osP = nullptr;
     this->drawStart = false;
-    this->preX = 0;
-    this->preY = 0;
-    this->x = 0;
-    this->y = 0;
     this->s_Hdc = nullptr;
     this->penStay = true;
-    this->paint_area = { PAINT_R_LEFT,PAINT_R_TOP, PAINT_R_RIGHT, PAINT_R_BOTTOM };
+    this->paint_area = { PAINT_R_LEFT,
+                         PAINT_R_TOP,
+                         PAINT_R_RIGHT, 
+                         PAINT_R_BOTTOM };
 }
+
+bool PenDraw::isReplay = false;     /// static 변수 외부 초기화
 
 /*
 @fn  PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, PEN_INFO* g_Pen_Info, vector<PEN_INFO>* penMemory)
@@ -33,8 +38,11 @@ PenDraw::PenDraw() {
 @param g_Pen_Info 구조체 관련 포인터 변수
 @param penMemory 구조체 데이터를 저장할 벡터 변수
 */
-void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, PEN_INFO* g_Pen_Info, vector<PEN_INFO>* penMemory)
+void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, PEN_INFO* g_Pen_Info, std::vector<PEN_INFO>* penMemory)
 {
+    /// 리플레이 스레드 작동시 그리기 기능을 정지
+    if (this->isReplay) { return; }
+
     x = LOWORD(lParam);
     y = HIWORD(lParam);
     hdc = GetDC(hWnd);
@@ -45,7 +53,7 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
     switch (message)
     {
     case WM_LBUTTONDOWN:
-
+        /// 그리기 영역이 아닐 시 break
         if (HIWORD(lParam)    <= PAINT_R_TOP    + 5
             || HIWORD(lParam) >= PAINT_R_BOTTOM - 5
             || LOWORD(lParam) <  PAINT_R_LEFT   + 5
@@ -62,12 +70,13 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
         this->drawStart = true;
 
         // 각 LBUTTON state 별 데이터 구조체에 저장
-        g_Pen_Info->penCoordinate = lParam;              // 마우스 x, y 좌표 (lParam) 
-        g_Pen_Info->penWidth = *pen_Width;                // 펜 굵기 (기본 값 10)
-        g_Pen_Info->penColor = *pen_Color;               // 펜 색상 (기본 값 RGB(0, 0, 0))
-        g_Pen_Info->penTime = (DWORD)GetTickCount64();   // 그리기 시간
-        g_Pen_Info->penState = message;                  // 상태 (ex WM_LBUTTONDOWN)
+        g_Pen_Info->penCoordinate = lParam;              /// 마우스 x, y 좌표 (lParam) 
+        g_Pen_Info->penWidth = *pen_Width;               /// 펜 굵기 (기본 값 10)
+        g_Pen_Info->penColor = *pen_Color;               /// 펜 색상 (기본 값 RGB(0, 0, 0))
+        g_Pen_Info->penTime = (DWORD)GetTickCount64();   /// 그리기 시간
+        g_Pen_Info->penState = message;                  /// 상태 (ex WM_LBUTTONDOWN)
 
+        /// 펜 모드일 때 스탬프 관련 벡터 데이터는 0(false)로 초기화
         g_Pen_Info->stampOn = false;
         g_Pen_Info->stampImg = 0;
         g_Pen_Info->stampSize = 0;
@@ -86,6 +95,7 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
             || HIWORD(lParam) >= PAINT_R_BOTTOM - 5
             || LOWORD(lParam) < PAINT_R_LEFT    + 5
             || LOWORD(lParam) > PAINT_R_RIGHT   - 5) {
+            /// 그리기 영역을 넘어가는 순간 그리기 체크용 변수(drawStart) false
             drawStart = false;
             break;
         }
@@ -95,21 +105,22 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
             MoveToEx(hdc, this->preX, this->preY, NULL);
             LineTo(hdc, x, y);
 
+            /// 이전 좌표 갱신
             this->preX = x;
             this->preY = y;
 
             // 각 LBUTTON state 별 데이터 구조체에 저장
-            g_Pen_Info->penCoordinate = lParam;              // 마우스 x, y 좌표 (lParam) 
-            g_Pen_Info->penWidth = *pen_Width;               // 펜 굵기 (기본 값 10)
-            g_Pen_Info->penColor = *pen_Color;               // 펜 색상 (기본 값 RGB(0, 0, 0))
-            g_Pen_Info->penTime = (DWORD)GetTickCount64();   // 그리기 시간
-            g_Pen_Info->penState = message;                  // 상태 (ex WM_LBUTTONDOWN)
+            g_Pen_Info->penCoordinate = lParam;              /// 마우스 x, y 좌표 (lParam) 
+            g_Pen_Info->penWidth = *pen_Width;               /// 펜 굵기 (기본 값 10)
+            g_Pen_Info->penColor = *pen_Color;               /// 펜 색상 (기본 값 RGB(0, 0, 0))
+            g_Pen_Info->penTime = (DWORD)GetTickCount64();   /// 그리기 시간
+            g_Pen_Info->penState = message;                  /// 상태 (ex WM_LBUTTONDOWN)
 
             g_Pen_Info->stampOn = false;
             g_Pen_Info->stampImg = 0;
             g_Pen_Info->stampSize = 0;
-            // 벡터 변수에 위 구조체 데이터 PUSH
-            //penMemory->push_back(*g_Pen_Info);
+
+            /// 벡터 변수에 위 구조체 데이터 PUSH
             penMemory->emplace_back(std::move(*g_Pen_Info));
         }
         break;
@@ -128,18 +139,18 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
             g_Pen_Info->stampImg = 0;
             g_Pen_Info->stampSize = 0;
 
-            // 벡터 변수에 위 구조체 데이터 PUSH
-            //penMemory->push_back(*g_Pen_Info);
+            /// 벡터 변수에 위 구조체 데이터 PUSH
             penMemory->emplace_back(std::move(*g_Pen_Info));
 
+            /// 좌클릭 상태가 아닐시 그리기 여부 변수를 false로 함
             this->drawStart = false;
             break;
         }
         break;
     }
     SelectObject(hdc, osP);
-    DeleteObject(myP);      // 펜을 삭제
-    ReleaseDC(hWnd, hdc);  // HDC 자원 해제
+    DeleteObject(myP);      
+    ReleaseDC(hWnd, hdc);  
 }
 
 /*
@@ -149,17 +160,19 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
 @param hWnd 윈도우 핸들
 @param penMemory 벡터 변수
 */
-void PenDraw::drawStay(HDC hdc, HWND hWnd, vector<PEN_INFO>* penMemory) {
+void PenDraw::drawStay(HDC hdc, HWND hWnd, std::vector<PEN_INFO>* penMemory) {
 
     /// 그리기 유지 조건이 false일 때 return
     if (!penStay) { return; }
 
+
+    /// WM_PAINT 의 hdc를 받아옴
     this->s_Hdc = hdc;
 
     /// 벡터 데이터 크기 만큼 반복
     for (size_t i = 0; i < penMemory->size(); i++) {
 
-        // 포인터를 역참조하여 PEN_INFO 객체에 접근
+        /// 포인터를 역참조하여 PEN_INFO 객체에 접근
         PEN_INFO& penInfo = (*penMemory)[i];
 
         myP = CreatePen(PS_SOLID, penInfo.penWidth, penInfo.penColor);
@@ -209,15 +222,18 @@ void PenDraw::drawStay(HDC hdc, HWND hWnd, vector<PEN_INFO>* penMemory) {
 @param g_Hwnd: 윈도우 핸들
 @param penMemory: main에서 사용되는 벡터 변수에 대한 포인터
 */
-void PenDraw::replayThread(HWND g_Hwnd, vector<Pen_Info>* penMemory)
+void PenDraw::replayThread(HWND g_Hwnd, std::vector<Pen_Info>* penMemory)
 {
+    /// 리플레이 실행 중일땐 스레드 생성을 막음
+    if (this->isReplay) { return; }
+
     /// 메인 접근이 아닌 스레드 접근을 위해 벡터 복사
     copiedMemory = *penMemory;
 
     /// 람다식 사용
     /// [this, g_Hwnd] : 람다식의 캡처리스트 (함수 내에서 사용할 외부변수 캡쳐)
     /// 포인터 사용하여 drwaReplay 실행 
-    startReplayThread = thread([this, g_Hwnd]() { this->drawReplay(g_Hwnd); });
+    startReplayThread = std::thread([this, g_Hwnd]() { this->drawReplay(g_Hwnd); });
 
     /// 스레드 반환
     startReplayThread.detach();
@@ -230,8 +246,11 @@ void PenDraw::replayThread(HWND g_Hwnd, vector<Pen_Info>* penMemory)
 */
 void PenDraw::drawReplay(HWND g_Hwnd)
 {
+
+
     /// WM_PAINT 에서 그리기 유지하는 조건을 리플레이 실행 동안 비활성화
     this->penStay = false;
+    this->isReplay = true;
 
     HDC hdc;
     hdc = GetDC(g_Hwnd);
@@ -290,7 +309,7 @@ void PenDraw::drawReplay(HWND g_Hwnd)
     }
     /// 리플레이 기능 종료 시 그리기 유지 활성화
     this->penStay = true;
-
+    this->isReplay = false;
     ReleaseDC(g_Hwnd, hdc);
     //return 0;
 }

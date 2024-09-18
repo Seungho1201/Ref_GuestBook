@@ -6,6 +6,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<Windows.h>
 
+//using namespace std;
+
 typedef struct Pen_Info
 {
     LPARAM      penCoordinate;     // ÁÂÇ¥

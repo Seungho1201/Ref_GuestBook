@@ -108,9 +108,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 ///  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 
 /// 전역변수 정의
-vector<PEN_INFO> penMemory;             /// 펜 구조체 정보 저장 벡터 변수 전역변수 정의
+std::vector<PEN_INFO> penMemory;        /// 펜 구조체 정보 저장 벡터 변수 전역변수 정의
 PEN_INFO g_Pen_Info;                    /// 펜 정보 구조체 전역변수 정의
-COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK
+COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK, RGB(0, 0, 0)
 
 ///  윈도우 핸들 전역변수
 HWND g_Hwnd;                            /// HWND 전역변수 정의
@@ -124,7 +124,7 @@ Eraser eraser;                          /// Eraser 클래스의 인스턴스 생
 int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
 int stamp_Size = 100;                   /// 스탬프 크기 가로, 세로 80으로 정의
 int stampIcon = 132;                    /// 스탬프 아이콘 초기값
-bool stampActive = false;                       /// 스탬프 버튼 활성화 확인
+bool stampActive = false;               /// 스탬프 버튼 활성화 확인
 static Stamp* stampInfo = nullptr;      /// Stamp 객체를 저장할 포인터
 
 /// 기능 기본 버튼
@@ -167,6 +167,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     case WM_CREATE:
         g_Hwnd = hWnd;
+
+        /// stamp 관련 객체 초기화
+        stampInfo = new Stamp(NULL, NULL);
 
         /// 윈도우 창 생성시 버튼 생성 메서드 실행
         /// 인자 관련 설명은 button.cpp 파일 주석 참고
@@ -236,14 +239,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 stampInfo->changeModeToPen(g_Hwnd, &stampActive);
                 break;
 
-            /// 스탬프 관련 case 
-            case HEART_STAMP:
-            case UH_STAMP:
-            case YUHAN_STAMP:
-            case YONGBIN_STAMP:
-                stampInfo->changeModeToStamp(&stampActive, g_Hwnd, &stampIcon, wParam);
-                break;
-
             /// SAVE, LOAD 기능 
             case SAVE:
             case LOAD:
@@ -254,6 +249,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case W_DOWN:
             case W_UP:
                 penWidthControl.widthControl(g_Hwnd, wmId, &pen_Width, &stamp_Size, &stampActive);            /// 펜 굵기 조절
+                break;
+
+            /// 스탬프 관련 case 
+            case HEART_STAMP:
+            case UH_STAMP:
+            case YUHAN_STAMP:
+            case YONGBIN_STAMP:
+                stampInfo->changeModeToStamp(&stampActive, g_Hwnd, &stampIcon, wParam);
                 break;
 
             /// 펜 색상 변경 기능
@@ -285,11 +288,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
+        /// 펜 굵기 표시 메서드
         penWidthControl.penWidthDisplay(hdc, &stampActive, &stamp_Size, &pen_Width);
 
-        /// 그리기 영역 사각형 그리기
+        /// 그리기 영역 사각형 그리기 메서드
         paintSquare.makeSquare(hdc);
-        /// 그리기 한 벡터 데이터 그리기 유지
+        
+        /// 그리기 한 벡터 데이터 그리기 유지 메서드
         drawInstance.drawStay(hdc, g_Hwnd, &penMemory);
         
         EndPaint(hWnd, &ps);

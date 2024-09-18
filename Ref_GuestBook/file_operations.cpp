@@ -1,6 +1,6 @@
 #include "file_operations.h"
 
-void File_Manager::selectFileMode(int wmId, HWND g_Hwnd, vector<Pen_Info>* penMemory)
+void File_Manager::selectFileMode(int wmId, HWND g_Hwnd, std::vector<Pen_Info>* penMemory)
 {
     switch (wmId)
     {
@@ -14,7 +14,7 @@ void File_Manager::selectFileMode(int wmId, HWND g_Hwnd, vector<Pen_Info>* penMe
 }
 
 
-bool File_Manager::SaveFile(HWND hWnd, vector<Pen_Info>* penMemory) 
+bool File_Manager::SaveFile(HWND hWnd, std::vector<Pen_Info>* penMemory)
 {
     if (ConfigureDialog(hWnd, OFN_PATHMUSTEXIST | OFN_OVERWRITEPROMPT, fileName, sizeof(fileName))) {
         wsprintf(str, L"%s", OFN.lpstrFile);
@@ -32,7 +32,7 @@ bool File_Manager::SaveFile(HWND hWnd, vector<Pen_Info>* penMemory)
     return false;
 }
 
-bool File_Manager::LoadFile(HWND hWnd, vector<Pen_Info>* penMemory) 
+bool File_Manager::LoadFile(HWND hWnd, std::vector<Pen_Info>* penMemory)
 {
     if (ConfigureDialog(hWnd, OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST, fileOpenName, sizeof(fileOpenName))) {
         wsprintf(str, L"%s", OFN.lpstrFile);
