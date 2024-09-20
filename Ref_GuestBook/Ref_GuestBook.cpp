@@ -156,9 +156,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     { 
     case WM_GETMINMAXINFO:
-        // 창 크기 고정을 위해 HandleMinMaxInfo 호출
+        /**
+        *창 크기 고정을 위해 HandleMinMaxInfo 호출
+        */
         windowSizeManager.HandleMinMaxInfo(lParam);
         break;
+
+    case WM_SIZE:
+
+        windowSizeManager.HandleWMSize(hWnd, wParam);
+
+        break;
+
 
     case WM_CREATE:
         g_Hwnd = hWnd;
