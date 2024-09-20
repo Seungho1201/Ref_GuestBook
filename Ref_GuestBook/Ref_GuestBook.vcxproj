@@ -147,8 +147,7 @@
     <ClCompile Include="c_color.cpp" />
     <ClCompile Include="DrawFunc.cpp" />
     <ClCompile Include="Erase.cpp" />
-    <ClCompile Include="FileIO.cpp" />
-    <ClCompile Include="FileOperations.cpp" />
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="paint_area.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
     <ClCompile Include="stamp.cpp" />
