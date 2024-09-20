@@ -129,11 +129,17 @@ RECT MakeButton::buttonRectBefore = { 0, 0, 0, 0 };
 
 void MakeButton::getClickHighlight(int wmId, HWND g_Hwnd) 
 {
+    RECT test = { 0, 0, 1450, 120 };
+
     /// 클릭된 버튼의 func값 즉, ID를 저장
     MakeButton::buttonHighlight = wmId;  
 
-    InvalidateRect(g_Hwnd, NULL, TRUE);  // 다시 그리기 요청
-    //InvalidateRect(g_Hwnd, &MakeButton::buttonRectBefore, TRUE);  // 다시 그리기 요청
+    InvalidateRect(g_Hwnd, &test, TRUE);  // 다시 그리기 요청
+
+    //InvalidateRect(g_Hwnd, &MakeButton::buttonRectBefore, TRUE);  // 이전 외곽선 지우기 요청
+    //InvalidateRect(g_Hwnd, &MakeButton::buttonRect, TRUE);  // 새로 그릴 외곽선 요청
+
+    UpdateWindow(g_Hwnd);  // WM_PAINT를 강제로 호출
 }
 
 void MakeButton::setClickHighlight(HDC hdc)
@@ -144,9 +150,9 @@ void MakeButton::setClickHighlight(HDC hdc)
         /// 클릭된 버튼 찾기
         for (auto button : buttonList) {
             /// 클릭한 버튼과 버튼 리스트의 ID가 일치할 때 실행 (클릭된 버튼 찾는 과정) 
-            if (button->func == MakeButton::buttonHighlight) { 
+            if (button->func == MakeButton::buttonHighlight) 
+            { 
                 // 이전 외곽선 좌표 저장 (현재 외곽선을 이전 외곽선으로 저장)
-
                 MakeButton::buttonRectBefore = MakeButton::buttonRect;
 
                 /// 각 버튼의 데이터를 이용하여 RECT 값 저장
