@@ -66,6 +66,8 @@ void MakeButton::mkButton(HWND g_Hwnd)
         (HINSTANCE)GetWindowLongPtr(this->hButton, GWLP_HINSTANCE),                // 인스턴스 핸들
         NULL                                                                // 추가 매개변수
     );
+    /// 점선 테두리 삭제 메세지 전송
+    SendMessage(g_Hwnd, WM_UPDATEUISTATE, MAKELONG(UIS_SET, UISF_HIDEFOCUS), 0);
 }
 
 /**
@@ -93,6 +95,9 @@ void MakeButton::mkButton(HWND g_Hwnd, int path)
         NULL                                                                // 추가 매개변수
     );
     insertIconImg(text, path, (HINSTANCE)GetWindowLongPtr(this->hButton, GWLP_HINSTANCE));
+
+    /// 점선 테두리 삭제 메세지 전송
+    SendMessage(g_Hwnd, WM_UPDATEUISTATE, MAKELONG(UIS_SET, UISF_HIDEFOCUS), 0);
 }
 
 /**
@@ -127,54 +132,50 @@ int MakeButton::buttonHighlight = 0;
 RECT MakeButton::buttonRect = { 0, 0, 0, 0 };
 RECT MakeButton::buttonRectBefore = { 0, 0, 0, 0 };
 
-void MakeButton::getClickHighlight(int wmId, HWND g_Hwnd) 
+void MakeButton::getClickHighlight(int wmId, HWND g_Hwnd)
 {
     RECT test = { 0, 0, 1450, 120 };
 
     /// 클릭된 버튼의 func값 즉, ID를 저장
-    MakeButton::buttonHighlight = wmId;  
+    MakeButton::buttonHighlight = wmId;
 
-    InvalidateRect(g_Hwnd, &test, TRUE);  // 다시 그리기 요청
+    /// 버튼 리스트(std::vector<MakeButton*>)를 반복 
+    for (auto button : buttonList) {
+        /// 버튼 리스트들 중 클릭한 버튼의 ID와 일치하는 데이터 동일 여부 if문
+        if (button->func == MakeButton::buttonHighlight) 
+        {
+            /// 이전 버튼의 좌표 데이터를 갱신
+            MakeButton::buttonRectBefore = MakeButton::buttonRect;
 
-    //InvalidateRect(g_Hwnd, &MakeButton::buttonRectBefore, TRUE);  // 이전 외곽선 지우기 요청
-    //InvalidateRect(g_Hwnd, &MakeButton::buttonRect, TRUE);  // 새로 그릴 외곽선 요청
+            /// 현재 클릭한 버튼의 데이터로 새로 저장
+            MakeButton::buttonRect.left = button->x - 4;
+            MakeButton::buttonRect.top = button->y - 4;
+            MakeButton::buttonRect.right = button->x + button->width + 4;
+            MakeButton::buttonRect.bottom = button->y + button->height + 4;
 
-    UpdateWindow(g_Hwnd);  // WM_PAINT를 강제로 호출
+            break;
+        }
+    }
+    /// 이전 외곽선 지우기 및 새 외곽선 그리기 요청
+    InvalidateRect(g_Hwnd, &MakeButton::buttonRectBefore, TRUE);  
+    InvalidateRect(g_Hwnd, &MakeButton::buttonRect, TRUE); 
+
+    // WM_PAINT를 강제로 호출
+    UpdateWindow(g_Hwnd);
 }
 
 void MakeButton::setClickHighlight(HDC hdc)
 {
-    /// 버튼이 클릭된 경우에만 실행한다
-    if (MakeButton::buttonHighlight != 0) 
-    { 
-        /// 클릭된 버튼 찾기
-        for (auto button : buttonList) {
-            /// 클릭한 버튼과 버튼 리스트의 ID가 일치할 때 실행 (클릭된 버튼 찾는 과정) 
-            if (button->func == MakeButton::buttonHighlight) 
-            { 
-                // 이전 외곽선 좌표 저장 (현재 외곽선을 이전 외곽선으로 저장)
-                MakeButton::buttonRectBefore = MakeButton::buttonRect;
+    /// 굵기 2의 사각형으로 외곽선 생성
+    HPEN hPen = CreatePen(PS_SOLID, 3, RGB(0, 0, 0)); 
+    HPEN oldPen = (HPEN)SelectObject(hdc, hPen);
 
-                /// 각 버튼의 데이터를 이용하여 RECT 값 저장
-                MakeButton::buttonRect.left = button->x - 2;
-                MakeButton::buttonRect.top = button->y - 2;
-                MakeButton::buttonRect.right = button->x + button->width + 3;
-                MakeButton::buttonRect.bottom = button->y + button->height + 3;
+    /// 클릭된 버튼 외곽선 그리기
+    Rectangle(hdc, MakeButton::buttonRect.left,
+                   MakeButton::buttonRect.top, 
+                   MakeButton::buttonRect.right,
+                   MakeButton::buttonRect.bottom);         
 
-                /// 굵기 2의 사각형으로 외곽선 생성
-                HPEN hPen = CreatePen(PS_SOLID, 2, RGB(0, 0, 0)); 
-                HPEN oldPen = (HPEN)SelectObject(hdc, hPen);
-
-                /// 클릭된 버튼 외곽선 그리기
-                Rectangle(hdc, MakeButton::buttonRect.left,
-                               MakeButton::buttonRect.top, 
-                               MakeButton::buttonRect.right,
-                               MakeButton::buttonRect.bottom);
-
-                SelectObject(hdc, oldPen);
-                DeleteObject(hPen);
-                break;  
-            }
-        }
-    }
+    SelectObject(hdc, oldPen);
+    DeleteObject(hPen);            
 }
