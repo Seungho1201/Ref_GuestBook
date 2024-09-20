@@ -82,7 +82,7 @@ void PenWidthControl::penWidthDisplay(HDC Hdc, bool* stampActive, int* stamp_Siz
         wsprintf(szPenWidth, L"%d", *stamp_Size / 10);
     } else {
         // Ææ ±½±â Ãâ·Â
-        wsprintf(szPenWidth, L" %d", *pen_Width);
+        wsprintf(szPenWidth, L"%d", *pen_Width);
     }
     /// Ãâ·Â
     TextOut(wc_Hdc, 420, 15, szPenWidth, lstrlen(szPenWidth)); 
