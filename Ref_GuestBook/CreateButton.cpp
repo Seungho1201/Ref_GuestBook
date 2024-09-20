@@ -2,7 +2,7 @@
 @file button.cpp
 @brief 버튼 생성 관련 클래스 외부 정의 파일
 */
-#include "button.h"
+#include "CreateButton.h"
 
 /// static 멤버 정의
 std::vector<MakeButton*> MakeButton::buttonList;
@@ -128,15 +128,20 @@ void MakeButton::insertIconImg(LPCWSTR text, int path, HINSTANCE hInst)
     );
 }
 
+/// static 변수 초기화 
 int MakeButton::buttonHighlight = 0;
 RECT MakeButton::buttonRect = { 0, 0, 0, 0 };
 RECT MakeButton::buttonRectBefore = { 0, 0, 0, 0 };
 
+/**
+@fn MakeButton::getClickHighlight(int wmId, HWND g_Hwnd)
+@brief 클릭된 버튼의 외곽선 표시 처리 위한 메서드
+@param wmId 클릭된 버튼의 func 값
+@param g_Hwnd 윈도우 핸들
+*/
 void MakeButton::getClickHighlight(int wmId, HWND g_Hwnd)
 {
-    RECT test = { 0, 0, 1450, 120 };
-
-    /// 클릭된 버튼의 func값 즉, ID를 저장
+    /// 클릭된 버튼의 func값 즉, 버튼의 ID를 저장
     MakeButton::buttonHighlight = wmId;
 
     /// 버튼 리스트(std::vector<MakeButton*>)를 반복 
@@ -148,22 +153,28 @@ void MakeButton::getClickHighlight(int wmId, HWND g_Hwnd)
             MakeButton::buttonRectBefore = MakeButton::buttonRect;
 
             /// 현재 클릭한 버튼의 데이터로 새로 저장
-            MakeButton::buttonRect.left = button->x - 4;
-            MakeButton::buttonRect.top = button->y - 4;
-            MakeButton::buttonRect.right = button->x + button->width + 4;
-            MakeButton::buttonRect.bottom = button->y + button->height + 4;
+            /// 버튼의 외곽선을 표시해야 하기에 3 픽셀씩 추가한다
+            MakeButton::buttonRect.left = button->x - 3;
+            MakeButton::buttonRect.top = button->y - 3;
+            MakeButton::buttonRect.right = button->x + button->width + 3;
+            MakeButton::buttonRect.bottom = button->y + button->height + 3;
 
             break;
         }
     }
     /// 이전 외곽선 지우기 및 새 외곽선 그리기 요청
-    InvalidateRect(g_Hwnd, &MakeButton::buttonRectBefore, TRUE);  
-    InvalidateRect(g_Hwnd, &MakeButton::buttonRect, TRUE); 
+    InvalidateRect(g_Hwnd, &MakeButton::buttonRectBefore, TRUE);
+    InvalidateRect(g_Hwnd, &MakeButton::buttonRect, TRUE);
 
     // WM_PAINT를 강제로 호출
     UpdateWindow(g_Hwnd);
 }
 
+/**
+@fn MakeButton::setClickHighlight(HDC hdc)
+@brief 클릭된 버튼의 외곽선 그리기 메서드
+@param hdc 외곽선 표시는 유지되어야 하기 위해 WM_PAINT의 hdc를 받음
+*/
 void MakeButton::setClickHighlight(HDC hdc)
 {
     /// 굵기 2의 사각형으로 외곽선 생성

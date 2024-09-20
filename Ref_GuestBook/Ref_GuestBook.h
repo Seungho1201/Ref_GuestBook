@@ -6,7 +6,7 @@
 #include "Pen_Str.h"
 #include "DrawFunc.h"
 #include "replay.h"
-#include "button.h"
+#include "CreateButton.h"
 #include "erase.h"
 #include "w_control.h"
 #include "file_operations.h"

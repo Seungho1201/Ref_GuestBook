@@ -18,10 +18,10 @@ private:
     HWND hButton;
 
 public:
-    static int buttonHighlight;
-    static RECT buttonRect;
-    static RECT buttonRectBefore;
-    static std::vector<MakeButton*> buttonList;  
+    static int buttonHighlight;                     /// 버튼 ID 구분 위한 변수
+    static RECT buttonRect;                         /// 클릭한 버튼 저장용 변수
+    static RECT buttonRectBefore;                   /// 이전 클릭된 버튼 저장용 변수
+    static std::vector<MakeButton*> buttonList;     /// 버튼을 저장할 벡터 변수
 
     MakeButton(int x, int y, int width, int height, int func, LPCWSTR text);
 
