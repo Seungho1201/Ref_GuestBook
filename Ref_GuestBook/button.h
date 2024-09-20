@@ -4,6 +4,8 @@
 */
 #pragma once
 #include <windows.h>  /// CreateWindow에 필요한 헤더
+#include "framework.h"
+#include "Resource.h"
 
 class MakeButton {
 private:
@@ -16,10 +18,18 @@ private:
     HWND hButton;
 
 public:
+    static int buttonHighlight;
+    static RECT buttonRect;
+    static RECT buttonRectBefore;
+    static std::vector<MakeButton*> buttonList;  
+
     MakeButton(int x, int y, int width, int height, int func, LPCWSTR text);
 
     void mkButton(HWND g_Hwnd);
     void mkButton(HWND g_Hwnd, int path);
+
+    static void getClickHighlight(int wmId, HWND g_Hwnd);
+    static void setClickHighlight(HDC hdc);
 
 private:
     void insertIconImg(LPCWSTR text, int path, HINSTANCE hInst);

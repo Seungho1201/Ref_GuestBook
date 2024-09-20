@@ -221,6 +221,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
+
+            // 클릭된 버튼 하이라이트 설정
+            MakeButton::getClickHighlight(wmId, g_Hwnd);
+
             /// 메뉴 선택을 구문 분석합니다:
             switch (wmId)
             {
@@ -234,11 +238,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 drawInstance.replayThread(g_Hwnd, &penMemory);
                 break;
 
-            /// 펜 모드 (펜, 스탬프) 
-            case CHANGE_PEN:
-                stampInfo->changeModeToPen(g_Hwnd, &stampActive);
-                break;
-
             /// SAVE, LOAD 기능 
             case SAVE:
             case LOAD:
@@ -249,6 +248,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case W_DOWN:
             case W_UP:
                 penWidthControl.widthControl(g_Hwnd, wmId, &pen_Width, &stamp_Size, &stampActive);            /// 펜 굵기 조절
+                break;
+
+            /// 펜 모드 (펜, 스탬프) 
+            case CHANGE_PEN:
+                stampInfo->changeModeToPen(g_Hwnd, &stampActive);
                 break;
 
             /// 스탬프 관련 case 
@@ -287,6 +291,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
+
+        MakeButton::setClickHighlight(hdc);
 
         /// 펜 굵기 표시 메서드
         penWidthControl.penWidthDisplay(hdc, &stampActive, &stamp_Size, &pen_Width);

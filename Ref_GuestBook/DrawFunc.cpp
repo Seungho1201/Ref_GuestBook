@@ -250,7 +250,7 @@ void PenDraw::drawReplay(HWND g_Hwnd)
 
     /// WM_PAINT 에서 그리기 유지하는 조건을 리플레이 실행 동안 비활성화
     this->penStay = false;
-    this->isReplay = true;
+    PenDraw::isReplay = true;
 
     HDC hdc;
     hdc = GetDC(g_Hwnd);
@@ -309,7 +309,8 @@ void PenDraw::drawReplay(HWND g_Hwnd)
     }
     /// 리플레이 기능 종료 시 그리기 유지 활성화
     this->penStay = true;
-    this->isReplay = false;
+    PenDraw::isReplay = false;
+
     ReleaseDC(g_Hwnd, hdc);
     //return 0;
 }

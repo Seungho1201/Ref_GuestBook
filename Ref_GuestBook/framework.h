@@ -17,4 +17,4 @@
 #include <tchar.h>
 #include <vector>
 #include <commdlg.h>					/// OPENFILENAME을 위한 헤더
-
+#include <thread>
