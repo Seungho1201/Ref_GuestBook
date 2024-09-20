@@ -2,7 +2,7 @@
 @file erase.cpp
 @brief 지우기 기능 클래스 외부 정의 파일
 */
-#include "erase.h"
+#include "Erase.h"
 
 /**
 @fn  Eraser::Eraser()
