@@ -9,10 +9,11 @@
 #include "button.h"
 #include "erase.h"
 #include "w_control.h"
-#include "file_operations.h"
 #include "file_io.h"
-#include "c_color.h"
+#include "file_operations.h"
 #include "paint_area.h"
 #include "Window_Size.h"
 #include "stamp.h"
+#include "ColorPalette.h"
+
 

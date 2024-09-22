@@ -13,13 +13,16 @@ private:
     int height;           /// 버튼의 높이
     int func;             /// 버튼의 ID
     LPCWSTR text;         /// 버튼 텍스트
+    COLORREF buttonColor; /// 버튼 색지정
     HWND hButton;
+
 
 public:
     MakeButton(int x, int y, int width, int height, int func, LPCWSTR text);
 
     void mkButton(HWND g_Hwnd);
     void mkButton(HWND g_Hwnd, int path);
+    void mkButton(HWND g_Hwnd, COLORREF color);
 
 private:
     void insertIconImg(LPCWSTR text, int path, HINSTANCE hInst);

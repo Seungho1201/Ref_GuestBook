@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="button.h" />
-    <ClInclude Include="c_color.h" />
+    <ClInclude Include="ColorPalette.h" />
     <ClInclude Include="DrawFunc.h" />
     <ClInclude Include="erase.h" />
     <ClInclude Include="file_io.h" />
@@ -145,7 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="button.cpp" />
-    <ClCompile Include="c_color.cpp" />
+    <ClCompile Include="ColorPalette.cpp" />
     <ClCompile Include="DrawFunc.cpp" />
     <ClCompile Include="erase.cpp" />
     <ClCompile Include="file_io.cpp" />

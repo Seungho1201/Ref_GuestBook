@@ -48,9 +48,6 @@
     <ClInclude Include="file_operations.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="c_color.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="paint_area.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -58,6 +55,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="stamp.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorPalette.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,9 +83,6 @@
     <ClCompile Include="file_operations.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="c_color.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="paint_area.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -93,6 +90,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Window_Size.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorPalette.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
