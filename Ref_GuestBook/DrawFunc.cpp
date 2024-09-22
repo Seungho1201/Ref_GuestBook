@@ -4,6 +4,10 @@
 */
 #include "DrawFunc.h"
 
+/// static 변수 외부 초기화
+/// replay 스레드 실행 동안 true로 전환 한다.
+bool PenDraw::isReplay = false;     
+
 /*
 @fn  PenDraw::PenDraw()
 @brief 그리기 기능 코드 생성자
@@ -25,8 +29,6 @@ PenDraw::PenDraw() {
                          PAINT_R_BOTTOM };
 }
 
-bool PenDraw::isReplay = false;     /// static 변수 외부 초기화
-
 /*
 @fn  PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, PEN_INFO* g_Pen_Info, vector<PEN_INFO>* penMemory)
 @brief 그리기 기능 코드
@@ -38,7 +40,7 @@ bool PenDraw::isReplay = false;     /// static 변수 외부 초기화
 @param g_Pen_Info 구조체 관련 포인터 변수
 @param penMemory 구조체 데이터를 저장할 벡터 변수
 */
-void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, PEN_INFO* g_Pen_Info, std::vector<PEN_INFO>* penMemory)
+void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, std::vector<PEN_INFO>* penMemory)
 {
     /// 리플레이 스레드 작동시 그리기 기능을 정지
     if (this->isReplay) { return; }
@@ -46,6 +48,8 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
     x = LOWORD(lParam);
     y = HIWORD(lParam);
     hdc = GetDC(hWnd);
+
+    Pen_Info g_Pen_Info;
 
     myP = CreatePen(PS_SOLID, *pen_Width, *pen_Color);
     osP = (HPEN)SelectObject(hdc, myP);
@@ -70,21 +74,21 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
         this->drawStart = true;
 
         // 각 LBUTTON state 별 데이터 구조체에 저장
-        g_Pen_Info->penCoordinate = lParam;              /// 마우스 x, y 좌표 (lParam) 
-        g_Pen_Info->penWidth = *pen_Width;               /// 펜 굵기 (기본 값 10)
-        g_Pen_Info->penColor = *pen_Color;               /// 펜 색상 (기본 값 RGB(0, 0, 0))
-        g_Pen_Info->penTime = (DWORD)GetTickCount64();   /// 그리기 시간
-        g_Pen_Info->penState = message;                  /// 상태 (ex WM_LBUTTONDOWN)
+        g_Pen_Info.penCoordinate = lParam;              /// 마우스 x, y 좌표 (lParam) 
+        g_Pen_Info.penWidth = *pen_Width;               /// 펜 굵기 (기본 값 10)
+        g_Pen_Info.penColor = *pen_Color;               /// 펜 색상 (기본 값 RGB(0, 0, 0))
+        g_Pen_Info.penTime = (DWORD)GetTickCount64();   /// 그리기 시간
+        g_Pen_Info.penState = message;                  /// 상태 (ex WM_LBUTTONDOWN)
 
         /// 펜 모드일 때 스탬프 관련 벡터 데이터는 0(false)로 초기화
-        g_Pen_Info->stampOn = false;
-        g_Pen_Info->stampImg = 0;
-        g_Pen_Info->stampSize = 0;
+        g_Pen_Info.stampOn = false;
+        g_Pen_Info.stampImg = 0;
+        g_Pen_Info.stampSize = 0;
 
         // 벡터 변수에 위 구조체 데이터 PUSH
         // emplace_back은 객체를 벡터의 끝에 직접 생성하는 함수
         // std::move는 이동 시멘틱을 사용하여 객체를 복사하지 않고 이동
-        penMemory->emplace_back(std::move(*g_Pen_Info));
+        penMemory->emplace_back(std::move(g_Pen_Info));
 
     break;
 
@@ -110,18 +114,21 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
             this->preY = y;
 
             // 각 LBUTTON state 별 데이터 구조체에 저장
-            g_Pen_Info->penCoordinate = lParam;              /// 마우스 x, y 좌표 (lParam) 
-            g_Pen_Info->penWidth = *pen_Width;               /// 펜 굵기 (기본 값 10)
-            g_Pen_Info->penColor = *pen_Color;               /// 펜 색상 (기본 값 RGB(0, 0, 0))
-            g_Pen_Info->penTime = (DWORD)GetTickCount64();   /// 그리기 시간
-            g_Pen_Info->penState = message;                  /// 상태 (ex WM_LBUTTONDOWN)
+            g_Pen_Info.penCoordinate = lParam;              /// 마우스 x, y 좌표 (lParam) 
+            g_Pen_Info.penWidth = *pen_Width;               /// 펜 굵기 (기본 값 10)
+            g_Pen_Info.penColor = *pen_Color;               /// 펜 색상 (기본 값 RGB(0, 0, 0))
+            g_Pen_Info.penTime = (DWORD)GetTickCount64();   /// 그리기 시간
+            g_Pen_Info.penState = message;                  /// 상태 (ex WM_LBUTTONDOWN)
 
-            g_Pen_Info->stampOn = false;
-            g_Pen_Info->stampImg = 0;
-            g_Pen_Info->stampSize = 0;
+            /// 펜 모드일 때 스탬프 관련 벡터 데이터는 0(false)로 초기화
+            g_Pen_Info.stampOn = false;
+            g_Pen_Info.stampImg = 0;
+            g_Pen_Info.stampSize = 0;
 
-            /// 벡터 변수에 위 구조체 데이터 PUSH
-            penMemory->emplace_back(std::move(*g_Pen_Info));
+            // 벡터 변수에 위 구조체 데이터 PUSH
+            // emplace_back은 객체를 벡터의 끝에 직접 생성하는 함수
+            // std::move는 이동 시멘틱을 사용하여 객체를 복사하지 않고 이동
+            penMemory->emplace_back(std::move(g_Pen_Info));
         }
         break;
 
@@ -129,18 +136,21 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
         if (this->drawStart)
         {
             // 각 LBUTTON state 별 데이터 구조체에 저장
-            g_Pen_Info->penCoordinate = lParam;              // 마우스 x, y 좌표 (lParam) 
-            g_Pen_Info->penWidth = *pen_Width;               // 펜 굵기 (기본 값 10)
-            g_Pen_Info->penColor = *pen_Color;               // 펜 색상 (기본 값 RGB(0, 0, 0))
-            g_Pen_Info->penTime = (DWORD)GetTickCount64();   // 그리기 시간
-            g_Pen_Info->penState = message;                  // 상태 (ex WM_LBUTTONDOWN)
+            g_Pen_Info.penCoordinate = lParam;              /// 마우스 x, y 좌표 (lParam) 
+            g_Pen_Info.penWidth = *pen_Width;               /// 펜 굵기 (기본 값 10)
+            g_Pen_Info.penColor = *pen_Color;               /// 펜 색상 (기본 값 RGB(0, 0, 0))
+            g_Pen_Info.penTime = (DWORD)GetTickCount64();   /// 그리기 시간
+            g_Pen_Info.penState = message;                  /// 상태 (ex WM_LBUTTONDOWN)
 
-            g_Pen_Info->stampOn = false;
-            g_Pen_Info->stampImg = 0;
-            g_Pen_Info->stampSize = 0;
+            /// 펜 모드일 때 스탬프 관련 벡터 데이터는 0(false)로 초기화
+            g_Pen_Info.stampOn = false;
+            g_Pen_Info.stampImg = 0;
+            g_Pen_Info.stampSize = 0;
 
-            /// 벡터 변수에 위 구조체 데이터 PUSH
-            penMemory->emplace_back(std::move(*g_Pen_Info));
+            // 벡터 변수에 위 구조체 데이터 PUSH
+            // emplace_back은 객체를 벡터의 끝에 직접 생성하는 함수
+            // std::move는 이동 시멘틱을 사용하여 객체를 복사하지 않고 이동
+            penMemory->emplace_back(std::move(g_Pen_Info));
 
             /// 좌클릭 상태가 아닐시 그리기 여부 변수를 false로 함
             this->drawStart = false;

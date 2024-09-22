@@ -29,7 +29,7 @@ public:
     static bool isReplay;               /// 현재 리플레이 상태 확인 체크용 변수
 
     PenDraw();
-    void drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, PEN_INFO* g_Pen_Info, std::vector<PEN_INFO>* penMemory);
+    void drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, COLORREF* pen_Color, std::vector<PEN_INFO>* penMemory);
     void drawStay(HDC hdc, HWND hWnd, std::vector<PEN_INFO>* penMemory);
 
     void replayThread(HWND g_Hwnd, std::vector<Pen_Info>* penMemory);
