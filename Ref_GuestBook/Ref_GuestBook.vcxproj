@@ -138,6 +138,7 @@
     <ClInclude Include="Ref_GuestBook.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="file_operations.h" />
+    <ClInclude Include="ShowStatus.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Window_Size.h" />
     <ClInclude Include="stamp.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="file_operations.cpp" />
     <ClCompile Include="paint_area.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
+    <ClCompile Include="ShowStatus.cpp" />
     <ClCompile Include="stamp.cpp" />
     <ClCompile Include="Window_Size.cpp" />
     <ClCompile Include="w_control.cpp" />
