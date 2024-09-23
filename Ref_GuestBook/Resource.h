@@ -93,7 +93,15 @@
 
 
 /// 펜 색상 변경 창 정의
-#define PALETTE		 800
+#define C_RED		 800
+#define C_ORANGE	 801
+#define C_YELLOW	 802
+#define C_GREEN		 803
+#define C_BLUE		 804
+#define C_NAVY		 805
+#define C_PURPLE	 806
+#define C_BLACK		 807
+#define PALETTE		 808
 
 
 /// 윈도우 크기 정의

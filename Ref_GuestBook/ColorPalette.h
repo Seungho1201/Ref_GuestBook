@@ -6,6 +6,8 @@
 #pragma once
 
 #include <windows.h>
+#include "framework.h"
+#include "Resource.h"
 #include <commdlg.h> /// 색상 선택을 사용하기위한 API 
 
 /// 현재 선택된 색상을 저장하는 전역 변수 (static으로 선언하여 프로그램 전역에서 공유)
@@ -22,6 +24,7 @@ private:
 
 public:
 	void colorSelect(HWND, int);
+	void Change_Color(int color, COLORREF* penColor);
 	void destroy();
 
 	COLORREF getColor(int);

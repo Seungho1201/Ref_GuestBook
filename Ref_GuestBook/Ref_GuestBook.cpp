@@ -137,7 +137,15 @@ MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
 MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
 
 /// 펜 색상 변경 버튼
-MakeButton bt_ColorPalette(680, 10, 50, 50, PALETTE, L"PALETTE");
+MakeButton bt_ColorRed(500, 10, 35, 35, C_RED, L"빨");
+MakeButton bt_ColorOrange(545, 10, 35, 35, C_ORANGE, L"주");
+MakeButton bt_ColorYellow(585, 10, 35, 35, C_YELLOW, L"노");
+MakeButton bt_ColorGreen(625, 10, 35, 35, C_GREEN, L"초");
+MakeButton bt_ColorBlue(500, 60, 35, 35, C_BLUE, L"파");
+MakeButton bt_ColorNavy(545, 60, 35, 35, C_NAVY, L"남");
+MakeButton bt_ColorPurple(585, 60, 35, 35, C_PURPLE, L"보");
+MakeButton bt_ColorBlack(625, 60, 35, 35, C_BLACK, L"검");
+MakeButton bt_ColorPalette(675, 10, 60, 80, PALETTE, L"PALETTE");
 
 /// 펜 색상 변경 버튼
 MakeButton bt_Change_Pen(780, 10, 50, 50, CHANGE_PEN, L"PEN");
@@ -196,6 +204,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthdown.mkButton(g_Hwnd);
 
         /// 색상 변경 버튼 생성
+        bt_ColorRed.mkButton(g_Hwnd, IDI_RED_ICON);
+        bt_ColorOrange.mkButton(g_Hwnd, IDI_ORANGE_ICON);
+        bt_ColorYellow.mkButton(g_Hwnd, IDI_YELLOW_ICON);
+        bt_ColorGreen.mkButton(g_Hwnd, IDI_GREEN_ICON);
+        bt_ColorBlue.mkButton(g_Hwnd, IDI_BLUE_ICON);
+        bt_ColorNavy.mkButton(g_Hwnd, IDI_NAVY_ICON);
+        bt_ColorPurple.mkButton(g_Hwnd, IDI_PURPLE_ICON);
+        bt_ColorBlack.mkButton(g_Hwnd, IDI_BLACK_ICON);
         bt_ColorPalette.mkButton(g_Hwnd, currentColor);
 
         /// 스탬프 관련 버튼 생성
@@ -244,6 +260,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
 
             ///펜 색상 및 미리보기 색 변경 기능
+        case C_RED:
+        case C_ORANGE:
+        case C_YELLOW:
+        case C_GREEN:
+        case C_BLUE:
+        case C_NAVY:
+        case C_PURPLE:
+        case C_BLACK:
+            g_colorPalette.Change_Color(wmId, &pen_Color);
+            currentColor = pen_Color;
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
         case PALETTE:
             g_colorPalette.colorSelect(g_Hwnd, 0);
             pen_Color = g_colorPalette.getColor(0);
@@ -269,8 +297,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case W_UP:
             penWidthControl.widthControl(g_Hwnd, wmId, &pen_Width, &stamp_Size, &stampActive);            /// 펜 굵기 조절
             break;
-
-            /// 펜 색상 변경 기능
 
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
