@@ -33,16 +33,30 @@
 #endif
 
 /// ====================================
+/// 영역 정의
+/// ====================================
+
+/// 그리기 영역
+#define PAINT_R_LEFT 10
+#define PAINT_R_TOP 120
+#define PAINT_R_RIGHT 1425
+#define PAINT_R_BOTTOM 830
+
+/// 펜, 스탬프 굵기 영역
+#define WIDTH_R_LEFT 410
+#define WIDTH_R_TOP  15
+#define WIDTH_R_RIGHT 440
+#define WIDTH_R_BOTTOM 45
+
+/// ====================================
 /// 버튼 기능 정의
 /// ====================================
 
 /// 리플레이 기능
 #define IDI_REPLAY_ICON                        131
 
-
 /// 지우개 기능
 #define IDI_ERASE_ICON                        130
-
 
 /// 색상 변경 기능
 #define IDI_RED_ICON						132
@@ -55,25 +69,10 @@
 #define IDI_BLACK_ICON						139
 
 /// 스탬프 변경 기능
-#define IDI_HEART_ICON                        140
-#define IDI_UH_ICON							  141
-#define IDI_YUHAN_ICON                        142
-#define IDI_YONGBIN_ICON                      143
-
-
-// 그리기 영역
-#define PAINT_R_LEFT 10
-#define PAINT_R_TOP 120
-#define PAINT_R_RIGHT 1425
-#define PAINT_R_BOTTOM 830
-
-
-// 펜, 스탬프 굵기 영역
-#define WIDTH_R_LEFT 410
-#define WIDTH_R_TOP  15
-#define WIDTH_R_RIGHT 440
-#define WIDTH_R_BOTTOM 45
-
+#define IDI_HEART_ICON                      140
+#define IDI_UH_ICON							141
+#define IDI_YUHAN_ICON                      142
+#define IDI_YONGBIN_ICON                    143
 
 /// COMMAND 기능 (500번대)
 #define REPLAY      500

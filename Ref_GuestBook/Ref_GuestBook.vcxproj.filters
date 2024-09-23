@@ -33,7 +33,7 @@
     <ClInclude Include="DrawFunc.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="button.h">
+    <ClInclude Include="CreateButton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="erase.h">
@@ -68,7 +68,7 @@
     <ClCompile Include="DrawFunc.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="button.cpp">
+    <ClCompile Include="CreateButton.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="erase.cpp">

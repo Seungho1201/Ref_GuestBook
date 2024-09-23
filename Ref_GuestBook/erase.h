@@ -1,7 +1,6 @@
 #pragma once
 
-#include <vector>
-#include <iostream>
+#include "Ref_GuestBook.h"
 #include "framework.h"
 #include "Resource.h"
 

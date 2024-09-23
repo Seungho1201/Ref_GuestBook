@@ -3,10 +3,10 @@
 @brief 펜 구조체 관련 헤더
 */
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
-#include<Windows.h>
 
-//using namespace std;
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<Windows.h>
 
 typedef struct Pen_Info
 {
