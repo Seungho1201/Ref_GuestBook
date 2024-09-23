@@ -61,6 +61,8 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
         {
             break;
         }
+        wsprintf(ShowStatus::nowStatus, L"펜 모드");
+        InvalidateRect(hWnd, &ShowStatus::status_Rect, TRUE);
 
         ///x,y마우스 이전 좌표 저장 변수
         this->preX = x;
@@ -252,6 +254,10 @@ void PenDraw::drawReplay(HWND g_Hwnd)
     this->penStay = false;
     this->isReplay = true;
 
+    /// 스테이터스 창에 스레드 실행간 메세지 출력
+    wsprintf(ShowStatus::playingStatus, L"스레드 실행중");
+
+
     HDC hdc;
     hdc = GetDC(g_Hwnd);
   
@@ -307,6 +313,8 @@ void PenDraw::drawReplay(HWND g_Hwnd)
         SelectObject(hdc, osP);
         DeleteObject(myP);  // 리소스 자원 확보 위해 삭제
     }
+    wsprintf(ShowStatus::playingStatus, L"");
+    InvalidateRect(g_Hwnd, &ShowStatus::status_Rect, TRUE);
     /// 리플레이 기능 종료 시 그리기 유지 활성화
     this->penStay = true;
     this->isReplay = false;
