@@ -79,12 +79,41 @@ void PenWidthControl::penWidthDisplay(HDC Hdc, bool* stampActive, int* stamp_Siz
 
     if (*stampActive) {
         // 스탬프 사이즈 출력 (10 단위로 나누어서 출력)
-        wsprintf(szPenWidth, L"%d", *stamp_Size / 10);
-    } else {
-        // 펜 굵기 출력
-        wsprintf(szPenWidth, L"%d", *pen_Width);
+        wsprintf(szPenWidth, L"%2d", *stamp_Size / 10);
     }
-    /// 출력
-    TextOut(wc_Hdc, 420, 15, szPenWidth, lstrlen(szPenWidth)); 
+    else {
+        // 펜 굵기 출력
+        wsprintf(szPenWidth, L"%2d", *pen_Width);
+    }
 
+    // 폰트 설정
+    HFONT hFont, hOldFont;
+    hFont = CreateFont(
+        30,                // 글자 크기 (높이)
+        0,                 // 글자 너비 (0은 자동으로 설정)
+        0,                 // 문자 각도
+        0,                 // 기준선 각도
+        FW_THIN,           // 얇은 글자 두께
+        FALSE,             // 이탤릭체 여부
+        FALSE,             // 밑줄 여부
+        FALSE,             // 취소선 여부
+        DEFAULT_CHARSET,   // 문자 세트
+        OUT_DEFAULT_PRECIS,
+        CLIP_DEFAULT_PRECIS,
+        DEFAULT_QUALITY,
+        DEFAULT_PITCH | FF_SWISS,
+        L"Arial"           // 폰트 이름
+    );
+
+    // 새로운 폰트를 HDC에 선택하고 이전 폰트를 저장
+    hOldFont = (HFONT)SelectObject(wc_Hdc, hFont);
+
+    // 텍스트 출력
+    TextOut(wc_Hdc, 430, 15, szPenWidth, lstrlen(szPenWidth));
+
+    // 원래 폰트로 복원
+    SelectObject(wc_Hdc, hOldFont);
+
+    // 새로 생성한 폰트 삭제
+    DeleteObject(hFont);
 }

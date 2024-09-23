@@ -17,10 +17,9 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
-{
+    _In_opt_ HINSTANCE hPrevInstance,
+    _In_ LPWSTR    lpCmdLine,
+    _In_ int       nCmdShow){
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
@@ -32,7 +31,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MyRegisterClass(hInstance);
 
     /// 애플리케이션 초기화를 수행합니다:
-    if (!InitInstance (hInstance, nCmdShow))
+    if (!InitInstance(hInstance, nCmdShow))
     {
         return FALSE;
     }
@@ -50,7 +49,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
-    return (int) msg.wParam;
+    return (int)msg.wParam;
 }
 
 ///  함수: MyRegisterClass()
@@ -61,17 +60,17 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
-    wcex.cbWndExtra     = 0;
-    wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_REFGUESTBOOK));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_REFGUESTBOOK);
-    wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    wcex.style = CS_HREDRAW | CS_VREDRAW;
+    wcex.lpfnWndProc = WndProc;
+    wcex.cbClsExtra = 0;
+    wcex.cbWndExtra = 0;
+    wcex.hInstance = hInstance;
+    wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_REFGUESTBOOK));
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_REFGUESTBOOK);
+    wcex.lpszClassName = szWindowClass;
+    wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
 }
@@ -84,20 +83,20 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+    if (!hWnd)
+    {
+        return FALSE;
+    }
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+    ShowWindow(hWnd, nCmdShow);
+    UpdateWindow(hWnd);
 
-   return TRUE;
+    return TRUE;
 }
 
 ///  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
@@ -111,17 +110,17 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 std::vector<PEN_INFO> penMemory;        /// 펜 구조체 정보 저장 벡터 변수 전역변수 정의
 PEN_INFO g_Pen_Info;                    /// 펜 정보 구조체 전역변수 정의
 COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK, RGB(0, 0, 0)
+ColorPalette g_colorPalette;
 
 ///  윈도우 핸들 전역변수
 HWND g_Hwnd;                            /// HWND 전역변수 정의
 PenDraw drawInstance;                   /// 그리기 관련 클래스 인스턴스 선언
-PenColorManager penManager;             /// 펜 색상 관련 클래스 인스턴스 선언
+/// 펜 색상 관련 클래스 인스턴스 선언
 PaintAreaSquare paintSquare;            /// 그리기 영역 사각형 인스턴스 선언
 PenWidthControl penWidthControl;        /// 펜 굵기 조절 관련 인스턴스 선언
-File_Manager fileManager;               /// File_Manager 클래스의 인스턴스 생성
-Eraser eraser;                          /// Eraser 클래스의 인스턴스 생성
-
-ShowStatus statusInstance;
+File_Manager fileManager;               /// File_Manager 클래스의 인스턴스 선언
+Eraser eraser;                          /// Eraser 클래스의 인스턴스 선언
+ShowStatus statusInstance;              /// 스테이터스 관련 인스턴스 선언
 
 int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
 int stamp_Size = 100;                   /// 스탬프 크기 가로, 세로 80으로 정의
@@ -134,34 +133,53 @@ MakeButton bt_Clear(120, 10, 100, 100, ERASE, L"ERASE");
 MakeButton bt_Replay(10, 10, 100, 100, REPLAY, L"REPLAY");
 MakeButton bt_SAVE(230, 10, 100, 45, SAVE, L"SAVE");
 MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
-MakeButton bt_Widthup(375, 10, 30, 30, W_DOWN, L"-");
-MakeButton bt_Widthdown(450, 10, 30, 30, W_UP, L"+");
+MakeButton bt_Widthup(375, 10, 45, 45, W_DOWN, L"-");
+MakeButton bt_Widthdown(470, 10, 45, 45, W_UP, L"+");
 
 /// 펜 색상 변경 버튼
-MakeButton bt_ColorRed(500, 10, 30, 30, C_RED, L"빨");
-MakeButton bt_ColorOrange(540, 10, 30, 30, C_ORANGE, L"주");
-MakeButton bt_ColorYellow(580, 10, 30, 30, C_YELLOW, L"노");
-MakeButton bt_ColorGreen(620, 10, 30, 30, C_GREEN, L"초");
-MakeButton bt_ColorBlue(500, 50, 30, 30, C_BLUE, L"파");
-MakeButton bt_ColorNavy(540, 50, 30, 30, C_NAVY, L"남");
-MakeButton bt_ColorPurple(580, 50, 30, 30, C_PURPLE, L"보");
-MakeButton bt_ColorBlack(620, 50, 30, 30, C_BLACK, L"검");
+MakeButton bt_ColorRed(550, 10, 45, 45, C_RED, L"빨");
+MakeButton bt_ColorOrange(600, 10, 45, 45, C_ORANGE, L"주");
+MakeButton bt_ColorYellow(650, 10, 45, 45, C_YELLOW, L"노");
+MakeButton bt_ColorGreen(700, 10, 45, 45, C_GREEN, L"초");
+MakeButton bt_ColorBlue(550, 60, 45, 45, C_BLUE, L"파");
+MakeButton bt_ColorNavy(600, 60, 45, 45, C_NAVY, L"남");
+MakeButton bt_ColorPurple(650, 60, 45, 45, C_PURPLE, L"보");
+MakeButton bt_ColorBlack(700, 60, 45, 45, C_BLACK, L"검");
+
+/// 사용자 지정 색 버튼
+MakeButton bt_ColorPalette(750, 10, 50, 95, PALETTE, L"PALETTE");
 
 /// 펜 색상 변경 버튼
-MakeButton bt_Change_Pen(780, 10, 50, 50, CHANGE_PEN, L"PEN");
-MakeButton bt_Heart_Stamp(840, 10, 50, 50, HEART_STAMP, L"HEART");
-MakeButton bt_Uh_Stamp(900, 10, 50, 50, UH_STAMP, L"UH");
-MakeButton bt_Yuhan_Stamp(960, 10, 50, 50, YUHAN_STAMP, L"YUHAN");
-MakeButton bt_Yongbin_Stamp(1020, 10, 50, 50, YONGBIN_STAMP, L"YONGBIN");
+MakeButton bt_Change_Pen(900, 10, 50, 50, CHANGE_PEN, L"PEN");
+MakeButton bt_Heart_Stamp(960, 10, 50, 50, HEART_STAMP, L"HEART");
+MakeButton bt_Uh_Stamp(1020, 10, 50, 50, UH_STAMP, L"UH");
+MakeButton bt_Yuhan_Stamp(1080, 10, 50, 50, YUHAN_STAMP, L"YUHAN");
+MakeButton bt_Yongbin_Stamp(1140, 10, 50, 50, YONGBIN_STAMP, L"YONGBIN");
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{   
+{
     /// 윈도우 크기 고정 정적 변수로 선언
     static WindowSizeManager windowSizeManager(Window_Size_Width, Window_Size_Height);
 
     switch (message)
-    { 
+    {
+    case WM_DRAWITEM:
+    {
+        LPDRAWITEMSTRUCT lpDrawItemStruct = (LPDRAWITEMSTRUCT)lParam;
+
+        // 버튼 핸들 확인
+        if (lpDrawItemStruct->CtlType == ODT_BUTTON)
+        {
+            HBRUSH hBrush = CreateSolidBrush(currentColor);  // 버튼의 배경색을 설정
+            FillRect(lpDrawItemStruct->hDC, &lpDrawItemStruct->rcItem, hBrush);// 생성된 브러시로 버튼 영역을 채움
+
+            DeleteObject(hBrush);
+            return TRUE;
+        }
+    }
+    break;
+
     case WM_GETMINMAXINFO:
         // 창 크기 고정을 위해 HandleMinMaxInfo 호출
         windowSizeManager.HandleMinMaxInfo(lParam);
@@ -172,8 +190,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         /// stamp 관련 객체 초기화
         stampInfo = new Stamp(NULL, NULL);
-
-        InvalidateRect(g_Hwnd, NULL, TRUE);
 
         /// 윈도우 창 생성시 버튼 생성 메서드 실행
         /// 인자 관련 설명은 button.cpp 파일 주석 참고
@@ -198,7 +214,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_ColorNavy.mkButton(g_Hwnd, IDI_NAVY_ICON);
         bt_ColorPurple.mkButton(g_Hwnd, IDI_PURPLE_ICON);
         bt_ColorBlack.mkButton(g_Hwnd, IDI_BLACK_ICON);
-        
+        bt_ColorPalette.mkButton(g_Hwnd, currentColor);
+
         /// 스탬프 관련 버튼 생성
         bt_Change_Pen.mkButton(g_Hwnd);
         bt_Heart_Stamp.mkButton(g_Hwnd, IDI_HEART_ICON);
@@ -223,76 +240,83 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
     /// 버튼으로 구현한 func 기능은 COMMAND 에서 정의한다.
     case WM_COMMAND:
+    {
+        int wmId = LOWORD(wParam);
+
+        /// 클릭된 버튼 하이라이트 설정
+        MakeButton::getClickHighlight(wmId, g_Hwnd);
+        /// 스테이터스 기능
+        statusInstance.setStatus(wmId, g_Hwnd);
+
+        /// 메뉴 선택을 구문 분석합니다:
+        switch (wmId)
         {
-            int wmId = LOWORD(wParam);
+        /// 지우기 기능
+        case ERASE:
+            eraser.erase(hWnd, &penMemory);
+            break;
 
-            /// 클릭된 버튼 하이라이트 설정
-            MakeButton::getClickHighlight(wmId, g_Hwnd);
-            /// 스테이터스 기능
-            statusInstance.setStatus(wmId, g_Hwnd);
+        /// 리플레이 기능 
+        case REPLAY:
+            drawInstance.replayThread(g_Hwnd, &penMemory);
+            break;
 
+        /// SAVE, LOAD 기능 
+        case SAVE:
+        case LOAD:
+            fileManager.selectFileMode(wmId, g_Hwnd, &penMemory);
+            break;
 
-            /// 메뉴 선택을 구문 분석합니다:
-            switch (wmId)
-            {
-            /// 지우기 기능
-            case ERASE:
-                eraser.erase(hWnd, &penMemory);                                      
+        /// 펜 굵기 관련 기능
+        case W_DOWN:
+        case W_UP:
+            penWidthControl.widthControl(g_Hwnd, wmId, &pen_Width, &stamp_Size, &stampActive);           
+            break;
+
+        /// 펜 모드 (펜, 스탬프) 
+        case CHANGE_PEN:
+            stampInfo->changeModeToPen(g_Hwnd, &stampActive);
+            break;
+
+        ///펜 색상 및 미리보기 색 변경 기능
+        case C_RED:
+        case C_ORANGE:
+        case C_YELLOW:
+        case C_GREEN:
+        case C_BLUE:
+        case C_NAVY:
+        case C_PURPLE:
+        case C_BLACK:
+            g_colorPalette.Change_Color(wmId, &pen_Color);
+            break;
+
+         /// 사용자 지정 색
+        case PALETTE:
+            g_colorPalette.colorSelect(g_Hwnd, 0);
+            pen_Color = g_colorPalette.getColor(0);
+                currentColor = pen_Color;               // 현재 색상 업데이트
                 break;
 
-            /// 리플레이 기능 
-            case REPLAY:
-                drawInstance.replayThread(g_Hwnd, &penMemory);
-                break;
+        /// 스탬프 관련 case 
+        case HEART_STAMP:
+        case UH_STAMP:
+        case YUHAN_STAMP:
+        case YONGBIN_STAMP:
+            stampInfo->changeModeToStamp(&stampActive, g_Hwnd, &stampIcon, wParam);
+            break;
 
-            /// SAVE, LOAD 기능 
-            case SAVE:
-            case LOAD:
-                fileManager.selectFileMode(wmId, g_Hwnd, &penMemory);
-                break;
 
-            /// 펜 굵기 관련 기능
-            case W_DOWN:
-            case W_UP:
-                penWidthControl.widthControl(g_Hwnd, wmId, &pen_Width, &stamp_Size, &stampActive);            /// 펜 굵기 조절
-                break;
-
-            /// 펜 모드 (펜, 스탬프) 
-            case CHANGE_PEN:
-                stampInfo->changeModeToPen(g_Hwnd, &stampActive);
-                break;
-
-            /// 스탬프 관련 case 
-            case HEART_STAMP:
-            case UH_STAMP:
-            case YUHAN_STAMP:
-            case YONGBIN_STAMP:
-                stampInfo->changeModeToStamp(&stampActive, g_Hwnd, &stampIcon, wParam);
-                break;
-
-            /// 펜 색상 변경 기능
-            case C_RED:
-            case C_ORANGE:
-            case C_YELLOW:
-            case C_GREEN:
-            case C_BLUE:
-            case C_NAVY:
-            case C_PURPLE:
-            case C_BLACK:
-                penManager.Change_Color(wmId, &pen_Color);              
-                break;
-
-            case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
+        case IDM_ABOUT:
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            break;
+        case IDM_EXIT:
+            DestroyWindow(hWnd);
+            break;
+        default:
+            return DefWindowProc(hWnd, message, wParam, lParam);
         }
         break;
+    }
 
     case WM_PAINT:
     {
@@ -304,17 +328,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         /// 펜 굵기 표시 메서드
         penWidthControl.penWidthDisplay(hdc, &stampActive, &stamp_Size, &pen_Width);
 
-        /// 그리기 영역 사각형 그리기 메서드
+        /// 그리기 영역 사각형 그리기
         paintSquare.makeSquare(hdc);
 
+        /// 현재 스테이터스 출력
         statusInstance.showDisplay(hdc, g_Hwnd);
         
         /// 그리기 한 벡터 데이터 그리기 유지 메서드
         drawInstance.drawStay(hdc, g_Hwnd, &penMemory);
 
        
-
-
         EndPaint(hWnd, &ps);
         break;
     }

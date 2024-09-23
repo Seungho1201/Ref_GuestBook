@@ -15,7 +15,9 @@ private:
     int height;           /// 버튼의 높이
     int func;             /// 버튼의 ID
     LPCWSTR text;         /// 버튼 텍스트
+    COLORREF buttonColor; /// 버튼 색지정
     HWND hButton;
+
 
 public:
     static int buttonHighlight;                     /// 버튼 ID 구분 위한 변수
@@ -27,6 +29,7 @@ public:
 
     void mkButton(HWND g_Hwnd);
     void mkButton(HWND g_Hwnd, int path);
+    void mkButton(HWND g_Hwnd, COLORREF color);
 
     static void getClickHighlight(int wmId, HWND g_Hwnd);
     static void setClickHighlight(HDC hdc);

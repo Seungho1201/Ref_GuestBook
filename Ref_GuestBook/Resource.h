@@ -43,9 +43,9 @@
 #define PAINT_R_BOTTOM 830
 
 /// 펜, 스탬프 굵기 영역
-#define WIDTH_R_LEFT 410
+#define WIDTH_R_LEFT 420
 #define WIDTH_R_TOP  15
-#define WIDTH_R_RIGHT 440
+#define WIDTH_R_RIGHT 460
 #define WIDTH_R_BOTTOM 45
 
 /// ====================================
@@ -91,7 +91,7 @@
 #define YONGBIN_STAMP   704
 
 
-/// 펜 색상 변경 상수 정의 (800번대)
+/// 펜 색상 변경 창 정의
 #define C_RED		 800
 #define C_ORANGE	 801
 #define C_YELLOW	 802
@@ -100,6 +100,7 @@
 #define C_NAVY		 805
 #define C_PURPLE	 806
 #define C_BLACK		 807
+#define PALETTE		 808
 
 
 /// 윈도우 크기 정의

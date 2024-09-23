@@ -27,9 +27,15 @@ MakeButton::MakeButton(int x, int y, int width, int height, int func, LPCWSTR te
     this->text = text;
     this->hButton = nullptr;
 
+    //this->buttonColor = RGB(0, 0, 0);
+
     /// 버튼 생성 시 리스트에 바로 PUSH
     buttonList.push_back(this);
 }
+
+
+    
+
 
 /// <summary>
 /// 버튼 구현은 두가지로 나뉜다
@@ -100,6 +106,33 @@ void MakeButton::mkButton(HWND g_Hwnd, int path)
     SendMessage(g_Hwnd, WM_UPDATEUISTATE, MAKELONG(UIS_SET, UISF_HIDEFOCUS), 0);
 }
 
+
+/**
+@fn MakeButton::mkButton(HWND g_Hwnd, COLORREF color)
+@brief 버튼 클래스의 색상 기반 버튼 생성 메서드
+@details 색상을 기반으로 버튼을 생성
+@param g_Hwnd 윈도우 핸들
+@param color 버튼에 적용할 RGB 색상 (COLORREF 형식)
+*/
+void MakeButton::mkButton(HWND g_Hwnd, COLORREF color) {
+    this->hButton = g_Hwnd;
+    this->buttonColor = color;
+
+    // 버튼 생성
+    CreateWindow(
+        L"BUTTON",                                                          // 버튼 클래스 이름
+        text,                                                               // 버튼 텍스트
+        WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_OWNERDRAW,                  // 버튼 스타일 
+        x,                                                                  // 버튼의 x 좌표
+        y,                                                                  // 버튼의 y 좌표
+        width,                                                              // 버튼의 너비
+        height,                                                             // 버튼의 높이
+        this->hButton,                                                      // 부모 윈도우 핸들
+        (HMENU)func,                                                        // 버튼 ID (핸들러)
+        (HINSTANCE)GetWindowLongPtr(this->hButton, GWLP_HINSTANCE),         // 인스턴스 핸들
+        NULL                                                                // 추가 매개변수
+    );
+}
 /**
 @fn  MakeButton::insertIconImg(LPCWSTR text, int path, HINSTANCE hInst)
 @brief 이미지 버튼 생성 메서드의 이미지 전송 메서드 (private)
@@ -127,6 +160,7 @@ void MakeButton::insertIconImg(LPCWSTR text, int path, HINSTANCE hInst)
         (LPARAM)hIcon                                   /// 설정할 아이콘
     );
 }
+
 
 /// static 변수 초기화 
 int MakeButton::buttonHighlight = 0;
@@ -190,3 +224,4 @@ void MakeButton::setClickHighlight(HDC hdc)
     SelectObject(hdc, oldPen);
     DeleteObject(hPen);            
 }
+

@@ -1,130 +1,130 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Ref_GuestBook.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Pen_Str.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawFunc.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateButton.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Erase.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="w_control.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="FileManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="c_color.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="paint_area.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Window_Size.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="stamp.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="ShowStatus.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Ref_GuestBook.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawFunc.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CreateButton.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Erase.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="w_control.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="FileManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="c_color.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="paint_area.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="stamp.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Window_Size.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ShowStatus.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Ref_GuestBook.rc">
-      <Filter>리소스 파일</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Ref_GuestBook.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\ImgResource\Size.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\ImgResource\REPLAY.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\ImgResource\ERASE.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\ImgResource\heart.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\ImgResource\uh.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\ImgResource\yongbin.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-  </ItemGroup>
+	<ItemGroup>
+		<Filter Include="소스 파일">
+			<UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+			<Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+		</Filter>
+		<Filter Include="헤더 파일">
+			<UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+			<Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+		</Filter>
+		<Filter Include="리소스 파일">
+			<UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+			<Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="framework.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="targetver.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="Resource.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="Ref_GuestBook.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="Pen_Str.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="DrawFunc.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="CreateButton.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="Erase.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="w_control.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="FileManager.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="paint_area.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="Window_Size.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="stamp.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="ShowStatus.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+		<ClInclude Include="ColorPalette.h">
+			<Filter>헤더 파일</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<ClCompile Include="Ref_GuestBook.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="DrawFunc.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="CreateButton.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="Erase.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="w_control.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="FileManager.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="paint_area.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="stamp.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="Window_Size.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="ShowStatus.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+		<ClCompile Include="ColorPalette.cpp">
+			<Filter>소스 파일</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ResourceCompile Include="Ref_GuestBook.rc">
+			<Filter>리소스 파일</Filter>
+		</ResourceCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<Image Include="small.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="Ref_GuestBook.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="..\ImgResource\Size.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="..\ImgResource\REPLAY.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="..\ImgResource\ERASE.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="..\ImgResource\heart.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="..\ImgResource\uh.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+		<Image Include="..\ImgResource\yongbin.ico">
+			<Filter>리소스 파일</Filter>
+		</Image>
+	</ItemGroup>
 </Project>
