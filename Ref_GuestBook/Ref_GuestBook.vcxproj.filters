@@ -36,16 +36,13 @@
     <ClInclude Include="CreateButton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="erase.h">
+    <ClInclude Include="Erase.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="w_control.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="file_io.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="file_operations.h">
+    <ClInclude Include="FileManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="c_color.h">
@@ -74,16 +71,13 @@
     <ClCompile Include="CreateButton.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="erase.cpp">
+    <ClCompile Include="Erase.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="w_control.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="file_io.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="file_operations.cpp">
+    <ClCompile Include="FileManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="c_color.cpp">

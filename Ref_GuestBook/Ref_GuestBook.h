@@ -6,11 +6,14 @@
 #include "Pen_Str.h"
 #include "DrawFunc.h"
 #include "replay.h"
+
 #include "CreateButton.h"
-#include "erase.h"
+
+
+#include "Erase.h"
+
 #include "w_control.h"
-#include "file_operations.h"
-#include "file_io.h"
+#include "FileManager.h"
 #include "c_color.h"
 #include "paint_area.h"
 #include "Window_Size.h"
