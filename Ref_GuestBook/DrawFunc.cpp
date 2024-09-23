@@ -236,7 +236,8 @@ void PenDraw::replayThread(HWND g_Hwnd, std::vector<Pen_Info>* penMemory)
     /// [this, g_Hwnd] : 람다식의 캡처리스트 (함수 내에서 사용할 외부변수 캡쳐)
     /// 포인터 사용하여 drwaReplay 실행 
     startReplayThread = std::thread([this, g_Hwnd]() { this->drawReplay(g_Hwnd); });
-
+    /// 스테이터스 창에 스레드 실행간 메세지 출력
+    wsprintf(ShowStatus::playingStatus, L"스레드 실행중");
     /// 스레드 반환
     startReplayThread.detach();
 }
@@ -254,8 +255,7 @@ void PenDraw::drawReplay(HWND g_Hwnd)
     this->penStay = false;
     this->isReplay = true;
 
-    /// 스테이터스 창에 스레드 실행간 메세지 출력
-    wsprintf(ShowStatus::playingStatus, L"스레드 실행중");
+    
 
 
     HDC hdc;

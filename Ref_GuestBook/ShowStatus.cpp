@@ -58,19 +58,10 @@ void ShowStatus::setStatus(int wmId, HWND g_Hwnd)
         break;
         
     case HEART_STAMP:
-        wsprintf(ShowStatus::nowStatus, L"스탬프 모드 [하트]");
-        InvalidateRect(g_Hwnd, &ShowStatus::status_Rect, TRUE);
-        break;
     case UH_STAMP:
-        wsprintf(ShowStatus::nowStatus, L"스탬프 모드 [어?]");
-        InvalidateRect(g_Hwnd, &ShowStatus::status_Rect, TRUE);
-        break;
-    case YUHAN_STAMP:
-        wsprintf(ShowStatus::nowStatus, L"스탬프 모드 [유한 마크]");
-        InvalidateRect(g_Hwnd, &ShowStatus::status_Rect, TRUE);
-        break;
+    case YUHAN_STAMP:;
     case YONGBIN_STAMP:
-        wsprintf(ShowStatus::nowStatus, L"스탬프 모드 [김용반]");
+        wsprintf(ShowStatus::nowStatus, L"스탬프 모드");
         InvalidateRect(g_Hwnd, &ShowStatus::status_Rect, TRUE);
         break;
 

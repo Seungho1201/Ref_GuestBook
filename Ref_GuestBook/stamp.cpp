@@ -79,6 +79,9 @@ void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam, std::vector<PEN_
             break;
         }
 
+        wsprintf(ShowStatus::nowStatus, L"½ºÅÆÇÁ ¸ðµå");
+        InvalidateRect(hWnd, &ShowStatus::status_Rect, TRUE);
+
         stampX = x;
         stampY = y;
 
