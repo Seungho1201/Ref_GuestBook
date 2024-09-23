@@ -65,6 +65,8 @@ void PenDraw::drawLine(int* pen_Width, HWND hWnd, UINT message, LPARAM lParam, C
         {
             break;
         }
+        wsprintf(ShowStatus::nowStatus, L"펜 모드");
+        InvalidateRect(hWnd, &ShowStatus::status_Rect, TRUE);
 
         ///x,y마우스 이전 좌표 저장 변수
         this->preX = x;
@@ -244,7 +246,8 @@ void PenDraw::replayThread(HWND g_Hwnd, std::vector<Pen_Info>* penMemory)
     /// [this, g_Hwnd] : 람다식의 캡처리스트 (함수 내에서 사용할 외부변수 캡쳐)
     /// 포인터 사용하여 drwaReplay 실행 
     startReplayThread = std::thread([this, g_Hwnd]() { this->drawReplay(g_Hwnd); });
-
+    /// 스테이터스 창에 스레드 실행간 메세지 출력
+    wsprintf(ShowStatus::playingStatus, L"스레드 실행중");
     /// 스레드 반환
     startReplayThread.detach();
 }
@@ -261,6 +264,9 @@ void PenDraw::drawReplay(HWND g_Hwnd)
     /// WM_PAINT 에서 그리기 유지하는 조건을 리플레이 실행 동안 비활성화
     this->penStay = false;
     PenDraw::isReplay = true;
+
+    
+
 
     HDC hdc;
     hdc = GetDC(g_Hwnd);
@@ -317,6 +323,8 @@ void PenDraw::drawReplay(HWND g_Hwnd)
         SelectObject(hdc, osP);
         DeleteObject(myP);  // 리소스 자원 확보 위해 삭제
     }
+    wsprintf(ShowStatus::playingStatus, L"");
+    InvalidateRect(g_Hwnd, &ShowStatus::status_Rect, TRUE);
     /// 리플레이 기능 종료 시 그리기 유지 활성화
     this->penStay = true;
     PenDraw::isReplay = false;

@@ -15,4 +15,5 @@
 #include "paint_area.h"
 #include "Window_Size.h"
 #include "stamp.h"
+#include "ShowStatus.h"
 

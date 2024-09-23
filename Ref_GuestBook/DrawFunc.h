@@ -3,6 +3,7 @@
 #include "framework.h"
 #include "Pen_Str.h"
 #include "Resource.h"
+#include "Ref_GuestBook.h"
 
 class PenDraw {
 

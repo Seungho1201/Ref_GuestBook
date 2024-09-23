@@ -121,6 +121,8 @@ PenWidthControl penWidthControl;        /// 펜 굵기 조절 관련 인스턴�
 File_Manager fileManager;               /// File_Manager 클래스의 인스턴스 생성
 Eraser eraser;                          /// Eraser 클래스의 인스턴스 생성
 
+ShowStatus statusInstance;
+
 int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
 int stamp_Size = 100;                   /// 스탬프 크기 가로, 세로 80으로 정의
 int stampIcon = 132;                    /// 스탬프 아이콘 초기값
@@ -170,6 +172,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         /// stamp 관련 객체 초기화
         stampInfo = new Stamp(NULL, NULL);
+
+        InvalidateRect(g_Hwnd, NULL, TRUE);
 
         /// 윈도우 창 생성시 버튼 생성 메서드 실행
         /// 인자 관련 설명은 button.cpp 파일 주석 참고
@@ -222,8 +226,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             int wmId = LOWORD(wParam);
 
-            // 클릭된 버튼 하이라이트 설정
+            /// 클릭된 버튼 하이라이트 설정
             MakeButton::getClickHighlight(wmId, g_Hwnd);
+            /// 스테이터스 기능
+            statusInstance.setStatus(wmId, g_Hwnd);
+
 
             /// 메뉴 선택을 구문 분석합니다:
             switch (wmId)
@@ -299,10 +306,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         /// 그리기 영역 사각형 그리기 메서드
         paintSquare.makeSquare(hdc);
+
+        statusInstance.showDisplay(hdc, g_Hwnd);
         
         /// 그리기 한 벡터 데이터 그리기 유지 메서드
         drawInstance.drawStay(hdc, g_Hwnd, &penMemory);
-        
+
+       
+
+
         EndPaint(hWnd, &ps);
         break;
     }
