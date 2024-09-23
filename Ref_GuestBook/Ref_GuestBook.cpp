@@ -213,7 +213,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         /// 버튼 비활성화시 그리기 함수 실행
         } else {
-            drawInstance.drawLine(&pen_Width, g_Hwnd, message, lParam, &pen_Color, &g_Pen_Info, &penMemory);
+            drawInstance.drawLine(&pen_Width, g_Hwnd, message, lParam, &pen_Color, &penMemory);
         }
         break;
 
