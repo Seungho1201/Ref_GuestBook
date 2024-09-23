@@ -178,7 +178,7 @@ void MakeButton::getClickHighlight(int wmId, HWND g_Hwnd)
 void MakeButton::setClickHighlight(HDC hdc)
 {
     /// 굵기 2의 사각형으로 외곽선 생성
-    HPEN hPen = CreatePen(PS_SOLID, 3, RGB(0, 0, 0)); 
+    HPEN hPen = CreatePen(PS_SOLID, 3, RGB(135, 206, 235)); 
     HPEN oldPen = (HPEN)SelectObject(hdc, hPen);
 
     /// 클릭된 버튼 외곽선 그리기
