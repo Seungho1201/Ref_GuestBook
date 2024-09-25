@@ -11,5 +11,5 @@ private:
 public:
     PaintAreaSquare();
     ~PaintAreaSquare();
-    void makeSquare(HDC hdc);
+    void makeSquare(HDC hdc,int right, int bottom);
 };

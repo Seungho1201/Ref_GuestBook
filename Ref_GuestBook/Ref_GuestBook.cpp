@@ -111,6 +111,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 std::vector<PEN_INFO> penMemory;        /// 펜 구조체 정보 저장 벡터 변수 전역변수 정의
 PEN_INFO g_Pen_Info;                    /// 펜 정보 구조체 전역변수 정의
 COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK, RGB(0, 0, 0)
+RECT rt;
 
 ///  윈도우 핸들 전역변수
 HWND g_Hwnd;                            /// HWND 전역변수 정의
@@ -155,8 +156,10 @@ MakeButton bt_Yongbin_Stamp(1020, 10, 50, 50, YONGBIN_STAMP, L"YONGBIN");
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {   
+    
     /// 윈도우 크기 고정 정적 변수로 선언
     static WindowSizeManager windowSizeManager(Window_Size_Width, Window_Size_Height);
+    
 
     switch (message)
     { 
@@ -217,6 +220,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
 
+    case WM_SIZE: 
+        {
+            ///윈도우 창크기 구하는 함수
+            GetClientRect(hWnd, &rt);
+        }
+        break;
     /// 버튼으로 구현한 func 기능은 COMMAND 에서 정의한다.
     case WM_COMMAND:
         {
@@ -291,9 +300,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         /// 펜 굵기 표시 메서드
         penWidthControl.penWidthDisplay(hdc, &stampActive, &stamp_Size, &pen_Width);
 
-        /// 그리기 영역 사각형 그리기 메서드
-        paintSquare.makeSquare(hdc);
-        
+        /// 그리기 영역 사각형 그리기 
+        paintSquare.makeSquare(hdc, rt.right, rt.bottom);
+
         /// 그리기 한 벡터 데이터 그리기 유지 메서드
         drawInstance.drawStay(hdc, g_Hwnd, &penMemory);
         

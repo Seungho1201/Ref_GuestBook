@@ -6,18 +6,20 @@ PaintAreaSquare::PaintAreaSquare()
     this->OldPen = nullptr;
 }
 
-PaintAreaSquare::~PaintAreaSquare() 
+PaintAreaSquare::~PaintAreaSquare()
 {
     if (this->MyPen) {
         DeleteObject(this->MyPen);  // 소멸자에서 펜 삭제
     }
 }
 
-void PaintAreaSquare::makeSquare(HDC hdc) 
+void PaintAreaSquare::makeSquare(HDC hdc, int rt_right, int rt_bottom) 
 {
     this->OldPen = (HPEN)SelectObject(hdc, MyPen);
 
     ///사각형 (hdc,left, top, right, bottom)
-    Rectangle(hdc, PAINT_R_LEFT, PAINT_R_TOP, PAINT_R_RIGHT, PAINT_R_BOTTOM);
+    Rectangle(hdc, PAINT_R_LEFT, PAINT_R_TOP, rt_right-10 , rt_bottom-10);
+
+
     SelectObject(hdc, OldPen);   
 }
