@@ -30,22 +30,34 @@
     <ClInclude Include="Pen_Str.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="drawline.h">
+    <ClInclude Include="DrawFunc.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="replay.h">
+    <ClInclude Include="CreateButton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="button.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="erase.h">
+    <ClInclude Include="Erase.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="w_control.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="FileManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="paint_area.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Window_Size.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="stamp.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowStatus.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorPalette.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,22 +65,34 @@
     <ClCompile Include="Ref_GuestBook.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="drawline.cpp">
+    <ClCompile Include="DrawFunc.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="replay.cpp">
+    <ClCompile Include="CreateButton.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="button.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="erase.cpp">
+    <ClCompile Include="Erase.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="w_control.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="FileManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="paint_area.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="stamp.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Window_Size.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ShowStatus.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorPalette.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,13 +117,7 @@
     <Image Include="..\ImgResource\ERASE.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="..\ImgResource\heart.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\ImgResource\uh.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="..\ImgResource\yongbin.ico">
+    <Image Include="..\ImgResource\Stamp\slave_stamp.ico">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

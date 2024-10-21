@@ -127,25 +127,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="button.h" />
-    <ClInclude Include="drawline.h" />
-    <ClInclude Include="erase.h" />
+    <ClInclude Include="CreateButton.h" />
+    <ClInclude Include="ColorPalette.h" />
+    <ClInclude Include="DrawFunc.h" />
+    <ClInclude Include="Erase.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="paint_area.h" />
     <ClInclude Include="Pen_Str.h" />
     <ClInclude Include="Ref_GuestBook.h" />
-    <ClInclude Include="replay.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="stamp.h" />
+    <ClInclude Include="ShowStatus.h" />
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Window_Size.h" />
+    <ClInclude Include="stamp.h" />
     <ClInclude Include="w_control.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="button.cpp" />
-    <ClCompile Include="drawline.cpp" />
-    <ClCompile Include="erase.cpp" />
+    <ClCompile Include="CreateButton.cpp" />
+    <ClCompile Include="ColorPalette.cpp" />
+    <ClCompile Include="DrawFunc.cpp" />
+    <ClCompile Include="Erase.cpp" />
+    <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="paint_area.cpp" />
     <ClCompile Include="Ref_GuestBook.cpp" />
-    <ClCompile Include="replay.cpp" />
+    <ClCompile Include="ShowStatus.cpp" />
     <ClCompile Include="stamp.cpp" />
+    <ClCompile Include="Window_Size.cpp" />
     <ClCompile Include="w_control.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,11 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\ImgResource\ERASE.ico" />
-    <Image Include="..\ImgResource\heart.ico" />
     <Image Include="..\ImgResource\REPLAY.ico" />
     <Image Include="..\ImgResource\Size.ico" />
-    <Image Include="..\ImgResource\uh.ico" />
-    <Image Include="..\ImgResource\yongbin.ico" />
+    <Image Include="..\ImgResource\Stamp\slave_stamp.ico" />
     <Image Include="Ref_GuestBook.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
