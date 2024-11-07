@@ -20,6 +20,4 @@ Window application<br>
 Visual Studio 2022
 
 ## 구현기능
-기본 방명록 (현재 구현 중)<br>
-테마 및 꾸미기 기능 <br>
-저장된 방명록 페이지 전체 출력 (구현 예정)<br>
+기본 방명록
