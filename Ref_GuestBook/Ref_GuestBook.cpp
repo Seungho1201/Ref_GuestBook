@@ -154,17 +154,17 @@ MakeButton bt_Change_Pen(375, 60, 140, 45, CHANGE_PEN, L"PEN");
 MakeButton bt_Preview(525, 10, 95, 95, PREVIEW, L"미리보기");
 
 /// 사용자 지정 색 버튼
-MakeButton bt_ColorPalette(bt_X, 10, bt_Size, bt_Size + bt_Array, PALETTE, L"PALETTE");
+MakeButton bt_ColorPalette(bt_X + 100, 10, bt_Size, bt_Size + bt_Array, PALETTE, L"PALETTE");
 
-MakeButton bt_ColorRed(bt_X + bt_Array, bt_Y, bt_Size, bt_Size, C_RED, L"빨");
-MakeButton bt_ColorOrange(bt_X + bt_Array * 2, bt_Y, bt_Size, bt_Size, C_ORANGE, L"주");
-MakeButton bt_ColorYellow(bt_X + bt_Array * 3, bt_Y, bt_Size, bt_Size, C_YELLOW, L"노");
-MakeButton bt_ColorGreen(bt_X + bt_Array * 4, bt_Y, bt_Size, bt_Size, C_GREEN, L"초");
+MakeButton bt_ColorRed(bt_X + bt_Array - 150 , bt_Y, bt_Size, bt_Size, C_RED, L"빨");
+MakeButton bt_ColorOrange(bt_X + bt_Array * 2 - 150, bt_Y, bt_Size, bt_Size, C_ORANGE, L"주");
+MakeButton bt_ColorYellow(bt_X + bt_Array * 3 - 150, bt_Y, bt_Size, bt_Size, C_YELLOW, L"노");
+MakeButton bt_ColorGreen(bt_X + bt_Array * 4 - 150, bt_Y, bt_Size, bt_Size, C_GREEN, L"초");
 
-MakeButton bt_ColorBlue(bt_X + bt_Array, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_BLUE, L"파");
-MakeButton bt_ColorNavy(bt_X + bt_Array * 2, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_NAVY, L"남");
-MakeButton bt_ColorPurple(bt_X + bt_Array * 3, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_PURPLE, L"보");
-MakeButton bt_ColorBlack(bt_X + bt_Array * 4, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_BLACK, L"검");
+MakeButton bt_ColorBlue(bt_X + bt_Array - 150, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_BLUE, L"파");
+MakeButton bt_ColorNavy(bt_X + bt_Array * 2 - 150, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_NAVY, L"남");
+MakeButton bt_ColorPurple(bt_X + bt_Array * 3 - 150, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_PURPLE, L"보");
+MakeButton bt_ColorBlack(bt_X + bt_Array * 4 - 150, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_BLACK, L"검");
 
 /// 스탬프 변경 버튼
 MakeButton bt_Heart_Stamp(bt_X + bt_Array * 5, bt_Y, bt_Size, bt_Size, HEART_STAMP, L"하트");
@@ -230,7 +230,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthdown.mkButton(g_Hwnd);
 
         /// 펜 미리보기
-        bt_Preview.mkButton(g_Hwnd, stampIcon);
+        //bt_Preview.mkButton(g_Hwnd, stampIcon);
 
         /// 색상 변경 버튼 생성
         bt_Change_Pen.mkButton(g_Hwnd);
