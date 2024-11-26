@@ -112,6 +112,8 @@ PEN_INFO g_Pen_Info;                    /// 펜 정보 구조체 전역변수 �
 COLORREF pen_Color = RGB(0, 0, 0);      /// 펜 기본 색상 BLACK, RGB(0, 0, 0)
 ColorPalette g_colorPalette;
 
+extern int preview_Icon = 132;
+
 ///  윈도우 핸들 전역변수
 HWND g_Hwnd;                            /// HWND 전역변수 정의
 PenDraw drawInstance;                   /// 그리기 관련 클래스 인스턴스 선언
@@ -123,10 +125,19 @@ Eraser eraser;                          /// Eraser 클래스의 인스턴스 선
 ShowStatus statusInstance;              /// 스테이터스 관련 인스턴스 선언
 
 int pen_Width = 10;                     /// 펜 기본 굵기 10으로 정의
-int stamp_Size = 100;                   /// 스탬프 크기 가로, 세로 80으로 정의
-int stampIcon = 132;                    /// 스탬프 아이콘 초기값
+
+int stamp_Size = 200;                   /// 스탬프 크기 가로, 세로 80으로 정의
+int stampIcon = 140;                    /// 스탬프 아이콘 초기값
 bool stampActive = false;               /// 스탬프 버튼 활성화 확인
 static Stamp* stampInfo = nullptr;      /// Stamp 객체를 저장할 포인터
+
+/// 버튼 변경 버튼
+int bt_X = 625;
+int bt_Y = 10;
+int bt_Size = 45;
+int bt_Side = 5;
+int bt_Array = bt_Size + bt_Side;
+
 
 /// 기능 기본 버튼
 MakeButton bt_Clear(120, 10, 100, 100, ERASE, L"ERASE");
@@ -136,25 +147,38 @@ MakeButton bt_Load(230, 65, 100, 45, LOAD, L"LOAD");
 MakeButton bt_Widthup(375, 10, 45, 45, W_DOWN, L"-");
 MakeButton bt_Widthdown(470, 10, 45, 45, W_UP, L"+");
 
-/// 펜 색상 변경 버튼
-MakeButton bt_ColorRed(550, 10, 45, 45, C_RED, L"빨");
-MakeButton bt_ColorOrange(600, 10, 45, 45, C_ORANGE, L"주");
-MakeButton bt_ColorYellow(650, 10, 45, 45, C_YELLOW, L"노");
-MakeButton bt_ColorGreen(700, 10, 45, 45, C_GREEN, L"초");
-MakeButton bt_ColorBlue(550, 60, 45, 45, C_BLUE, L"파");
-MakeButton bt_ColorNavy(600, 60, 45, 45, C_NAVY, L"남");
-MakeButton bt_ColorPurple(650, 60, 45, 45, C_PURPLE, L"보");
-MakeButton bt_ColorBlack(700, 60, 45, 45, C_BLACK, L"검");
+
+MakeButton bt_Change_Pen(375, 60, 140, 45, CHANGE_PEN, L"PEN");
+
+/// 펜 미리보기
+MakeButton bt_Preview(525, 10, 95, 95, PREVIEW, L"미리보기");
 
 /// 사용자 지정 색 버튼
-MakeButton bt_ColorPalette(750, 10, 50, 95, PALETTE, L"PALETTE");
+MakeButton bt_ColorPalette(bt_X, 10, bt_Size, bt_Size + bt_Array, PALETTE, L"PALETTE");
 
-/// 펜 색상 변경 버튼
-MakeButton bt_Change_Pen(900, 10, 50, 50, CHANGE_PEN, L"PEN");
-MakeButton bt_Heart_Stamp(960, 10, 50, 50, HEART_STAMP, L"HEART");
-MakeButton bt_Uh_Stamp(1020, 10, 50, 50, UH_STAMP, L"UH");
-MakeButton bt_Yuhan_Stamp(1080, 10, 50, 50, YUHAN_STAMP, L"YUHAN");
-MakeButton bt_Yongbin_Stamp(1140, 10, 50, 50, YONGBIN_STAMP, L"YONGBIN");
+MakeButton bt_ColorRed(bt_X + bt_Array, bt_Y, bt_Size, bt_Size, C_RED, L"빨");
+MakeButton bt_ColorOrange(bt_X + bt_Array * 2, bt_Y, bt_Size, bt_Size, C_ORANGE, L"주");
+MakeButton bt_ColorYellow(bt_X + bt_Array * 3, bt_Y, bt_Size, bt_Size, C_YELLOW, L"노");
+MakeButton bt_ColorGreen(bt_X + bt_Array * 4, bt_Y, bt_Size, bt_Size, C_GREEN, L"초");
+
+MakeButton bt_ColorBlue(bt_X + bt_Array, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_BLUE, L"파");
+MakeButton bt_ColorNavy(bt_X + bt_Array * 2, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_NAVY, L"남");
+MakeButton bt_ColorPurple(bt_X + bt_Array * 3, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_PURPLE, L"보");
+MakeButton bt_ColorBlack(bt_X + bt_Array * 4, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, C_BLACK, L"검");
+
+/// 스탬프 변경 버튼
+MakeButton bt_Heart_Stamp(bt_X + bt_Array * 5, bt_Y, bt_Size, bt_Size, HEART_STAMP, L"하트");
+MakeButton bt_Uh_Stamp(bt_X + bt_Array * 6, bt_Y, bt_Size, bt_Size, UH_STAMP, L"어?");
+MakeButton bt_Yuhan_Stamp(bt_X + bt_Array * 7, bt_Y, bt_Size, bt_Size, YUHAN_STAMP, L"유한대마크");
+MakeButton bt_Yongbin_Stamp(bt_X + bt_Array * 8, bt_Y, bt_Size, bt_Size, YONGBIN_STAMP, L"김용빈");
+MakeButton bt_what_Stamp(bt_X + bt_Array * 9, bt_Y, bt_Size, bt_Size, WHAT_STAMP, L"뭐어쩌라고");
+
+MakeButton bt_Why_Stamp(bt_X + bt_Array * 5, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, WHY_STAMP, L"왜?");
+MakeButton bt_Gu_Stamp(bt_X + bt_Array * 6, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, GU_STAMP, L"비둘기");
+MakeButton bt_pf_Stamp(bt_X + bt_Array * 7, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, PF_STAMP, L"교수님");
+MakeButton bt_f_Stamp(bt_X + bt_Array * 8, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, F_STAMP, L"내성적F");
+MakeButton bt_hate_Stamp(bt_X + bt_Array * 9, bt_Y + bt_Size + bt_Side, bt_Size, bt_Size, HATE_STAMP, L"엉엉");
+
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -205,7 +229,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_Widthup.mkButton(g_Hwnd);
         bt_Widthdown.mkButton(g_Hwnd);
 
+        /// 펜 미리보기
+        bt_Preview.mkButton(g_Hwnd, stampIcon);
+
         /// 색상 변경 버튼 생성
+        bt_Change_Pen.mkButton(g_Hwnd);
+
         bt_ColorRed.mkButton(g_Hwnd, IDI_RED_ICON);
         bt_ColorOrange.mkButton(g_Hwnd, IDI_ORANGE_ICON);
         bt_ColorYellow.mkButton(g_Hwnd, IDI_YELLOW_ICON);
@@ -217,11 +246,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         bt_ColorPalette.mkButton(g_Hwnd, currentColor);
 
         /// 스탬프 관련 버튼 생성
-        bt_Change_Pen.mkButton(g_Hwnd);
-        bt_Heart_Stamp.mkButton(g_Hwnd, IDI_HEART_ICON);
-        bt_Uh_Stamp.mkButton(g_Hwnd, IDI_UH_ICON);
-        bt_Yuhan_Stamp.mkButton(g_Hwnd, IDI_YUHAN_ICON);
-        bt_Yongbin_Stamp.mkButton(g_Hwnd, IDI_YONGBIN_ICON);
+        bt_Heart_Stamp.mkButton(g_Hwnd, IDI_BT_HEART_ICON);
+        bt_Uh_Stamp.mkButton(g_Hwnd, IDI_BT_UH_ICON);
+        bt_Yuhan_Stamp.mkButton(g_Hwnd, IDI_BT_YUHAN_ICON);
+        bt_Yongbin_Stamp.mkButton(g_Hwnd, IDI_BT_YONGBIN_ICON);
+        bt_Why_Stamp.mkButton(g_Hwnd, IDI_BT_WHY_ICON);
+        bt_Gu_Stamp.mkButton(g_Hwnd, IDI_BT_GU_ICON);
+        bt_what_Stamp.mkButton(g_Hwnd, IDI_BT_WHAT_ICON);
+        bt_pf_Stamp.mkButton(g_Hwnd, IDI_BT_PF_ICON);
+        bt_f_Stamp.mkButton(g_Hwnd, IDI_BT_F_ICON);
+        bt_hate_Stamp.mkButton(g_Hwnd, IDI_BT_HATE_ICON);
+
 
     /// 그리기 관련 분기
     case WM_MOUSEMOVE:
@@ -279,7 +314,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
 
         ///펜 색상 및 미리보기 색 변경 기능
-        case C_RED:
+        case C_RED: 
+
         case C_ORANGE:
         case C_YELLOW:
         case C_GREEN:
@@ -302,9 +338,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case UH_STAMP:
         case YUHAN_STAMP:
         case YONGBIN_STAMP:
+        case WHY_STAMP:
+        case GU_STAMP:
+        case WHAT_STAMP:
+        case PF_STAMP:
+        case F_STAMP:
+        case HATE_STAMP:
             stampInfo->changeModeToStamp(&stampActive, g_Hwnd, &stampIcon, wParam);
+            InvalidateRect(g_Hwnd, NULL, TRUE);
+            UpdateWindow(g_Hwnd);
             break;
-
 
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
@@ -336,7 +379,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         
         /// 그리기 한 벡터 데이터 그리기 유지 메서드
         drawInstance.drawStay(hdc, g_Hwnd, &penMemory);
-
        
         EndPaint(hWnd, &ps);
         break;

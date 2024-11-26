@@ -45,6 +45,26 @@ void Stamp::changeModeToStamp(bool* stampActive, HWND g_Hwnd, int* stampIcon, in
     case YONGBIN_STAMP:
         *stampIcon = IDI_YONGBIN_ICON;
         break;
+
+    case WHY_STAMP:
+        *stampIcon = IDI_WHY_ICON;
+        break;
+    case GU_STAMP:
+        *stampIcon = IDI_GU_ICON;
+        break;
+    case WHAT_STAMP:
+        *stampIcon = IDI_WHAT_ICON;
+        break;
+    case PF_STAMP:
+        *stampIcon = IDI_PF_ICON;
+        break;
+    case F_STAMP:
+        *stampIcon = IDI_F_ICON;
+        break;
+    case HATE_STAMP:
+        *stampIcon = IDI_HATE_ICON;
+        break;
+
     }
 }
 
@@ -59,7 +79,7 @@ void Stamp::handleStamp(HWND hWnd, UINT message, LPARAM lParam, std::vector<PEN_
 
     // 아이콘 로드 및 크기 조정
     HICON hIcon = (HICON)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(this->stampIcon), IMAGE_ICON, stampSize, stampSize, 0);
-    
+
     if (!hIcon) {
         MessageBox(hWnd, L"아이콘을 로드할 수 없습니다.", L"Error", MB_OK | MB_ICONERROR);
         ReleaseDC(hWnd, hdc);

@@ -36,8 +36,10 @@ void PenWidthControl::widthControl(HWND g_Hwnd, int func, int* pen_Width, int* s
     case W_UP:
         /// 스탬프 모드일 떄
         if (*stampActive) {  
-            /// 스탬프 크기의 최대 사이즈는 100으로 지정
-            if (*stamp_Size < 100) { *stamp_Size += 10; }
+
+            /// 스탬프 크기의 최대 사이즈는 300으로 지정
+            if (*stamp_Size < 300) { *stamp_Size += 10; }
+
 
         /// 펜 모드일 때
         } else {  
